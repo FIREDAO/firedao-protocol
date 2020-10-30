@@ -1,0 +1,42 @@
+{
+  "name": "bulldao",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "oz compile --evm-version istanbul",
+    "generate": "oz compile --evm-version istanbul && typechain --target 'truffle-v5' './build/**/*.json' --outDir gen/contracts",
+    "g": "yarn generate",
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha  --exit --timeout 100000000  -r ts-node/register 'test/**/*.spec.ts'",
+    "flat": "truffle-flattener contracts/vaults/BVault.sol > flattened/BVault && truffle-flattener contracts/controllers/Controller.sol > flattened/Controller &&  truffle-flattener contracts/strategies/CurveYCRVVoter.sol > flattened/CurveYCRVVoter && truffle-flattener contracts/strategies/StrategyProxy.sol > flattened/StrategyProxy && truffle-flattener contracts/strategies/StrategyDForceUSDC.sol > flattened/StrategyDForceUSDC && truffle-flattener contracts/strategies/StrategyDForceUSDT.sol > flattened/StrategyDForceUSDT && truffle-flattener contracts/strategies/StrategyDAICurve.sol > flattened/StrategyDAICurve && truffle-flattener contracts/strategies/StrategyTUSDCurve.sol > flattened/StrategyTUSDCurve "
+  },
+  "author": "Park Jongseok",
+  "license": "AGPL-3.0-or-later",
+  "devDependencies": {
+    "@openzeppelin/contracts": "^2.5.0",
+    "@openzeppelin/test-environment": "^0.1.4",
+    "@openzeppelin/test-helpers": "^0.5.6",
+    "@openzeppelin/truffle-upgrades": "^1.1.1",
+    "@studydefi/money-legos": "^2.3.7",
+    "@truffle/hdwallet-provider": "^1.1.0",
+    "@typechain/truffle-v5": "^2.0.2",
+    "@types/chai": "^4.2.12",
+    "@types/mocha": "^8.0.3",
+    "chai": "^4.2.0",
+    "mocha": "^8.1.2",
+    "module-alias": "^2.2.2",
+    "tiny-promisify": "^1.0.0",
+    "truffle": "^5.1.48",
+    "ts-node": "^9.0.0",
+    "typechain": "^2.0.0",
+    "typechain-target-truffle": "^1.0.2",
+    "typescript": "^4.0.2",
+    "web3": "^1.2.11"
+  },
+  "_moduleAliases": {
+    "@testUtils": "testUtils"
+  },
+  "dependencies": {
+    "truffle-flattener": "^1.5.0"
+  }
+}
