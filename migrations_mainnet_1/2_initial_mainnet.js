@@ -45,28 +45,8 @@ async function setVaultStrategy(tokenAddress, vaultAddress, strategyAddress, con
 }
 
 /*
-    "dai": {
-        "name": "Dai Stablecoin", "symbol": "DAI", "decimals": 18
-    },
-    "tusd": {
-        "name": "TrueUSD", "symbol": "TUSD", "decimals": 6
-    },
-    "usdt": {
-        "name": "Tether USD", "symbol": "USDT", "decimals": 6
-    },
-    "usdc": {
-        "name": "USD Coin", "symbol": "USDC", "decimals": 6
-    },
-    "ycrv": {
-        "name": "Curve.fi yDAI/yUSDC/yUSDT/yTUSD", "symbol": "yDAI+yUSDC+yUSDT+yTUSD", "decimals": 18
-    },
-*/
-
-/*
 local migration:   truffle migrate --network development
 testnet migration: 
-
-
 */
 module.exports = async function (deployer, networks, accounts) {
     admin = accounts[4];

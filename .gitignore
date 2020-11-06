@@ -4,3 +4,4 @@ secrets-mainnet.json
 temp/
 bin/
 flattened/
+log/

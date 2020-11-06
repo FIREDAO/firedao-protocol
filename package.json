@@ -22,6 +22,7 @@
     "@typechain/truffle-v5": "^2.0.2",
     "@types/chai": "^4.2.12",
     "@types/mocha": "^8.0.3",
+    "bignumber.js": "^9.0.1",
     "chai": "^4.2.0",
     "mocha": "^8.1.2",
     "module-alias": "^2.2.2",

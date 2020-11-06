@@ -69,7 +69,6 @@ contract Controller {
     }
 
     function approveStrategy(address _token, address _strategy) public {
-        // 오직 governance 만가능
         require(msg.sender == governance, "!governance");
         approvedStrategies[_token][_strategy] = true;
     }
@@ -87,8 +86,7 @@ contract Controller {
         require(msg.sender == strategist || msg.sender == governance, "!strategist");
         converters[_input][_output] = _converter;
     }
-    // _token와 strategy.want 가 다를 수 있다. 만약 다르다면, converter를 통해 _token -> want 로 변환하여 
-    // strategy에 넣는다. strategist도 할 수 있다.
+
     function setStrategy(address _token, address _strategy) public {
         require(msg.sender == strategist || msg.sender == governance, "!strategist");
         require(approvedStrategies[_token][_strategy] == true, "!approved");
@@ -101,15 +99,11 @@ contract Controller {
     }
 
     function earn(address _token, uint256 _amount) public {
-        // strategy.want 와 strategies[] 에 등록한 token 이 다른 경우가 있나?
-        // 
         address _strategy = strategies[_token];
         address _want = Strategy(_strategy).want();
         if (_want != _token) {
             address converter = converters[_token][_want];
-            // TODO: required converter zero address checking?
             IERC20(_token).safeTransfer(converter, _amount);
-            // if converter is zero, is error occured here?
             _amount = Converter(converter).convert(_strategy);
             IERC20(_want).safeTransfer(_strategy, _amount);
         } else {
