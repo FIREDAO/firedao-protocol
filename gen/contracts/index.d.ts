@@ -19,6 +19,7 @@ import { DRewardsContract } from "./DRewards";
 import { EndLikeContract } from "./EndLike";
 import { Erc20Contract } from "./Erc20";
 import { Erc20DetailedContract } from "./Erc20Detailed";
+import { Erc20MintableContract } from "./Erc20Mintable";
 import { GaugeContract } from "./Gauge";
 import { GemJoinLikeContract } from "./GemJoinLike";
 import { GemLikeContract } from "./GemLike";
@@ -29,12 +30,16 @@ import { HopeLikeContract } from "./HopeLike";
 import { IControllerContract } from "./IController";
 import { ICurveFiContract } from "./ICurveFi";
 import { Ierc20Contract } from "./Ierc20";
+import { IRewardDistributionRecipientContract } from "./IRewardDistributionRecipient";
 import { IStrategyContract } from "./IStrategy";
 import { IVaultContract } from "./IVault";
 import { IWrappedVaultContract } from "./IWrappedVault";
 import { JugLikeContract } from "./JugLike";
 import { LendingPoolAddressesProviderContract } from "./LendingPoolAddressesProvider";
+import { LpTokenWrapperContract } from "./LpTokenWrapper";
 import { ManagerLikeContract } from "./ManagerLike";
+import { MigrationsContract } from "./Migrations";
+import { MinterRoleContract } from "./MinterRole";
 import { MintrContract } from "./Mintr";
 import { OneSplitAuditContract } from "./OneSplitAudit";
 import { OracleContract } from "./Oracle";
@@ -43,15 +48,18 @@ import { OsMedianizerContract } from "./OsMedianizer";
 import { OwnableContract } from "./Ownable";
 import { PotLikeContract } from "./PotLike";
 import { ProxyContract } from "./Proxy";
+import { RewardPoolContract } from "./RewardPool";
 import { SpotLikeContract } from "./SpotLike";
 import { StrategyContract } from "./Strategy";
 import { StrategyCurve3CrvVoterProxyContract } from "./StrategyCurve3CrvVoterProxy";
 import { StrategyCurveYVoterProxyContract } from "./StrategyCurveYVoterProxy";
 import { StrategyDaiCurveContract } from "./StrategyDaiCurve";
+import { StrategyDForceDaiContract } from "./StrategyDForceDai";
 import { StrategyDForceUsdcContract } from "./StrategyDForceUsdc";
 import { StrategyDForceUsdtContract } from "./StrategyDForceUsdt";
 import { StrategyProxyContract } from "./StrategyProxy";
 import { StrategyTusdCurveContract } from "./StrategyTusdCurve";
+import { TestRewardPoolContract } from "./TestRewardPool";
 import { TestTokenContract } from "./TestToken";
 import { TimelockContract } from "./Timelock";
 import { TimelockInterfaceContract } from "./TimelockInterface";
@@ -85,6 +93,7 @@ declare global {
       require(name: "EndLike"): EndLikeContract;
       require(name: "ERC20"): Erc20Contract;
       require(name: "ERC20Detailed"): Erc20DetailedContract;
+      require(name: "ERC20Mintable"): Erc20MintableContract;
       require(name: "Gauge"): GaugeContract;
       require(name: "GemJoinLike"): GemJoinLikeContract;
       require(name: "GemLike"): GemLikeContract;
@@ -95,6 +104,9 @@ declare global {
       require(name: "IController"): IControllerContract;
       require(name: "ICurveFi"): ICurveFiContract;
       require(name: "IERC20"): Ierc20Contract;
+      require(
+        name: "IRewardDistributionRecipient"
+      ): IRewardDistributionRecipientContract;
       require(name: "IStrategy"): IStrategyContract;
       require(name: "IVault"): IVaultContract;
       require(name: "IWrappedVault"): IWrappedVaultContract;
@@ -102,7 +114,10 @@ declare global {
       require(
         name: "LendingPoolAddressesProvider"
       ): LendingPoolAddressesProviderContract;
+      require(name: "LPTokenWrapper"): LpTokenWrapperContract;
       require(name: "ManagerLike"): ManagerLikeContract;
+      require(name: "Migrations"): MigrationsContract;
+      require(name: "MinterRole"): MinterRoleContract;
       require(name: "Mintr"): MintrContract;
       require(name: "OneSplitAudit"): OneSplitAuditContract;
       require(name: "Oracle"): OracleContract;
@@ -111,6 +126,7 @@ declare global {
       require(name: "Ownable"): OwnableContract;
       require(name: "PotLike"): PotLikeContract;
       require(name: "Proxy"): ProxyContract;
+      require(name: "RewardPool"): RewardPoolContract;
       require(name: "SpotLike"): SpotLikeContract;
       require(name: "Strategy"): StrategyContract;
       require(
@@ -120,10 +136,12 @@ declare global {
         name: "StrategyCurveYVoterProxy"
       ): StrategyCurveYVoterProxyContract;
       require(name: "StrategyDAICurve"): StrategyDaiCurveContract;
+      require(name: "StrategyDForceDAI"): StrategyDForceDaiContract;
       require(name: "StrategyDForceUSDC"): StrategyDForceUsdcContract;
       require(name: "StrategyDForceUSDT"): StrategyDForceUsdtContract;
       require(name: "StrategyProxy"): StrategyProxyContract;
       require(name: "StrategyTUSDCurve"): StrategyTusdCurveContract;
+      require(name: "TestRewardPool"): TestRewardPoolContract;
       require(name: "TestToken"): TestTokenContract;
       require(name: "Timelock"): TimelockContract;
       require(name: "TimelockInterface"): TimelockInterfaceContract;
@@ -163,6 +181,7 @@ export { DRewardsContract, DRewardsInstance } from "./DRewards";
 export { EndLikeContract, EndLikeInstance } from "./EndLike";
 export { Erc20Contract, Erc20Instance } from "./Erc20";
 export { Erc20DetailedContract, Erc20DetailedInstance } from "./Erc20Detailed";
+export { Erc20MintableContract, Erc20MintableInstance } from "./Erc20Mintable";
 export { GaugeContract, GaugeInstance } from "./Gauge";
 export { GemJoinLikeContract, GemJoinLikeInstance } from "./GemJoinLike";
 export { GemLikeContract, GemLikeInstance } from "./GemLike";
@@ -173,6 +192,10 @@ export { HopeLikeContract, HopeLikeInstance } from "./HopeLike";
 export { IControllerContract, IControllerInstance } from "./IController";
 export { ICurveFiContract, ICurveFiInstance } from "./ICurveFi";
 export { Ierc20Contract, Ierc20Instance } from "./Ierc20";
+export {
+  IRewardDistributionRecipientContract,
+  IRewardDistributionRecipientInstance
+} from "./IRewardDistributionRecipient";
 export { IStrategyContract, IStrategyInstance } from "./IStrategy";
 export { IVaultContract, IVaultInstance } from "./IVault";
 export { IWrappedVaultContract, IWrappedVaultInstance } from "./IWrappedVault";
@@ -181,7 +204,13 @@ export {
   LendingPoolAddressesProviderContract,
   LendingPoolAddressesProviderInstance
 } from "./LendingPoolAddressesProvider";
+export {
+  LpTokenWrapperContract,
+  LpTokenWrapperInstance
+} from "./LpTokenWrapper";
 export { ManagerLikeContract, ManagerLikeInstance } from "./ManagerLike";
+export { MigrationsContract, MigrationsInstance } from "./Migrations";
+export { MinterRoleContract, MinterRoleInstance } from "./MinterRole";
 export { MintrContract, MintrInstance } from "./Mintr";
 export { OneSplitAuditContract, OneSplitAuditInstance } from "./OneSplitAudit";
 export { OracleContract, OracleInstance } from "./Oracle";
@@ -193,6 +222,7 @@ export { OsMedianizerContract, OsMedianizerInstance } from "./OsMedianizer";
 export { OwnableContract, OwnableInstance } from "./Ownable";
 export { PotLikeContract, PotLikeInstance } from "./PotLike";
 export { ProxyContract, ProxyInstance } from "./Proxy";
+export { RewardPoolContract, RewardPoolInstance } from "./RewardPool";
 export { SpotLikeContract, SpotLikeInstance } from "./SpotLike";
 export { StrategyContract, StrategyInstance } from "./Strategy";
 export {
@@ -208,6 +238,10 @@ export {
   StrategyDaiCurveInstance
 } from "./StrategyDaiCurve";
 export {
+  StrategyDForceDaiContract,
+  StrategyDForceDaiInstance
+} from "./StrategyDForceDai";
+export {
   StrategyDForceUsdcContract,
   StrategyDForceUsdcInstance
 } from "./StrategyDForceUsdc";
@@ -220,6 +254,10 @@ export {
   StrategyTusdCurveContract,
   StrategyTusdCurveInstance
 } from "./StrategyTusdCurve";
+export {
+  TestRewardPoolContract,
+  TestRewardPoolInstance
+} from "./TestRewardPool";
 export { TestTokenContract, TestTokenInstance } from "./TestToken";
 export { TimelockContract, TimelockInstance } from "./Timelock";
 export {

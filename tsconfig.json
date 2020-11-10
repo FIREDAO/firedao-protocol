@@ -32,7 +32,7 @@
       }
     },
     "include": [
-      "**/*.ts", "test/test1.spec.js"
+      "**/*.ts", "test/test1.js"
     ],
     "exclude": [
       "node_modules",

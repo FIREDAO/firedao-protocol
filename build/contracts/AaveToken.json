@@ -1,5 +1,10 @@
 {
+  "fileName": "AaveToken.sol",
   "contractName": "AaveToken",
+  "source": "pragma solidity ^0.5.17;\n\ninterface AaveToken {\n    function underlyingAssetAddress() external view returns (address);\n}\n",
+  "sourcePath": "contracts/interfaces/aave/AaveToken.sol",
+  "sourceMap": "",
+  "deployedSourceMap": "",
   "abi": [
     {
       "constant": true,
@@ -17,216 +22,112 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"underlyingAssetAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/aave/AaveToken.sol\":\"AaveToken\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/aave/AaveToken.sol\":{\"keccak256\":\"0x8b7510c3958f05ea730e109ed3a9f4c5ee00d39d507468831d8b0844044b7164\",\"urls\":[\"bzz-raw://da2d1a291fb50231b582c335cedd2fc8ba31ec777e2ae4feb66e933832a1af28\",\"dweb:/ipfs/QmehA1pRz3KNoaUdqgFJe5n22Ni9HiALEzxEYLAmHiux1r\"]}},\"version\":1}",
+  "ast": {
+    "absolutePath": "contracts/interfaces/aave/AaveToken.sol",
+    "exportedSymbols": {
+      "AaveToken": [
+        6202
+      ]
+    },
+    "id": 6203,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6196,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".17"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:18"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 6202,
+        "linearizedBaseContracts": [
+          6202
+        ],
+        "name": "AaveToken",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 6201,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "underlyingAssetAddress",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6197,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "83:2:18"
+            },
+            "returnParameters": {
+              "id": 6200,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6199,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6201,
+                  "src": "109:7:18",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6198,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "109:7:18",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "108:9:18"
+            },
+            "scope": 6202,
+            "src": "52:66:18",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 6203,
+        "src": "26:94:18"
+      }
+    ],
+    "src": "0:121:18"
+  },
   "bytecode": "0x",
   "deployedBytecode": "0x",
-  "sourceMap": "",
-  "deployedSourceMap": "",
-  "source": "pragma solidity ^0.5.17;\n\ninterface AaveToken {\n    function underlyingAssetAddress() external view returns (address);\n}\n",
-  "sourcePath": "/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/aave/AaveToken.sol",
-  "ast": {
-    "absolutePath": "/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/aave/AaveToken.sol",
-    "exportedSymbols": {
-      "AaveToken": [
-        3550
-      ]
-    },
-    "id": 3551,
-    "nodeType": "SourceUnit",
-    "nodes": [
-      {
-        "id": 3544,
-        "literals": [
-          "solidity",
-          "^",
-          "0.5",
-          ".17"
-        ],
-        "nodeType": "PragmaDirective",
-        "src": "0:24:6"
-      },
-      {
-        "baseContracts": [],
-        "contractDependencies": [],
-        "contractKind": "interface",
-        "documentation": null,
-        "fullyImplemented": false,
-        "id": 3550,
-        "linearizedBaseContracts": [
-          3550
-        ],
-        "name": "AaveToken",
-        "nodeType": "ContractDefinition",
-        "nodes": [
-          {
-            "body": null,
-            "documentation": null,
-            "id": 3549,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "underlyingAssetAddress",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 3545,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "83:2:6"
-            },
-            "returnParameters": {
-              "id": 3548,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 3547,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3549,
-                  "src": "109:7:6",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 3546,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "109:7:6",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "108:9:6"
-            },
-            "scope": 3550,
-            "src": "52:66:6",
-            "stateMutability": "view",
-            "superFunction": null,
-            "visibility": "external"
-          }
-        ],
-        "scope": 3551,
-        "src": "26:94:6"
-      }
-    ],
-    "src": "0:121:6"
-  },
-  "legacyAST": {
-    "absolutePath": "/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/aave/AaveToken.sol",
-    "exportedSymbols": {
-      "AaveToken": [
-        3550
-      ]
-    },
-    "id": 3551,
-    "nodeType": "SourceUnit",
-    "nodes": [
-      {
-        "id": 3544,
-        "literals": [
-          "solidity",
-          "^",
-          "0.5",
-          ".17"
-        ],
-        "nodeType": "PragmaDirective",
-        "src": "0:24:6"
-      },
-      {
-        "baseContracts": [],
-        "contractDependencies": [],
-        "contractKind": "interface",
-        "documentation": null,
-        "fullyImplemented": false,
-        "id": 3550,
-        "linearizedBaseContracts": [
-          3550
-        ],
-        "name": "AaveToken",
-        "nodeType": "ContractDefinition",
-        "nodes": [
-          {
-            "body": null,
-            "documentation": null,
-            "id": 3549,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "underlyingAssetAddress",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 3545,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "83:2:6"
-            },
-            "returnParameters": {
-              "id": 3548,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 3547,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 3549,
-                  "src": "109:7:6",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 3546,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "109:7:6",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "108:9:6"
-            },
-            "scope": 3550,
-            "src": "52:66:6",
-            "stateMutability": "view",
-            "superFunction": null,
-            "visibility": "external"
-          }
-        ],
-        "scope": 3551,
-        "src": "26:94:6"
-      }
-    ],
-    "src": "0:121:6"
-  },
   "compiler": {
     "name": "solc",
-    "version": "0.5.17+commit.d19bba13.Linux.g++"
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang",
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "evmVersion": "istanbul"
   },
-  "networks": {},
-  "schemaVersion": "3.2.3",
-  "updatedAt": "2020-10-29T02:40:29.771Z",
-  "devdoc": {
-    "methods": {}
-  },
-  "userdoc": {
-    "methods": {}
-  }
+  "networks": {}
 }
