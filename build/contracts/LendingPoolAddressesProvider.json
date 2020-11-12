@@ -56,14 +56,14 @@
     "absolutePath": "contracts/interfaces/aave/LendingPoolAddressesProvider.sol",
     "exportedSymbols": {
       "LendingPoolAddressesProvider": [
-        6220
+        6211
       ]
     },
-    "id": 6221,
+    "id": 6212,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6204,
+        "id": 6195,
         "literals": [
           "solidity",
           "^",
@@ -79,9 +79,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 6220,
+        "id": 6211,
         "linearizedBaseContracts": [
-          6220
+          6211
         ],
         "name": "LendingPoolAddressesProvider",
         "nodeType": "ContractDefinition",
@@ -89,28 +89,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6209,
+            "id": 6200,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getLendingPool",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6205,
+              "id": 6196,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "94:2:19"
             },
             "returnParameters": {
-              "id": 6208,
+              "id": 6199,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6207,
+                  "id": 6198,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6209,
+                  "scope": 6200,
                   "src": "120:7:19",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -119,7 +119,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6206,
+                    "id": 6197,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "120:7:19",
@@ -135,7 +135,7 @@
               ],
               "src": "119:9:19"
             },
-            "scope": 6220,
+            "scope": 6211,
             "src": "71:58:19",
             "stateMutability": "view",
             "superFunction": null,
@@ -144,28 +144,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6214,
+            "id": 6205,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getLendingPoolCore",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6210,
+              "id": 6201,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "162:2:19"
             },
             "returnParameters": {
-              "id": 6213,
+              "id": 6204,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6212,
+                  "id": 6203,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6214,
+                  "scope": 6205,
                   "src": "188:7:19",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -174,7 +174,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6211,
+                    "id": 6202,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "188:7:19",
@@ -190,7 +190,7 @@
               ],
               "src": "187:9:19"
             },
-            "scope": 6220,
+            "scope": 6211,
             "src": "135:62:19",
             "stateMutability": "view",
             "superFunction": null,
@@ -199,28 +199,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6219,
+            "id": 6210,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getPriceOracle",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6215,
+              "id": 6206,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "226:2:19"
             },
             "returnParameters": {
-              "id": 6218,
+              "id": 6209,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6217,
+                  "id": 6208,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6219,
+                  "scope": 6210,
                   "src": "252:7:19",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -229,7 +229,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6216,
+                    "id": 6207,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "252:7:19",
@@ -245,14 +245,14 @@
               ],
               "src": "251:9:19"
             },
-            "scope": 6220,
+            "scope": 6211,
             "src": "203:58:19",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 6221,
+        "scope": 6212,
         "src": "26:237:19"
       }
     ],

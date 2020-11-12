@@ -55,14 +55,14 @@
     "absolutePath": "contracts/interfaces/curve/VoteEscrow.sol",
     "exportedSymbols": {
       "VoteEscrow": [
-        6409
+        6400
       ]
     },
-    "id": 6410,
+    "id": 6401,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6393,
+        "id": 6384,
         "literals": [
           "solidity",
           "^",
@@ -78,9 +78,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 6409,
+        "id": 6400,
         "linearizedBaseContracts": [
-          6409
+          6400
         ],
         "name": "VoteEscrow",
         "nodeType": "ContractDefinition",
@@ -88,22 +88,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6400,
+            "id": 6391,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "create_lock",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6398,
+              "id": 6389,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6395,
+                  "id": 6386,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6400,
+                  "scope": 6391,
                   "src": "107:7:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -112,7 +112,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6394,
+                    "id": 6385,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "107:7:26",
@@ -126,10 +126,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 6397,
+                  "id": 6388,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6400,
+                  "scope": 6391,
                   "src": "116:7:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -138,7 +138,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6396,
+                    "id": 6387,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "116:7:26",
@@ -154,12 +154,12 @@
               "src": "106:18:26"
             },
             "returnParameters": {
-              "id": 6399,
+              "id": 6390,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "133:0:26"
             },
-            "scope": 6409,
+            "scope": 6400,
             "src": "86:48:26",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -168,22 +168,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6405,
+            "id": 6396,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "increase_amount",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6403,
+              "id": 6394,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6402,
+                  "id": 6393,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6405,
+                  "scope": 6396,
                   "src": "165:7:26",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -192,7 +192,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6401,
+                    "id": 6392,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "165:7:26",
@@ -208,12 +208,12 @@
               "src": "164:9:26"
             },
             "returnParameters": {
-              "id": 6404,
+              "id": 6395,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "182:0:26"
             },
-            "scope": 6409,
+            "scope": 6400,
             "src": "140:43:26",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -222,32 +222,32 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6408,
+            "id": 6399,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "withdraw",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6406,
+              "id": 6397,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "206:2:26"
             },
             "returnParameters": {
-              "id": 6407,
+              "id": 6398,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "217:0:26"
             },
-            "scope": 6409,
+            "scope": 6400,
             "src": "189:29:26",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 6410,
+        "scope": 6401,
         "src": "59:161:26"
       }
     ],

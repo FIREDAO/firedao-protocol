@@ -47,14 +47,14 @@
     "absolutePath": "contracts/interfaces/aave/Oracle.sol",
     "exportedSymbols": {
       "Oracle": [
-        6235
+        6226
       ]
     },
-    "id": 6236,
+    "id": 6227,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6222,
+        "id": 6213,
         "literals": [
           "solidity",
           "^",
@@ -70,9 +70,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 6235,
+        "id": 6226,
         "linearizedBaseContracts": [
-          6235
+          6226
         ],
         "name": "Oracle",
         "nodeType": "ContractDefinition",
@@ -80,22 +80,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6229,
+            "id": 6220,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getAssetPrice",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6225,
+              "id": 6216,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6224,
+                  "id": 6215,
                   "name": "reserve",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6229,
+                  "scope": 6220,
                   "src": "72:15:20",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -104,7 +104,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6223,
+                    "id": 6214,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "72:7:20",
@@ -121,15 +121,15 @@
               "src": "71:17:20"
             },
             "returnParameters": {
-              "id": 6228,
+              "id": 6219,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6227,
+                  "id": 6218,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6229,
+                  "scope": 6220,
                   "src": "112:7:20",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -138,7 +138,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6226,
+                    "id": 6217,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "112:7:20",
@@ -153,7 +153,7 @@
               ],
               "src": "111:9:20"
             },
-            "scope": 6235,
+            "scope": 6226,
             "src": "49:72:20",
             "stateMutability": "view",
             "superFunction": null,
@@ -162,28 +162,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6234,
+            "id": 6225,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "latestAnswer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6230,
+              "id": 6221,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "148:2:20"
             },
             "returnParameters": {
-              "id": 6233,
+              "id": 6224,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6232,
+                  "id": 6223,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6234,
+                  "scope": 6225,
                   "src": "174:7:20",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -192,7 +192,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6231,
+                    "id": 6222,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "174:7:20",
@@ -207,14 +207,14 @@
               ],
               "src": "173:9:20"
             },
-            "scope": 6235,
+            "scope": 6226,
             "src": "127:56:20",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 6236,
+        "scope": 6227,
         "src": "26:159:20"
       }
     ],

@@ -26,14 +26,14 @@
     "absolutePath": "contracts/interfaces/aave/AaveToken.sol",
     "exportedSymbols": {
       "AaveToken": [
-        6202
+        6193
       ]
     },
-    "id": 6203,
+    "id": 6194,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6196,
+        "id": 6187,
         "literals": [
           "solidity",
           "^",
@@ -49,9 +49,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 6202,
+        "id": 6193,
         "linearizedBaseContracts": [
-          6202
+          6193
         ],
         "name": "AaveToken",
         "nodeType": "ContractDefinition",
@@ -59,28 +59,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6201,
+            "id": 6192,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "underlyingAssetAddress",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6197,
+              "id": 6188,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "83:2:18"
             },
             "returnParameters": {
-              "id": 6200,
+              "id": 6191,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6199,
+                  "id": 6190,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6201,
+                  "scope": 6192,
                   "src": "109:7:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -89,7 +89,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6198,
+                    "id": 6189,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "109:7:18",
@@ -105,14 +105,14 @@
               ],
               "src": "108:9:18"
             },
-            "scope": 6202,
+            "scope": 6193,
             "src": "52:66:18",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 6203,
+        "scope": 6194,
         "src": "26:94:18"
       }
     ],

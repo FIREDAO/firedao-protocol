@@ -74,14 +74,14 @@
     "absolutePath": "contracts/interfaces/yearn/Vault.sol",
     "exportedSymbols": {
       "Vault": [
-        7306
+        7297
       ]
     },
-    "id": 7307,
+    "id": 7298,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 7284,
+        "id": 7275,
         "literals": [
           "solidity",
           "^",
@@ -97,9 +97,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 7306,
+        "id": 7297,
         "linearizedBaseContracts": [
-          7306
+          7297
         ],
         "name": "Vault",
         "nodeType": "ContractDefinition",
@@ -107,22 +107,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 7289,
+            "id": 7280,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "deposit",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7287,
+              "id": 7278,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7286,
+                  "id": 7277,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7289,
+                  "scope": 7280,
                   "src": "98:7:44",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -131,7 +131,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7285,
+                    "id": 7276,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "98:7:44",
@@ -147,12 +147,12 @@
               "src": "97:9:44"
             },
             "returnParameters": {
-              "id": 7288,
+              "id": 7279,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "115:0:44"
             },
-            "scope": 7306,
+            "scope": 7297,
             "src": "81:35:44",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -161,25 +161,25 @@
           {
             "body": null,
             "documentation": null,
-            "id": 7292,
+            "id": 7283,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "depositAll",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7290,
+              "id": 7281,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "141:2:44"
             },
             "returnParameters": {
-              "id": 7291,
+              "id": 7282,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "152:0:44"
             },
-            "scope": 7306,
+            "scope": 7297,
             "src": "122:31:44",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -188,22 +188,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 7297,
+            "id": 7288,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "withdraw",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7295,
+              "id": 7286,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7294,
+                  "id": 7285,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7297,
+                  "scope": 7288,
                   "src": "177:7:44",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -212,7 +212,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7293,
+                    "id": 7284,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "177:7:44",
@@ -228,12 +228,12 @@
               "src": "176:9:44"
             },
             "returnParameters": {
-              "id": 7296,
+              "id": 7287,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "194:0:44"
             },
-            "scope": 7306,
+            "scope": 7297,
             "src": "159:36:44",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -242,25 +242,25 @@
           {
             "body": null,
             "documentation": null,
-            "id": 7300,
+            "id": 7291,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "withdrawAll",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7298,
+              "id": 7289,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "221:2:44"
             },
             "returnParameters": {
-              "id": 7299,
+              "id": 7290,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "232:0:44"
             },
-            "scope": 7306,
+            "scope": 7297,
             "src": "201:32:44",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -269,28 +269,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 7305,
+            "id": 7296,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getPricePerFullShare",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7301,
+              "id": 7292,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "268:2:44"
             },
             "returnParameters": {
-              "id": 7304,
+              "id": 7295,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7303,
+                  "id": 7294,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7305,
+                  "scope": 7296,
                   "src": "294:7:44",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -299,7 +299,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7302,
+                    "id": 7293,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "294:7:44",
@@ -314,14 +314,14 @@
               ],
               "src": "293:9:44"
             },
-            "scope": 7306,
+            "scope": 7297,
             "src": "239:64:44",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 7307,
+        "scope": 7298,
         "src": "59:246:44"
       }
     ],

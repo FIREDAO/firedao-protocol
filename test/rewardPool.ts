@@ -9,7 +9,7 @@ import { e9, e18, e27 } from '@testUtils/units';
 import { ZERO, ONE, TWO, THREE, TEN, ONE_HUNDRED, ZERO_ADDRESS } from '@testUtils/constants';
 import { Blockchain } from '@testUtils/blockchain';
 
-import { expectRevert } from '@openzeppelin/test-helpers';
+import { expectRevert, constants } from '@openzeppelin/test-helpers';
 
 const { BN } = require('@openzeppelin/test-helpers');
 const blockchain = new Blockchain(web3.currentProvider);
@@ -22,12 +22,11 @@ const Timelock: TimelockContract = contract.fromArtifact("Timelock");
 const RewardPool: TestRewardPoolContract = contract.fromArtifact("TestRewardPool");
 
 const [admin, rewardDistribution, user1, user2] = accounts;
-const LARGE_NUM: BN = (new BN(2)).pow(new BN(256)).sub(ONE);
 const [FOUR, FIVE, SIX, SEVEN, EIGHT, NINE] = [new BN(4),new BN(5),new BN(6),new BN(7),new BN(8),new BN(9)];
 
 
 
-describe('Basic checking', function () {
+describe('RewardPool', function () {
     let rp: TestRewardPoolInstance;
 
     let lpToken: TestTokenInstance;
@@ -50,12 +49,12 @@ describe('Basic checking', function () {
             { from: admin }
         );
 
-        await lpToken.approve(rp.address, LARGE_NUM, {from: admin});
-        await bull.approve(rp.address, LARGE_NUM, {from: admin});
-        await lpToken.approve(rp.address, LARGE_NUM, {from: rewardDistribution});
-        await bull.approve(rp.address, LARGE_NUM, {from: rewardDistribution});
-        await lpToken.approve(rp.address, LARGE_NUM, {from: user1});
-        await lpToken.approve(rp.address, LARGE_NUM, {from: user2});
+        await lpToken.approve(rp.address, constants.MAX_UINT256, {from: admin});
+        await bull.approve(rp.address, constants.MAX_UINT256, {from: admin});
+        await lpToken.approve(rp.address, constants.MAX_UINT256, {from: rewardDistribution});
+        await bull.approve(rp.address, constants.MAX_UINT256, {from: rewardDistribution});
+        await lpToken.approve(rp.address, constants.MAX_UINT256, {from: user1});
+        await lpToken.approve(rp.address, constants.MAX_UINT256, {from: user2});
 
         await lpToken.mint(admin, lpBalance, {from: admin});
         await lpToken.mint(rewardDistribution, lpBalance, {from: admin});
@@ -292,7 +291,7 @@ describe('Basic checking', function () {
                 await updateRP();
 
                 const now = nowBN(duration.div(TWO));
-                expect(await rp.lastUpdateTime()).to.be.bignumber.gte(now.sub(TWO)).lte(now);
+                expect(await rp.lastUpdateTime()).to.be.bignumber.gte(now.sub(TEN)).lte(now);
 
                 await shouldNotChanged();
             });
@@ -302,7 +301,7 @@ describe('Basic checking', function () {
                 await updateRP();
 
                 const now = nowBN(duration);
-                expect(await rp.lastUpdateTime()).to.be.bignumber.gte(now.sub(TWO)).lte(now);
+                expect(await rp.lastUpdateTime()).to.be.bignumber.gte(now.sub(TEN)).lte(now);
 
                 await shouldNotChanged();
             });

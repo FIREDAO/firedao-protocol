@@ -26,14 +26,14 @@
     "absolutePath": "contracts/interfaces/cream/Controller.sol",
     "exportedSymbols": {
       "Creamtroller": [
-        6298
+        6289
       ]
     },
-    "id": 6299,
+    "id": 6290,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6292,
+        "id": 6283,
         "literals": [
           "solidity",
           "^",
@@ -49,9 +49,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 6298,
+        "id": 6289,
         "linearizedBaseContracts": [
-          6298
+          6289
         ],
         "name": "Creamtroller",
         "nodeType": "ContractDefinition",
@@ -59,22 +59,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6297,
+            "id": 6288,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "claimComp",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6295,
+              "id": 6286,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6294,
+                  "id": 6285,
                   "name": "holder",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6297,
+                  "scope": 6288,
                   "src": "107:14:22",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -83,7 +83,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6293,
+                    "id": 6284,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "107:7:22",
@@ -100,19 +100,19 @@
               "src": "106:16:22"
             },
             "returnParameters": {
-              "id": 6296,
+              "id": 6287,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "131:0:22"
             },
-            "scope": 6298,
+            "scope": 6289,
             "src": "88:44:22",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 6299,
+        "scope": 6290,
         "src": "59:75:22"
       }
     ],

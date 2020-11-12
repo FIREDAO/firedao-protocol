@@ -26,14 +26,14 @@
     "absolutePath": "contracts/interfaces/curve/Mintr.sol",
     "exportedSymbols": {
       "Mintr": [
-        6391
+        6382
       ]
     },
-    "id": 6392,
+    "id": 6383,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6385,
+        "id": 6376,
         "literals": [
           "solidity",
           "^",
@@ -49,9 +49,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 6391,
+        "id": 6382,
         "linearizedBaseContracts": [
-          6391
+          6382
         ],
         "name": "Mintr",
         "nodeType": "ContractDefinition",
@@ -59,22 +59,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6390,
+            "id": 6381,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "mint",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6388,
+              "id": 6379,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6387,
+                  "id": 6378,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6390,
+                  "scope": 6381,
                   "src": "95:7:25",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -83,7 +83,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6386,
+                    "id": 6377,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "95:7:25",
@@ -100,19 +100,19 @@
               "src": "94:9:25"
             },
             "returnParameters": {
-              "id": 6389,
+              "id": 6380,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "112:0:25"
             },
-            "scope": 6391,
+            "scope": 6382,
             "src": "81:32:25",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 6392,
+        "scope": 6383,
         "src": "59:56:25"
       }
     ],

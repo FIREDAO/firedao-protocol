@@ -502,14 +502,14 @@
     "absolutePath": "contracts/test/TestRewardPool.sol",
     "exportedSymbols": {
       "TestRewardPool": [
-        14361
+        14352
       ]
     },
-    "id": 14362,
+    "id": 14353,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 14328,
+        "id": 14319,
         "literals": [
           "solidity",
           "^",
@@ -522,9 +522,9 @@
       {
         "absolutePath": "contracts/RewardPool.sol",
         "file": "../RewardPool.sol",
-        "id": 14329,
+        "id": 14320,
         "nodeType": "ImportDirective",
-        "scope": 14362,
+        "scope": 14353,
         "sourceUnit": 2689,
         "src": "26:27:55",
         "symbolAliases": [],
@@ -536,7 +536,7 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 14330,
+              "id": 14321,
               "name": "RewardPool",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 2688,
@@ -546,7 +546,7 @@
                 "typeString": "contract RewardPool"
               }
             },
-            "id": 14331,
+            "id": 14322,
             "nodeType": "InheritanceSpecifier",
             "src": "82:10:55"
           }
@@ -561,9 +561,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 14361,
+        "id": 14352,
         "linearizedBaseContracts": [
-          14361,
+          14352,
           2688,
           2207,
           1804,
@@ -575,13 +575,13 @@
         "nodes": [
           {
             "body": {
-              "id": 14348,
+              "id": 14339,
               "nodeType": "Block",
               "src": "339:7:55",
               "statements": []
             },
             "documentation": null,
-            "id": 14349,
+            "id": 14340,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [
@@ -589,11 +589,11 @@
                 "arguments": [
                   {
                     "argumentTypes": null,
-                    "id": 14342,
+                    "id": 14333,
                     "name": "_rewardToken",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 14333,
+                    "referencedDeclaration": 14324,
                     "src": "279:12:55",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -602,11 +602,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 14343,
+                    "id": 14334,
                     "name": "_lpToken",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 14335,
+                    "referencedDeclaration": 14326,
                     "src": "293:8:55",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -615,11 +615,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 14344,
+                    "id": 14335,
                     "name": "_duration",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 14337,
+                    "referencedDeclaration": 14328,
                     "src": "303:9:55",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -628,11 +628,11 @@
                   },
                   {
                     "argumentTypes": null,
-                    "id": 14345,
+                    "id": 14336,
                     "name": "_rewardDistribution",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 14339,
+                    "referencedDeclaration": 14330,
                     "src": "314:19:55",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -640,10 +640,10 @@
                     }
                   }
                 ],
-                "id": 14346,
+                "id": 14337,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 14341,
+                  "id": 14332,
                   "name": "RewardPool",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
@@ -661,15 +661,15 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 14340,
+              "id": 14331,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14333,
+                  "id": 14324,
                   "name": "_rewardToken",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14349,
+                  "scope": 14340,
                   "src": "128:20:55",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -678,7 +678,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14332,
+                    "id": 14323,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "128:7:55",
@@ -693,10 +693,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 14335,
+                  "id": 14326,
                   "name": "_lpToken",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14349,
+                  "scope": 14340,
                   "src": "158:16:55",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -705,7 +705,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14334,
+                    "id": 14325,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "158:7:55",
@@ -720,10 +720,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 14337,
+                  "id": 14328,
                   "name": "_duration",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14349,
+                  "scope": 14340,
                   "src": "184:17:55",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -732,7 +732,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 14336,
+                    "id": 14327,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "184:7:55",
@@ -746,10 +746,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 14339,
+                  "id": 14330,
                   "name": "_rewardDistribution",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14349,
+                  "scope": 14340,
                   "src": "211:27:55",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -758,7 +758,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14338,
+                    "id": 14329,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "211:7:55",
@@ -775,12 +775,12 @@
               "src": "110:134:55"
             },
             "returnParameters": {
-              "id": 14347,
+              "id": 14338,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "339:0:55"
             },
-            "scope": 14361,
+            "scope": 14352,
             "src": "99:247:55",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -788,22 +788,22 @@
           },
           {
             "body": {
-              "id": 14359,
+              "id": 14350,
               "nodeType": "Block",
               "src": "427:7:55",
               "statements": []
             },
             "documentation": null,
-            "id": 14360,
+            "id": 14351,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
                 "arguments": null,
-                "id": 14352,
+                "id": 14343,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 14351,
+                  "id": 14342,
                   "name": "onlyRewardDistribution",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
@@ -825,7 +825,7 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "30",
-                        "id": 14355,
+                        "id": 14346,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -848,7 +848,7 @@
                           "typeString": "int_const 0"
                         }
                       ],
-                      "id": 14354,
+                      "id": 14345,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -861,7 +861,7 @@
                       },
                       "typeName": "address"
                     },
-                    "id": 14356,
+                    "id": 14347,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -876,10 +876,10 @@
                     }
                   }
                 ],
-                "id": 14357,
+                "id": 14348,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 14353,
+                  "id": 14344,
                   "name": "updateReward",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
@@ -897,25 +897,25 @@
             "name": "update",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 14350,
+              "id": 14341,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "367:2:55"
             },
             "returnParameters": {
-              "id": 14358,
+              "id": 14349,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "427:0:55"
             },
-            "scope": 14361,
+            "scope": 14352,
             "src": "352:82:55",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 14362,
+        "scope": 14353,
         "src": "55:381:55"
       }
     ],

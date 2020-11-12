@@ -104,14 +104,14 @@
     "absolutePath": "contracts/interfaces/yearn/Strategy.sol",
     "exportedSymbols": {
       "Strategy": [
-        7264
+        7255
       ]
     },
-    "id": 7265,
+    "id": 7256,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 7232,
+        "id": 7223,
         "literals": [
           "solidity",
           "^",
@@ -127,9 +127,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 7264,
+        "id": 7255,
         "linearizedBaseContracts": [
-          7264
+          7255
         ],
         "name": "Strategy",
         "nodeType": "ContractDefinition",
@@ -137,28 +137,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 7237,
+            "id": 7228,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "want",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7233,
+              "id": 7224,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "97:2:42"
             },
             "returnParameters": {
-              "id": 7236,
+              "id": 7227,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7235,
+                  "id": 7226,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7237,
+                  "scope": 7228,
                   "src": "123:7:42",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -167,7 +167,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7234,
+                    "id": 7225,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "123:7:42",
@@ -183,7 +183,7 @@
               ],
               "src": "122:9:42"
             },
-            "scope": 7264,
+            "scope": 7255,
             "src": "84:48:42",
             "stateMutability": "view",
             "superFunction": null,
@@ -192,25 +192,25 @@
           {
             "body": null,
             "documentation": null,
-            "id": 7240,
+            "id": 7231,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "deposit",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7238,
+              "id": 7229,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "154:2:42"
             },
             "returnParameters": {
-              "id": 7239,
+              "id": 7230,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "165:0:42"
             },
-            "scope": 7264,
+            "scope": 7255,
             "src": "138:28:42",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -219,22 +219,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 7245,
+            "id": 7236,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "withdraw",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7243,
+              "id": 7234,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7242,
+                  "id": 7233,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7245,
+                  "scope": 7236,
                   "src": "307:7:42",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -243,7 +243,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7241,
+                    "id": 7232,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "307:7:42",
@@ -260,12 +260,12 @@
               "src": "306:9:42"
             },
             "returnParameters": {
-              "id": 7244,
+              "id": 7235,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "324:0:42"
             },
-            "scope": 7264,
+            "scope": 7255,
             "src": "289:36:42",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -274,22 +274,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 7250,
+            "id": 7241,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "withdraw",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7248,
+              "id": 7239,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7247,
+                  "id": 7238,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7250,
+                  "scope": 7241,
                   "src": "421:7:42",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -298,7 +298,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7246,
+                    "id": 7237,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "421:7:42",
@@ -314,12 +314,12 @@
               "src": "420:9:42"
             },
             "returnParameters": {
-              "id": 7249,
+              "id": 7240,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "438:0:42"
             },
-            "scope": 7264,
+            "scope": 7255,
             "src": "403:36:42",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -328,28 +328,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 7255,
+            "id": 7246,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "withdrawAll",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7251,
+              "id": 7242,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "537:2:42"
             },
             "returnParameters": {
-              "id": 7254,
+              "id": 7245,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7253,
+                  "id": 7244,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7255,
+                  "scope": 7246,
                   "src": "558:7:42",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -358,7 +358,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7252,
+                    "id": 7243,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "558:7:42",
@@ -373,7 +373,7 @@
               ],
               "src": "557:9:42"
             },
-            "scope": 7264,
+            "scope": 7255,
             "src": "517:50:42",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -382,28 +382,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 7260,
+            "id": 7251,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "balanceOf",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7256,
+              "id": 7247,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "591:2:42"
             },
             "returnParameters": {
-              "id": 7259,
+              "id": 7250,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7258,
+                  "id": 7249,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7260,
+                  "scope": 7251,
                   "src": "617:7:42",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -412,7 +412,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7257,
+                    "id": 7248,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "617:7:42",
@@ -427,7 +427,7 @@
               ],
               "src": "616:9:42"
             },
-            "scope": 7264,
+            "scope": 7255,
             "src": "573:53:42",
             "stateMutability": "view",
             "superFunction": null,
@@ -436,32 +436,32 @@
           {
             "body": null,
             "documentation": null,
-            "id": 7263,
+            "id": 7254,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "skim",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7261,
+              "id": 7252,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "645:2:42"
             },
             "returnParameters": {
-              "id": 7262,
+              "id": 7253,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "656:0:42"
             },
-            "scope": 7264,
+            "scope": 7255,
             "src": "632:25:42",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 7265,
+        "scope": 7256,
         "src": "59:600:42"
       }
     ],

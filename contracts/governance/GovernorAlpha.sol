@@ -20,10 +20,10 @@ contract GovernorAlpha {
     string public constant name = "BULL Governor Alpha";
 
     /// @notice The number of votes in support of a proposal required in order for a quorum to be reached and for a vote to succeed
-    function quorumVotes() public pure returns (uint) { return 400000e18; } // 400,000 = 4% of BULL
+    function quorumVotes() public pure returns (uint) { return 40_000e18; } // 40,000 = 4% of BULL
 
     /// @notice The number of votes required in order for a voter to become a proposer
-    function proposalThreshold() public pure returns (uint) { return 100000e18; } // 100,000 = 1% of BULL
+    function proposalThreshold() public pure returns (uint) { return 10_000e18; } // 10,000 = 1% of BULL
 
     /// @notice The maximum number of actions that can be included in a proposal
     function proposalMaxOperations() public pure returns (uint) { return 10; } // 10 actions
