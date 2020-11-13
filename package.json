@@ -7,7 +7,7 @@
     "build": "oz compile --evm-version istanbul",
     "generate": "oz compile --evm-version istanbul && typechain --target 'truffle-v5' './build/**/*.json' --outDir gen/contracts",
     "g": "yarn generate",
-    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha  --exit --timeout 100000000  -r ts-node/register 'test/**/*.spec.ts'",
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' scripts/launch.sh mocha  --exit --timeout 100000000  -r ts-node/register 'test/**/*.spec.ts'",
     "flat": "truffle-flattener contracts/vaults/BVault.sol > flattened/BVault && truffle-flattener contracts/controllers/Controller.sol > flattened/Controller && truffle-flattener contracts/strategies/StrategyDForceUSDC.sol > flattened/StrategyDForceUSDC && truffle-flattener contracts/strategies/StrategyDForceUSDT.sol > flattened/StrategyDForceUSDT && truffle-flattener contracts/strategies/StrategyTUSDCurve.sol > flattened/StrategyTUSDCurve && truffle-flattener contracts/strategies/StrategyDForceDAI.sol > flattened/StrategyDForceDAI "
   },
   "author": "Park Jongseok",
@@ -26,6 +26,7 @@
     "chai": "^4.2.0",
     "mocha": "^8.1.2",
     "module-alias": "^2.2.2",
+    "openzeppelin-test-helpers": "^0.5.1",
     "tiny-promisify": "^1.0.0",
     "truffle": "^5.1.48",
     "ts-node": "^9.0.0",

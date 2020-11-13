@@ -1,15 +1,64 @@
 require('module-alias/register');
 
-import { accounts, contract, web3 } from '@openzeppelin/test-environment'; 
+import { contract, web3 } from '@openzeppelin/test-environment'; 
 import { expect } from 'chai';
 
-import { BullContract, BullInstance, BVaultContract, GovernanceContract, RewardPoolContract, RewardPoolInstance, TestRewardPoolContract, TestRewardPoolInstance, TestTokenContract, TestTokenInstance, TimelockContract } from '@gen/contracts';
+import { 
+    BullContract, 
+    BullInstance, 
+    BVaultContract, 
+    GovernanceContract, 
+    RewardPoolContract, 
+    RewardPoolInstance, 
+    TestRewardPoolContract, 
+    TestRewardPoolInstance, 
+    TestTokenContract, 
+    TestTokenInstance, 
+    TimelockContract 
+} from '@gen/contracts';
 
 import { e9, e18, e27 } from '@testUtils/units';
 import { ZERO, ONE, TWO, THREE, TEN, ONE_HUNDRED, ZERO_ADDRESS } from '@testUtils/constants';
 import { Blockchain } from '@testUtils/blockchain';
 
 import { expectRevert, constants } from '@openzeppelin/test-helpers';
+
+import {
+    getDomainTypeHash,
+    getDelegationTypeHash,
+    getDomainSeparator,
+    getStructHash,
+    getDigest,
+    nowInSeconds
+} from '@testUtils/bullSigHelper';
+import { ecsign, ECDSASignature } from 'ethereumjs-util';
+import { hexlify, keccak256, toUtf8Bytes } from 'ethers/utils';
+
+const ganacheAccounts = [
+    "0x93393707fBC29FdbD74F90A3dC553078f2D65Cf0",
+    "0x4db5Be7C512eC02c901FaF0B0Afb20a5f12C2299",
+    "0x2429373793B51dB6da9C82E7aC9d2E2935c52BAa",
+    "0xB4cB1B887DCD1BdfeB7D96a90089e5dBbDd9E18c",
+    "0x9D54e532A072F84E405260c8A0BF6a8175B201C9",
+    "0x0B14C5044d593Fa8c4E80cb82de245298886e117",
+    "0xbc58151afFE5FEAa0Fae96da407AAc87E28c947a",
+    "0xb70E57Be50c8F79f5BcCd7DC94fE8D85E99F65F3",
+    "0x19712c1593ec6d3F85f5ca68c26EF0e07b19BD5e",
+    "0x21B0A08b7112b761cF0CE721b4b47993f363ddE3"
+];
+
+const ganachePasswords = [
+    "0xf1d1ccb988560dd2eeb0663061223debcf8ff667855bcd482d6399bf23d148e6",
+    "0x52e03a0c88077ea517cc34c4bfddeca5e80fc67109ec2e4c84ba1493507526ff",
+    "0xcaab7b051625ff27e87832e90494a001b1770af5bd8f2cf19c79cba9931cfef4",
+    "0x218000b228506845ee804450bd5c92ff741975f4f7fd15e1c4da01c5b33ea9f0",
+    "0x5e0b9b7f4a0528cbda347727fd7522660d83b20cc1385b1850fd4bdc80e6a9be",
+    "0xc6b581598157ecc24f37869c54ea363b32117bf9622fe9c881395701284cbbda",
+    "0x24b974a7940b54cb68b09623c25c8e83adacaaae96cfd79e392ab39295637251",
+    "0x0688f9ff4127e70a1ee4245a73ce58e257879afdc8ed0700874c7e1a3a88edc8",
+    "0xb5bf52145eb9b9e979f9d41d5d9dd14cdcf086cc5e5b3efa93414f0007626d0b",
+    "0xf4b2fc7432fd79c32df1bcff616160c24a76f47c7285b087fc3b68c70b3707e7"
+];
 
 const { BN } = require('@openzeppelin/test-helpers');
 const blockchain = new Blockchain(web3.currentProvider);
@@ -19,7 +68,8 @@ const GovernorAlpha: GovernanceContract = contract.fromArtifact("GovernorAlpha")
 const Timelock: TimelockContract = contract.fromArtifact("Timelock");
 const RewardPool: TestRewardPoolContract = contract.fromArtifact("TestRewardPool");
 
-const [admin, holder, user1, user2, user3] = accounts;
+const [admin, holder, user1, user2, user3] = ganacheAccounts;
+const [adminPw, holderPw, user1Pw, user2Pw, user3Pw] = ganachePasswords;
 const [FOUR, FIVE, SIX, SEVEN, EIGHT, NINE] = [new BN(4),new BN(5),new BN(6),new BN(7),new BN(8),new BN(9)];
 
 const MAX_UINT96:BN = (new BN(2)).pow(new BN(96)).sub(ONE);
@@ -94,6 +144,153 @@ describe('Bull', async function () {
             await blockchain.revertAsync();
         });
 
+        describe("delegateBySig", async function() {
+            before(async function() {
+                await blockchain.saveSnapshotAsync();
+            });
+
+            after(async function() {
+                await blockchain.revertAsync();
+            });
+
+
+            let bullAddress: string;
+            let bullName: string;
+            let delegator: string;
+            let delegatorPw: string;
+            let delegatee: string;
+            let nonce: string;
+            let expiry: string;
+
+            beforeEach(async function() {
+                await blockchain.saveSnapshotAsync();
+
+                bullAddress = bull.address;
+                bullName = name;
+                delegator = user1;
+                delegatorPw = user1Pw;
+                delegatee = user2;
+                nonce = "0";
+                expiry = nowInSeconds(10).toString();
+            });
+
+            afterEach(async function() {
+                await blockchain.revertAsync();
+            });
+
+            async function delegateBySig() {
+                const domainSeparator = getDomainSeparator(bullAddress, bullName);
+                const structHash = getStructHash(delegatee, nonce, expiry);
+
+                const digest = await getDigest(domainSeparator, structHash);
+
+                const {v, r, s} = ecsign(
+                    Buffer.from(digest.slice(2), 'hex'),
+                    Buffer.from(delegatorPw.slice(2), 'hex')
+                );
+
+                return await bull.delegateBySig(delegatee, nonce, expiry, v, hexlify(r), hexlify(s), {from: delegator});
+            }
+
+            it("working", async function() {
+                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                await delegateBySig();
+                expect(await bull.delegates(delegator)).to.be.eq(delegatee);
+            });
+
+            it("NOT working: wrong nonce", async function() {
+                nonce = "100";
+
+                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                expectRevert(delegateBySig(), "Bull::delegateBySig: invalid nonce");
+                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+            });
+
+            it("NOT working: wrong name", async function() {
+                bullName = "wrongName";
+
+                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                await delegateBySig();
+                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+            });
+
+            it("NOT working: wrong address", async function() {
+                bullAddress = admin;
+
+                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                await delegateBySig();
+                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+            });
+
+            it("NOT working: wrong expiry", async function() {
+                expiry = nowInSeconds(-10).toString();
+
+                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                expectRevert(delegateBySig(), "Bull::delegateBySig: signature expired");
+                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+            });
+
+            it("NOT working: wrong password", async function() {
+                delegatorPw = adminPw;
+
+                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                await delegateBySig();
+                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+            });
+
+            it("NOT working: worng domainSeparator", async function() {
+                const wrongAddress = admin;
+                const domainSeparator = getDomainSeparator(wrongAddress, bullName);
+                const structHash = getStructHash(delegatee, nonce, expiry);
+
+                const digest = await getDigest(domainSeparator, structHash);
+
+                const {v, r, s} = ecsign(
+                    Buffer.from(digest.slice(2), 'hex'),
+                    Buffer.from(delegatorPw.slice(2), 'hex')
+                );
+
+                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                await bull.delegateBySig(delegatee, nonce, expiry, v, hexlify(r), hexlify(s), {from: delegator});
+                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+            });
+
+            it("NOT working: worng structHash", async function() {
+                const wrongDelegatee = admin;
+                const domainSeparator = getDomainSeparator(bullAddress, bullName);
+                const structHash = getStructHash(wrongDelegatee, nonce, expiry);
+
+                const digest = await getDigest(domainSeparator, structHash);
+
+                const {v, r, s} = ecsign(
+                    Buffer.from(digest.slice(2), 'hex'),
+                    Buffer.from(delegatorPw.slice(2), 'hex')
+                );
+
+                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                await bull.delegateBySig(delegatee, nonce, expiry, v, hexlify(r), hexlify(s), {from: delegator});
+                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+            });
+
+            it("NOT working: wrong parameter", async function() {
+                const wrongDelegatee = admin;
+
+                const domainSeparator = getDomainSeparator(bullAddress, bullName);
+                const structHash = getStructHash(delegatee, nonce, expiry);
+
+                const digest = await getDigest(domainSeparator, structHash);
+
+                const {v, r, s} = ecsign(
+                    Buffer.from(digest.slice(2), 'hex'),
+                    Buffer.from(delegatorPw.slice(2), 'hex')
+                );
+
+                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                await bull.delegateBySig(wrongDelegatee, nonce, expiry, v, hexlify(r), hexlify(s), {from: delegator});
+                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+            });
+        });
+
         describe("delegate", async function() {
             before(async function() {
                 await blockchain.saveSnapshotAsync();
@@ -126,9 +323,9 @@ describe('Bull', async function () {
             describe("self delegate", async function() {
                 const amount = TEN;
                 it("after delegate", async function() {
-                    expect(await bull.delegates(holder)).to.be.bignumber.eq(ZERO_ADDRESS);
+                    expect(await bull.delegates(holder)).to.be.eq(ZERO_ADDRESS);
                     await bull.delegate(holder, {from: holder});
-                    expect(await bull.delegates(holder)).to.be.bignumber.eq(holder);
+                    expect(await bull.delegates(holder)).to.be.eq(holder);
     
                     let blockNum = await getLatestBlockNumber();
                     expect(await bull.getCurrentVotes(holder)).to.be.bignumber.eq(holderBalance);
