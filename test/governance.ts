@@ -77,25 +77,26 @@ describe('Governance', function () {
 
     before(async function() {
         lpToken = await TestToken.new("LP test token", "LPT", 18, {from: deployer});
-        // bull = await Bull.new(holder, {from: deployer});
+        bull = await Bull.new(holder, {from: deployer});
 
-        // timelock = await Timelock.new(admin, timelockDelay, {from: deployer});
-        // governorAlpha = await GovernorAlpha.new(timelock.address, bull.address, guardian, {from: deployer});
+        timelock = await Timelock.new(admin, timelockDelay, {from: deployer});
+        governorAlpha = await GovernorAlpha.new(timelock.address, bull.address, guardian, {from: deployer});
 
-        // rp = await RewardPool.new(
-        //     bull.address,
-        //     lpToken.address,
-        //     duration,
-        //     rewardDistribution,
-        //     { from: deployer }
-        // );
+        rp = await RewardPool.new(
+            bull.address,
+            lpToken.address,
+            duration,
+            rewardDistribution,
+            { from: deployer }
+        );
+
+        
         // await bull.approve(rp.address, constants.MAX_UINT256, {from: admin});
         // await bull.approve(rp.address, constants.MAX_UINT256, {from: rewardDistribution});
     });
 
     it("temp", async function() {
-        console.log(deployer);
-        console.log(lpToken.address);
+
         // console.log(rp.address);
     });
 });

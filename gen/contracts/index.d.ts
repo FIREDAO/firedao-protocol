@@ -31,6 +31,7 @@ import { IControllerContract } from "./IController";
 import { ICurveFiContract } from "./ICurveFi";
 import { Ierc20Contract } from "./Ierc20";
 import { IRewardDistributionRecipientContract } from "./IRewardDistributionRecipient";
+import { IRewardPoolContract } from "./IRewardPool";
 import { IStrategyContract } from "./IStrategy";
 import { IVaultContract } from "./IVault";
 import { IWrappedVaultContract } from "./IWrappedVault";
@@ -59,8 +60,11 @@ import { StrategyDForceUsdcContract } from "./StrategyDForceUsdc";
 import { StrategyDForceUsdtContract } from "./StrategyDForceUsdt";
 import { StrategyProxyContract } from "./StrategyProxy";
 import { StrategyTusdCurveContract } from "./StrategyTusdCurve";
+import { TestBullContract } from "./TestBull";
 import { TestRewardPoolContract } from "./TestRewardPool";
+import { TestStrategyContract } from "./TestStrategy";
 import { TestTokenContract } from "./TestToken";
+import { TestVaultContract } from "./TestVault";
 import { TimelockContract } from "./Timelock";
 import { TimelockInterfaceContract } from "./TimelockInterface";
 import { UniContract } from "./Uni";
@@ -107,6 +111,7 @@ declare global {
       require(
         name: "IRewardDistributionRecipient"
       ): IRewardDistributionRecipientContract;
+      require(name: "IRewardPool"): IRewardPoolContract;
       require(name: "IStrategy"): IStrategyContract;
       require(name: "IVault"): IVaultContract;
       require(name: "IWrappedVault"): IWrappedVaultContract;
@@ -141,8 +146,11 @@ declare global {
       require(name: "StrategyDForceUSDT"): StrategyDForceUsdtContract;
       require(name: "StrategyProxy"): StrategyProxyContract;
       require(name: "StrategyTUSDCurve"): StrategyTusdCurveContract;
+      require(name: "TestBull"): TestBullContract;
       require(name: "TestRewardPool"): TestRewardPoolContract;
+      require(name: "TestStrategy"): TestStrategyContract;
       require(name: "TestToken"): TestTokenContract;
+      require(name: "TestVault"): TestVaultContract;
       require(name: "Timelock"): TimelockContract;
       require(name: "TimelockInterface"): TimelockInterfaceContract;
       require(name: "Uni"): UniContract;
@@ -196,6 +204,7 @@ export {
   IRewardDistributionRecipientContract,
   IRewardDistributionRecipientInstance
 } from "./IRewardDistributionRecipient";
+export { IRewardPoolContract, IRewardPoolInstance } from "./IRewardPool";
 export { IStrategyContract, IStrategyInstance } from "./IStrategy";
 export { IVaultContract, IVaultInstance } from "./IVault";
 export { IWrappedVaultContract, IWrappedVaultInstance } from "./IWrappedVault";
@@ -254,11 +263,14 @@ export {
   StrategyTusdCurveContract,
   StrategyTusdCurveInstance
 } from "./StrategyTusdCurve";
+export { TestBullContract, TestBullInstance } from "./TestBull";
 export {
   TestRewardPoolContract,
   TestRewardPoolInstance
 } from "./TestRewardPool";
+export { TestStrategyContract, TestStrategyInstance } from "./TestStrategy";
 export { TestTokenContract, TestTokenInstance } from "./TestToken";
+export { TestVaultContract, TestVaultInstance } from "./TestVault";
 export { TimelockContract, TimelockInstance } from "./Timelock";
 export {
   TimelockInterfaceContract,

@@ -1,10 +1,5 @@
 {
-  "fileName": "Oracle.sol",
   "contractName": "Oracle",
-  "source": "pragma solidity ^0.5.17;\n\ninterface Oracle {\n    function getAssetPrice(address reserve) external view returns (uint256);\n\n    function latestAnswer() external view returns (uint256);\n}\n",
-  "sourcePath": "contracts/interfaces/aave/Oracle.sol",
-  "sourceMap": "",
-  "deployedSourceMap": "",
   "abi": [
     {
       "constant": true,
@@ -43,18 +38,25 @@
       "type": "function"
     }
   ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"reserve\",\"type\":\"address\"}],\"name\":\"getAssetPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"latestAnswer\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/aave/Oracle.sol\":\"Oracle\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/aave/Oracle.sol\":{\"keccak256\":\"0x713bf65bee9f1d05b478b7fafce0857f298c2b09d6ae8a0cbfa539e162ded413\",\"urls\":[\"bzz-raw://91b2bc0998399c7eb7dd29c4c52548c68e5420ff7aa3c2ffd6e085b6b28fbe8a\",\"dweb:/ipfs/QmYbSbx4WKcEksbxXaouuYPjLVbufADvRjkNRmfrwT4j7o\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.5.17;\n\ninterface Oracle {\n    function getAssetPrice(address reserve) external view returns (uint256);\n\n    function latestAnswer() external view returns (uint256);\n}\n",
+  "sourcePath": "/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/aave/Oracle.sol",
   "ast": {
-    "absolutePath": "contracts/interfaces/aave/Oracle.sol",
+    "absolutePath": "/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/aave/Oracle.sol",
     "exportedSymbols": {
       "Oracle": [
-        6226
+        4851
       ]
     },
-    "id": 6227,
+    "id": 4852,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6213,
+        "id": 4838,
         "literals": [
           "solidity",
           "^",
@@ -62,7 +64,7 @@
           ".17"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:20"
+        "src": "0:24:9"
       },
       {
         "baseContracts": [],
@@ -70,9 +72,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 6226,
+        "id": 4851,
         "linearizedBaseContracts": [
-          6226
+          4851
         ],
         "name": "Oracle",
         "nodeType": "ContractDefinition",
@@ -80,23 +82,23 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6220,
+            "id": 4845,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getAssetPrice",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6216,
+              "id": 4841,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6215,
+                  "id": 4840,
                   "name": "reserve",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6220,
-                  "src": "72:15:20",
+                  "scope": 4845,
+                  "src": "72:15:9",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -104,10 +106,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6214,
+                    "id": 4839,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "72:7:20",
+                    "src": "72:7:9",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -118,19 +120,19 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "71:17:20"
+              "src": "71:17:9"
             },
             "returnParameters": {
-              "id": 6219,
+              "id": 4844,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6218,
+                  "id": 4843,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6220,
-                  "src": "112:7:20",
+                  "scope": 4845,
+                  "src": "112:7:9",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -138,10 +140,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6217,
+                    "id": 4842,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "112:7:20",
+                    "src": "112:7:9",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -151,10 +153,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "111:9:20"
+              "src": "111:9:9"
             },
-            "scope": 6226,
-            "src": "49:72:20",
+            "scope": 4851,
+            "src": "49:72:9",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
@@ -162,29 +164,29 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6225,
+            "id": 4850,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "latestAnswer",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6221,
+              "id": 4846,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "148:2:20"
+              "src": "148:2:9"
             },
             "returnParameters": {
-              "id": 6224,
+              "id": 4849,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6223,
+                  "id": 4848,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6225,
-                  "src": "174:7:20",
+                  "scope": 4850,
+                  "src": "174:7:9",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -192,10 +194,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6222,
+                    "id": 4847,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "174:7:20",
+                    "src": "174:7:9",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -205,31 +207,209 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "173:9:20"
+              "src": "173:9:9"
             },
-            "scope": 6226,
-            "src": "127:56:20",
+            "scope": 4851,
+            "src": "127:56:9",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 6227,
-        "src": "26:159:20"
+        "scope": 4852,
+        "src": "26:159:9"
       }
     ],
-    "src": "0:186:20"
+    "src": "0:186:9"
   },
-  "bytecode": "0x",
-  "deployedBytecode": "0x",
+  "legacyAST": {
+    "absolutePath": "/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/aave/Oracle.sol",
+    "exportedSymbols": {
+      "Oracle": [
+        4851
+      ]
+    },
+    "id": 4852,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4838,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".17"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:9"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 4851,
+        "linearizedBaseContracts": [
+          4851
+        ],
+        "name": "Oracle",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4845,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getAssetPrice",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4841,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4840,
+                  "name": "reserve",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4845,
+                  "src": "72:15:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4839,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "72:7:9",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "71:17:9"
+            },
+            "returnParameters": {
+              "id": 4844,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4843,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4845,
+                  "src": "112:7:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4842,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "112:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "111:9:9"
+            },
+            "scope": 4851,
+            "src": "49:72:9",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4850,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "latestAnswer",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4846,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "148:2:9"
+            },
+            "returnParameters": {
+              "id": 4849,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4848,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4850,
+                  "src": "174:7:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4847,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "174:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "173:9:9"
+            },
+            "scope": 4851,
+            "src": "127:56:9",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 4852,
+        "src": "26:159:9"
+      }
+    ],
+    "src": "0:186:9"
+  },
   "compiler": {
     "name": "solc",
-    "version": "0.5.17+commit.d19bba13.Emscripten.clang",
-    "optimizer": {
-      "enabled": false,
-      "runs": 200
-    },
-    "evmVersion": "istanbul"
+    "version": "0.5.17+commit.d19bba13.Linux.g++"
   },
-  "networks": {}
+  "networks": {},
+  "schemaVersion": "3.3.0",
+  "updatedAt": "2020-11-17T04:24:08.670Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
 }

@@ -1,18 +1,19 @@
 {
-  "fileName": "DelegatedVault.sol",
   "contractName": "DelegatedVault",
-  "source": "pragma solidity ^0.5.17;\n\ninterface DelegatedVault {\n    function token() external view returns (address);\n\n    function deposit(uint256) external;\n\n    function depositAll() external;\n\n    function withdraw(uint256) external;\n\n    function withdrawAll() external;\n\n    function getPricePerFullShare() external view returns (uint256);\n\n    function claimInsurance() external;\n}\n",
-  "sourcePath": "contracts/interfaces/yearn/DelegatedVault.sol",
-  "sourceMap": "",
-  "deployedSourceMap": "",
   "abi": [
     {
-      "constant": false,
+      "constant": true,
       "inputs": [],
-      "name": "claimInsurance",
-      "outputs": [],
+      "name": "token",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
       "payable": false,
-      "stateMutability": "nonpayable",
+      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -40,36 +41,6 @@
       "type": "function"
     },
     {
-      "constant": true,
-      "inputs": [],
-      "name": "getPricePerFullShare",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "token",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
       "constant": false,
       "inputs": [
         {
@@ -92,20 +63,51 @@
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getPricePerFullShare",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "claimInsurance",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
     }
   ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[],\"name\":\"claimInsurance\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"deposit\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"depositAll\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getPricePerFullShare\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"token\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"withdraw\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"withdrawAll\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/yearn/DelegatedVault.sol\":\"DelegatedVault\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/yearn/DelegatedVault.sol\":{\"keccak256\":\"0xef04ee9dc103c1d194b33588b150a81e3b4015c22455882261862b002e67c970\",\"urls\":[\"bzz-raw://2a0ba9e4ed60b2d24a10edeaf76e398427df78b4d2f638b99237e396b596cbcd\",\"dweb:/ipfs/QmY6FT6w8LySCAv8K9ht294Z7o5Gp3Kxi7z7ncc2FPqRLY\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.5.17;\n\ninterface DelegatedVault {\n    function token() external view returns (address);\n\n    function deposit(uint256) external;\n\n    function depositAll() external;\n\n    function withdraw(uint256) external;\n\n    function withdrawAll() external;\n\n    function getPricePerFullShare() external view returns (uint256);\n\n    function claimInsurance() external;\n}\n",
+  "sourcePath": "/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/yearn/DelegatedVault.sol",
   "ast": {
-    "absolutePath": "contracts/interfaces/yearn/DelegatedVault.sol",
+    "absolutePath": "/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/yearn/DelegatedVault.sol",
     "exportedSymbols": {
       "DelegatedVault": [
-        6960
+        5585
       ]
     },
-    "id": 6961,
+    "id": 5586,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6930,
+        "id": 5555,
         "literals": [
           "solidity",
           "^",
@@ -113,7 +115,7 @@
           ".17"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:34"
+        "src": "0:24:23"
       },
       {
         "baseContracts": [],
@@ -121,9 +123,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 6960,
+        "id": 5585,
         "linearizedBaseContracts": [
-          6960
+          5585
         ],
         "name": "DelegatedVault",
         "nodeType": "ContractDefinition",
@@ -131,29 +133,29 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6935,
+            "id": 5560,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "token",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6931,
+              "id": 5556,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "71:2:34"
+              "src": "71:2:23"
             },
             "returnParameters": {
-              "id": 6934,
+              "id": 5559,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6933,
+                  "id": 5558,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6935,
-                  "src": "97:7:34",
+                  "scope": 5560,
+                  "src": "97:7:23",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -161,10 +163,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6932,
+                    "id": 5557,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "97:7:34",
+                    "src": "97:7:23",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -175,10 +177,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "96:9:34"
+              "src": "96:9:23"
             },
-            "scope": 6960,
-            "src": "57:49:34",
+            "scope": 5585,
+            "src": "57:49:23",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
@@ -186,23 +188,23 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6940,
+            "id": 5565,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "deposit",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6938,
+              "id": 5563,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6937,
+                  "id": 5562,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6940,
-                  "src": "129:7:34",
+                  "scope": 5565,
+                  "src": "129:7:23",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -210,10 +212,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6936,
+                    "id": 5561,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "129:7:34",
+                    "src": "129:7:23",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -223,16 +225,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "128:9:34"
+              "src": "128:9:23"
             },
             "returnParameters": {
-              "id": 6939,
+              "id": 5564,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "146:0:34"
+              "src": "146:0:23"
             },
-            "scope": 6960,
-            "src": "112:35:34",
+            "scope": 5585,
+            "src": "112:35:23",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -240,26 +242,26 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6943,
+            "id": 5568,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "depositAll",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6941,
+              "id": 5566,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "172:2:34"
+              "src": "172:2:23"
             },
             "returnParameters": {
-              "id": 6942,
+              "id": 5567,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "183:0:34"
+              "src": "183:0:23"
             },
-            "scope": 6960,
-            "src": "153:31:34",
+            "scope": 5585,
+            "src": "153:31:23",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -267,23 +269,23 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6948,
+            "id": 5573,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "withdraw",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6946,
+              "id": 5571,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6945,
+                  "id": 5570,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6948,
-                  "src": "208:7:34",
+                  "scope": 5573,
+                  "src": "208:7:23",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -291,10 +293,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6944,
+                    "id": 5569,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "208:7:34",
+                    "src": "208:7:23",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -304,16 +306,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "207:9:34"
+              "src": "207:9:23"
             },
             "returnParameters": {
-              "id": 6947,
+              "id": 5572,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "225:0:34"
+              "src": "225:0:23"
             },
-            "scope": 6960,
-            "src": "190:36:34",
+            "scope": 5585,
+            "src": "190:36:23",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -321,26 +323,26 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6951,
+            "id": 5576,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "withdrawAll",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6949,
+              "id": 5574,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "252:2:34"
+              "src": "252:2:23"
             },
             "returnParameters": {
-              "id": 6950,
+              "id": 5575,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "263:0:34"
+              "src": "263:0:23"
             },
-            "scope": 6960,
-            "src": "232:32:34",
+            "scope": 5585,
+            "src": "232:32:23",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -348,29 +350,29 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6956,
+            "id": 5581,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getPricePerFullShare",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6952,
+              "id": 5577,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "299:2:34"
+              "src": "299:2:23"
             },
             "returnParameters": {
-              "id": 6955,
+              "id": 5580,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6954,
+                  "id": 5579,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6956,
-                  "src": "325:7:34",
+                  "scope": 5581,
+                  "src": "325:7:23",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -378,10 +380,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6953,
+                    "id": 5578,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "325:7:34",
+                    "src": "325:7:23",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -391,10 +393,10 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "324:9:34"
+              "src": "324:9:23"
             },
-            "scope": 6960,
-            "src": "270:64:34",
+            "scope": 5585,
+            "src": "270:64:23",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
@@ -402,47 +404,387 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6959,
+            "id": 5584,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "claimInsurance",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6957,
+              "id": 5582,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "363:2:34"
+              "src": "363:2:23"
             },
             "returnParameters": {
-              "id": 6958,
+              "id": 5583,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "374:0:34"
+              "src": "374:0:23"
             },
-            "scope": 6960,
-            "src": "340:35:34",
+            "scope": 5585,
+            "src": "340:35:23",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 6961,
-        "src": "26:351:34"
+        "scope": 5586,
+        "src": "26:351:23"
       }
     ],
-    "src": "0:378:34"
+    "src": "0:378:23"
   },
-  "bytecode": "0x",
-  "deployedBytecode": "0x",
+  "legacyAST": {
+    "absolutePath": "/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/yearn/DelegatedVault.sol",
+    "exportedSymbols": {
+      "DelegatedVault": [
+        5585
+      ]
+    },
+    "id": 5586,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 5555,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".17"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:23"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 5585,
+        "linearizedBaseContracts": [
+          5585
+        ],
+        "name": "DelegatedVault",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 5560,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "token",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5556,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "71:2:23"
+            },
+            "returnParameters": {
+              "id": 5559,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5558,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5560,
+                  "src": "97:7:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5557,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "97:7:23",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "96:9:23"
+            },
+            "scope": 5585,
+            "src": "57:49:23",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 5565,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "deposit",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5563,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5562,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5565,
+                  "src": "129:7:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5561,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "129:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "128:9:23"
+            },
+            "returnParameters": {
+              "id": 5564,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "146:0:23"
+            },
+            "scope": 5585,
+            "src": "112:35:23",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 5568,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "depositAll",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5566,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "172:2:23"
+            },
+            "returnParameters": {
+              "id": 5567,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "183:0:23"
+            },
+            "scope": 5585,
+            "src": "153:31:23",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 5573,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdraw",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5571,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5570,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5573,
+                  "src": "208:7:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5569,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "208:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "207:9:23"
+            },
+            "returnParameters": {
+              "id": 5572,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "225:0:23"
+            },
+            "scope": 5585,
+            "src": "190:36:23",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 5576,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdrawAll",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5574,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "252:2:23"
+            },
+            "returnParameters": {
+              "id": 5575,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "263:0:23"
+            },
+            "scope": 5585,
+            "src": "232:32:23",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 5581,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getPricePerFullShare",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5577,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "299:2:23"
+            },
+            "returnParameters": {
+              "id": 5580,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5579,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5581,
+                  "src": "325:7:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5578,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "325:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "324:9:23"
+            },
+            "scope": 5585,
+            "src": "270:64:23",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 5584,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "claimInsurance",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5582,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "363:2:23"
+            },
+            "returnParameters": {
+              "id": 5583,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "374:0:23"
+            },
+            "scope": 5585,
+            "src": "340:35:23",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 5586,
+        "src": "26:351:23"
+      }
+    ],
+    "src": "0:378:23"
+  },
   "compiler": {
     "name": "solc",
-    "version": "0.5.17+commit.d19bba13.Emscripten.clang",
-    "optimizer": {
-      "enabled": false,
-      "runs": 200
-    },
-    "evmVersion": "istanbul"
+    "version": "0.5.17+commit.d19bba13.Linux.g++"
   },
-  "networks": {}
+  "networks": {},
+  "schemaVersion": "3.3.0",
+  "updatedAt": "2020-11-17T04:24:08.795Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
 }

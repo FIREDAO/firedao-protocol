@@ -42,7 +42,7 @@ module.exports = {
         `wss://mainnet.infura.io/ws/v3/${projectIdMainnet}`
       ),
       network_id: 1,
-      gasPrice: 80e9,
+      gasPrice: 50e9,
       gas: 6000000
     }
   }

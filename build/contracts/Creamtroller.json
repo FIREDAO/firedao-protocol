@@ -1,10 +1,5 @@
 {
-  "fileName": "Controller.sol",
   "contractName": "Creamtroller",
-  "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.5.17;\n\ninterface Creamtroller {\n    function claimComp(address holder) external;\n}\n",
-  "sourcePath": "contracts/interfaces/cream/Controller.sol",
-  "sourceMap": "",
-  "deployedSourceMap": "",
   "abi": [
     {
       "constant": false,
@@ -22,18 +17,25 @@
       "type": "function"
     }
   ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"holder\",\"type\":\"address\"}],\"name\":\"claimComp\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/cream/Controller.sol\":\"Creamtroller\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/cream/Controller.sol\":{\"keccak256\":\"0x0408ed81391137e68f55c66ccd286d3f441016ee215c0030090036d6ded5e2e4\",\"urls\":[\"bzz-raw://41c7a3510246352fee978675f41495c705f4a43c9407793dbefa267e2e182520\",\"dweb:/ipfs/QmTAdrnd4fRCdBijwTkaSXpJBdxu57A55Tto5UNzLqiMNu\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.5.17;\n\ninterface Creamtroller {\n    function claimComp(address holder) external;\n}\n",
+  "sourcePath": "/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/cream/Controller.sol",
   "ast": {
-    "absolutePath": "contracts/interfaces/cream/Controller.sol",
+    "absolutePath": "/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/cream/Controller.sol",
     "exportedSymbols": {
       "Creamtroller": [
-        6289
+        4914
       ]
     },
-    "id": 6290,
+    "id": 4915,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6283,
+        "id": 4908,
         "literals": [
           "solidity",
           "^",
@@ -41,7 +43,7 @@
           ".17"
         ],
         "nodeType": "PragmaDirective",
-        "src": "33:24:22"
+        "src": "33:24:11"
       },
       {
         "baseContracts": [],
@@ -49,9 +51,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 6289,
+        "id": 4914,
         "linearizedBaseContracts": [
-          6289
+          4914
         ],
         "name": "Creamtroller",
         "nodeType": "ContractDefinition",
@@ -59,23 +61,23 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6288,
+            "id": 4913,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "claimComp",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6286,
+              "id": 4911,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6285,
+                  "id": 4910,
                   "name": "holder",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6288,
-                  "src": "107:14:22",
+                  "scope": 4913,
+                  "src": "107:14:11",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -83,10 +85,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6284,
+                    "id": 4909,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "107:7:22",
+                    "src": "107:7:11",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -97,37 +99,134 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "106:16:22"
+              "src": "106:16:11"
             },
             "returnParameters": {
-              "id": 6287,
+              "id": 4912,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "131:0:22"
+              "src": "131:0:11"
             },
-            "scope": 6289,
-            "src": "88:44:22",
+            "scope": 4914,
+            "src": "88:44:11",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 6290,
-        "src": "59:75:22"
+        "scope": 4915,
+        "src": "59:75:11"
       }
     ],
-    "src": "33:102:22"
+    "src": "33:102:11"
   },
-  "bytecode": "0x",
-  "deployedBytecode": "0x",
+  "legacyAST": {
+    "absolutePath": "/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/cream/Controller.sol",
+    "exportedSymbols": {
+      "Creamtroller": [
+        4914
+      ]
+    },
+    "id": 4915,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4908,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".17"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:24:11"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 4914,
+        "linearizedBaseContracts": [
+          4914
+        ],
+        "name": "Creamtroller",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4913,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "claimComp",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4911,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4910,
+                  "name": "holder",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4913,
+                  "src": "107:14:11",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4909,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "107:7:11",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "106:16:11"
+            },
+            "returnParameters": {
+              "id": 4912,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "131:0:11"
+            },
+            "scope": 4914,
+            "src": "88:44:11",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 4915,
+        "src": "59:75:11"
+      }
+    ],
+    "src": "33:102:11"
+  },
   "compiler": {
     "name": "solc",
-    "version": "0.5.17+commit.d19bba13.Emscripten.clang",
-    "optimizer": {
-      "enabled": false,
-      "runs": 200
-    },
-    "evmVersion": "istanbul"
+    "version": "0.5.17+commit.d19bba13.Linux.g++"
   },
-  "networks": {}
+  "networks": {},
+  "schemaVersion": "3.3.0",
+  "updatedAt": "2020-11-17T04:24:08.672Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
 }

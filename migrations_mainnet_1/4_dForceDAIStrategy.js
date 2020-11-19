@@ -53,7 +53,6 @@ module.exports = async function (deployer, networks, accounts) {
 
     // await controller.approveStrategy(addresses.dai, daiStrategy.address, {from: admin});
     await controller.setStrategy(addresses.dai, daiStrategy.address, {from: admin});
-
 };
 
 

@@ -1,10 +1,5 @@
 {
-  "fileName": "VoteEscrow.sol",
   "contractName": "VoteEscrow",
-  "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.5.17;\n\ninterface VoteEscrow {\n    function create_lock(uint256, uint256) external;\n\n    function increase_amount(uint256) external;\n\n    function withdraw() external;\n}\n",
-  "sourcePath": "contracts/interfaces/curve/VoteEscrow.sol",
-  "sourceMap": "",
-  "deployedSourceMap": "",
   "abi": [
     {
       "constant": false,
@@ -51,18 +46,25 @@
       "type": "function"
     }
   ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"create_lock\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"increase_amount\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/curve/VoteEscrow.sol\":\"VoteEscrow\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/curve/VoteEscrow.sol\":{\"keccak256\":\"0x1215e05eead79845b413cdcb1fdd726315bac8575626015d5c8948aeeebc5067\",\"urls\":[\"bzz-raw://50ff9dbfdf9f66e4cf981e34aaac70e41fd61315a8ff65acca8f07fe4f5fbeb8\",\"dweb:/ipfs/QmWEMKbYeEJLbHKHiqjgRb5CDetTAFYjvnjXhZy1DUandJ\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.5.17;\n\ninterface VoteEscrow {\n    function create_lock(uint256, uint256) external;\n\n    function increase_amount(uint256) external;\n\n    function withdraw() external;\n}\n",
+  "sourcePath": "/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/curve/VoteEscrow.sol",
   "ast": {
-    "absolutePath": "contracts/interfaces/curve/VoteEscrow.sol",
+    "absolutePath": "/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/curve/VoteEscrow.sol",
     "exportedSymbols": {
       "VoteEscrow": [
-        6400
+        5025
       ]
     },
-    "id": 6401,
+    "id": 5026,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6384,
+        "id": 5009,
         "literals": [
           "solidity",
           "^",
@@ -70,7 +72,7 @@
           ".17"
         ],
         "nodeType": "PragmaDirective",
-        "src": "33:24:26"
+        "src": "33:24:15"
       },
       {
         "baseContracts": [],
@@ -78,9 +80,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 6400,
+        "id": 5025,
         "linearizedBaseContracts": [
-          6400
+          5025
         ],
         "name": "VoteEscrow",
         "nodeType": "ContractDefinition",
@@ -88,23 +90,23 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6391,
+            "id": 5016,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "create_lock",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6389,
+              "id": 5014,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6386,
+                  "id": 5011,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6391,
-                  "src": "107:7:26",
+                  "scope": 5016,
+                  "src": "107:7:15",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -112,10 +114,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6385,
+                    "id": 5010,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "107:7:26",
+                    "src": "107:7:15",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -126,11 +128,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 6388,
+                  "id": 5013,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6391,
-                  "src": "116:7:26",
+                  "scope": 5016,
+                  "src": "116:7:15",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -138,10 +140,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6387,
+                    "id": 5012,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "116:7:26",
+                    "src": "116:7:15",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -151,16 +153,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "106:18:26"
+              "src": "106:18:15"
             },
             "returnParameters": {
-              "id": 6390,
+              "id": 5015,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "133:0:26"
+              "src": "133:0:15"
             },
-            "scope": 6400,
-            "src": "86:48:26",
+            "scope": 5025,
+            "src": "86:48:15",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -168,23 +170,23 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6396,
+            "id": 5021,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "increase_amount",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6394,
+              "id": 5019,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6393,
+                  "id": 5018,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6396,
-                  "src": "165:7:26",
+                  "scope": 5021,
+                  "src": "165:7:15",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -192,10 +194,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6392,
+                    "id": 5017,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "165:7:26",
+                    "src": "165:7:15",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -205,16 +207,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "164:9:26"
+              "src": "164:9:15"
             },
             "returnParameters": {
-              "id": 6395,
+              "id": 5020,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "182:0:26"
+              "src": "182:0:15"
             },
-            "scope": 6400,
-            "src": "140:43:26",
+            "scope": 5025,
+            "src": "140:43:15",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
@@ -222,47 +224,250 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6399,
+            "id": 5024,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "withdraw",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6397,
+              "id": 5022,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "206:2:26"
+              "src": "206:2:15"
             },
             "returnParameters": {
-              "id": 6398,
+              "id": 5023,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "217:0:26"
+              "src": "217:0:15"
             },
-            "scope": 6400,
-            "src": "189:29:26",
+            "scope": 5025,
+            "src": "189:29:15",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 6401,
-        "src": "59:161:26"
+        "scope": 5026,
+        "src": "59:161:15"
       }
     ],
-    "src": "33:188:26"
+    "src": "33:188:15"
   },
-  "bytecode": "0x",
-  "deployedBytecode": "0x",
+  "legacyAST": {
+    "absolutePath": "/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/curve/VoteEscrow.sol",
+    "exportedSymbols": {
+      "VoteEscrow": [
+        5025
+      ]
+    },
+    "id": 5026,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 5009,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".17"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:24:15"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 5025,
+        "linearizedBaseContracts": [
+          5025
+        ],
+        "name": "VoteEscrow",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 5016,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "create_lock",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5014,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5011,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5016,
+                  "src": "107:7:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5010,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "107:7:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5013,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5016,
+                  "src": "116:7:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5012,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "116:7:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "106:18:15"
+            },
+            "returnParameters": {
+              "id": 5015,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "133:0:15"
+            },
+            "scope": 5025,
+            "src": "86:48:15",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 5021,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "increase_amount",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5019,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5018,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5021,
+                  "src": "165:7:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5017,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "165:7:15",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "164:9:15"
+            },
+            "returnParameters": {
+              "id": 5020,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "182:0:15"
+            },
+            "scope": 5025,
+            "src": "140:43:15",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 5024,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdraw",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5022,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "206:2:15"
+            },
+            "returnParameters": {
+              "id": 5023,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "217:0:15"
+            },
+            "scope": 5025,
+            "src": "189:29:15",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 5026,
+        "src": "59:161:15"
+      }
+    ],
+    "src": "33:188:15"
+  },
   "compiler": {
     "name": "solc",
-    "version": "0.5.17+commit.d19bba13.Emscripten.clang",
-    "optimizer": {
-      "enabled": false,
-      "runs": 200
-    },
-    "evmVersion": "istanbul"
+    "version": "0.5.17+commit.d19bba13.Linux.g++"
   },
-  "networks": {}
+  "networks": {},
+  "schemaVersion": "3.3.0",
+  "updatedAt": "2020-11-17T04:24:08.679Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
 }
