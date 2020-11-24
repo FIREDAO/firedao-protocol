@@ -15,6 +15,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 pragma solidity ^0.5.16;
 pragma experimental ABIEncoderV2;
 
+import "@openzeppelin/contracts/math/SafeMath.sol";
+
 contract Bull {
     /// @notice EIP-20 token name for this token
     string public constant name = "Bull";
@@ -26,7 +28,14 @@ contract Bull {
     uint8 public constant decimals = 18;
 
     /// @notice Total number of tokens in circulation
-    uint public constant totalSupply = 1_000_000e18;
+    uint256 public totalSupply = 20_000e18;
+
+    /// @notice Maxium mintable number of tokens
+    uint256 public cap = 1_000_000e18;
+
+    /// @notice Address which may mint new tokens
+    address public minter;
+
     /// @notice Allowance amounts on behalf of others
     mapping (address => mapping (address => uint96)) internal allowances;
 
@@ -57,6 +66,9 @@ contract Bull {
     /// @notice A record of states for signing / validating signatures
     mapping (address => uint) public nonces;
 
+    /// @notice An event thats emitted when the minter address is changed
+    event MinterChanged(address minter, address newMinter);
+
     /// @notice An event thats emitted when an account changes its delegate
     event DelegateChanged(address indexed delegator, address indexed fromDelegate, address indexed toDelegate);
 
@@ -72,10 +84,47 @@ contract Bull {
     /**
      * @notice Construct a new Bull token
      * @param account The initial account to grant all the tokens
+     * @param _minter The account with minting ability
      */
-    constructor(address account) public {
+    constructor(address account, address _minter) public {
         balances[account] = uint96(totalSupply);
         emit Transfer(address(0), account, totalSupply);
+        minter = _minter;
+        emit MinterChanged(address(0), _minter);
+    }
+
+    /**
+     * @notice Change the minter address
+     * @param _minter The address of the new minter
+     */
+    function setMinter(address _minter) external {
+        require(msg.sender == minter, "Bull::setMinter: only the minter can change the minter address");
+        emit MinterChanged(minter, _minter);
+        minter = _minter;
+    }
+
+    /**
+     * @notice Mint new tokens
+     * @param dst The address of the destination account
+     * @param rawAmount The number of tokens to be minted
+     */
+    function mint(address dst, uint rawAmount) external {
+        require(msg.sender == minter, "Bull::mint: only the minter can mint");
+        require(dst != address(0), "Bull::mint: cannot transfer to the zero address");
+
+        // mint the amount
+        uint96 amount = safe96(rawAmount, "Bull::mint: amount exceeds 96 bits");
+        
+        require(SafeMath.add(totalSupply, amount) <= cap, "Bull: cap exceeded");
+
+        totalSupply = safe96(SafeMath.add(totalSupply, amount), "Bull::mint: totalSupply exceeds 96 bits");
+
+        // transfer the amount to the recipient
+        balances[dst] = add96(balances[dst], amount, "Bull::mint: transfer amount overflows");
+        emit Transfer(address(0), dst, amount);
+
+        // move delegates
+        _moveDelegates(address(0), delegates[dst], amount);
     }
 
     /**
@@ -245,6 +294,7 @@ contract Bull {
 
     function _transferTokens(address src, address dst, uint96 amount) internal {
         require(src != address(0), "Bull::_transferTokens: cannot transfer from the zero address");
+        require(dst != address(0), "Bull::_transferTokens: cannot transfer to the zero address");
 
         balances[src] = sub96(balances[src], amount, "Bull::_transferTokens: transfer amount exceeds balance");
         balances[dst] = add96(balances[dst], amount, "Bull::_transferTokens: transfer amount overflows");

@@ -1,5 +1,10 @@
 {
+  "fileName": "VoteEscrow.sol",
   "contractName": "VoteEscrow",
+  "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.5.17;\n\ninterface VoteEscrow {\n    function create_lock(uint256, uint256) external;\n\n    function increase_amount(uint256) external;\n\n    function withdraw() external;\n}\n",
+  "sourcePath": "contracts/interfaces/curve/VoteEscrow.sol",
+  "sourceMap": "",
+  "deployedSourceMap": "",
   "abi": [
     {
       "constant": false,
@@ -46,428 +51,218 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"create_lock\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"increase_amount\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/curve/VoteEscrow.sol\":\"VoteEscrow\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/curve/VoteEscrow.sol\":{\"keccak256\":\"0x1215e05eead79845b413cdcb1fdd726315bac8575626015d5c8948aeeebc5067\",\"urls\":[\"bzz-raw://50ff9dbfdf9f66e4cf981e34aaac70e41fd61315a8ff65acca8f07fe4f5fbeb8\",\"dweb:/ipfs/QmWEMKbYeEJLbHKHiqjgRb5CDetTAFYjvnjXhZy1DUandJ\"]}},\"version\":1}",
+  "ast": {
+    "absolutePath": "contracts/interfaces/curve/VoteEscrow.sol",
+    "exportedSymbols": {
+      "VoteEscrow": [
+        6541
+      ]
+    },
+    "id": 6542,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6525,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".17"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:24:26"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 6541,
+        "linearizedBaseContracts": [
+          6541
+        ],
+        "name": "VoteEscrow",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 6532,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "create_lock",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6530,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6527,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6532,
+                  "src": "107:7:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6526,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "107:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6529,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6532,
+                  "src": "116:7:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6528,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "116:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "106:18:26"
+            },
+            "returnParameters": {
+              "id": 6531,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "133:0:26"
+            },
+            "scope": 6541,
+            "src": "86:48:26",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 6537,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "increase_amount",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6535,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6534,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6537,
+                  "src": "165:7:26",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6533,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "165:7:26",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "164:9:26"
+            },
+            "returnParameters": {
+              "id": 6536,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "182:0:26"
+            },
+            "scope": 6541,
+            "src": "140:43:26",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 6540,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdraw",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6538,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "206:2:26"
+            },
+            "returnParameters": {
+              "id": 6539,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "217:0:26"
+            },
+            "scope": 6541,
+            "src": "189:29:26",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 6542,
+        "src": "59:161:26"
+      }
+    ],
+    "src": "33:188:26"
+  },
   "bytecode": "0x",
   "deployedBytecode": "0x",
-  "sourceMap": "",
-  "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.5.17;\n\ninterface VoteEscrow {\n    function create_lock(uint256, uint256) external;\n\n    function increase_amount(uint256) external;\n\n    function withdraw() external;\n}\n",
-  "sourcePath": "/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/curve/VoteEscrow.sol",
-  "ast": {
-    "absolutePath": "/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/curve/VoteEscrow.sol",
-    "exportedSymbols": {
-      "VoteEscrow": [
-        5025
-      ]
-    },
-    "id": 5026,
-    "nodeType": "SourceUnit",
-    "nodes": [
-      {
-        "id": 5009,
-        "literals": [
-          "solidity",
-          "^",
-          "0.5",
-          ".17"
-        ],
-        "nodeType": "PragmaDirective",
-        "src": "33:24:15"
-      },
-      {
-        "baseContracts": [],
-        "contractDependencies": [],
-        "contractKind": "interface",
-        "documentation": null,
-        "fullyImplemented": false,
-        "id": 5025,
-        "linearizedBaseContracts": [
-          5025
-        ],
-        "name": "VoteEscrow",
-        "nodeType": "ContractDefinition",
-        "nodes": [
-          {
-            "body": null,
-            "documentation": null,
-            "id": 5016,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "create_lock",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 5014,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 5011,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 5016,
-                  "src": "107:7:15",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 5010,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "107:7:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 5013,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 5016,
-                  "src": "116:7:15",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 5012,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "116:7:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "106:18:15"
-            },
-            "returnParameters": {
-              "id": 5015,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "133:0:15"
-            },
-            "scope": 5025,
-            "src": "86:48:15",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "external"
-          },
-          {
-            "body": null,
-            "documentation": null,
-            "id": 5021,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "increase_amount",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 5019,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 5018,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 5021,
-                  "src": "165:7:15",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 5017,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "165:7:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "164:9:15"
-            },
-            "returnParameters": {
-              "id": 5020,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "182:0:15"
-            },
-            "scope": 5025,
-            "src": "140:43:15",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "external"
-          },
-          {
-            "body": null,
-            "documentation": null,
-            "id": 5024,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "withdraw",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 5022,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "206:2:15"
-            },
-            "returnParameters": {
-              "id": 5023,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "217:0:15"
-            },
-            "scope": 5025,
-            "src": "189:29:15",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "external"
-          }
-        ],
-        "scope": 5026,
-        "src": "59:161:15"
-      }
-    ],
-    "src": "33:188:15"
-  },
-  "legacyAST": {
-    "absolutePath": "/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/curve/VoteEscrow.sol",
-    "exportedSymbols": {
-      "VoteEscrow": [
-        5025
-      ]
-    },
-    "id": 5026,
-    "nodeType": "SourceUnit",
-    "nodes": [
-      {
-        "id": 5009,
-        "literals": [
-          "solidity",
-          "^",
-          "0.5",
-          ".17"
-        ],
-        "nodeType": "PragmaDirective",
-        "src": "33:24:15"
-      },
-      {
-        "baseContracts": [],
-        "contractDependencies": [],
-        "contractKind": "interface",
-        "documentation": null,
-        "fullyImplemented": false,
-        "id": 5025,
-        "linearizedBaseContracts": [
-          5025
-        ],
-        "name": "VoteEscrow",
-        "nodeType": "ContractDefinition",
-        "nodes": [
-          {
-            "body": null,
-            "documentation": null,
-            "id": 5016,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "create_lock",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 5014,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 5011,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 5016,
-                  "src": "107:7:15",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 5010,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "107:7:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 5013,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 5016,
-                  "src": "116:7:15",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 5012,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "116:7:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "106:18:15"
-            },
-            "returnParameters": {
-              "id": 5015,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "133:0:15"
-            },
-            "scope": 5025,
-            "src": "86:48:15",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "external"
-          },
-          {
-            "body": null,
-            "documentation": null,
-            "id": 5021,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "increase_amount",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 5019,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 5018,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 5021,
-                  "src": "165:7:15",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 5017,
-                    "name": "uint256",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "165:7:15",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "164:9:15"
-            },
-            "returnParameters": {
-              "id": 5020,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "182:0:15"
-            },
-            "scope": 5025,
-            "src": "140:43:15",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "external"
-          },
-          {
-            "body": null,
-            "documentation": null,
-            "id": 5024,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "withdraw",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 5022,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "206:2:15"
-            },
-            "returnParameters": {
-              "id": 5023,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "217:0:15"
-            },
-            "scope": 5025,
-            "src": "189:29:15",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "external"
-          }
-        ],
-        "scope": 5026,
-        "src": "59:161:15"
-      }
-    ],
-    "src": "33:188:15"
-  },
   "compiler": {
     "name": "solc",
-    "version": "0.5.17+commit.d19bba13.Linux.g++"
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang",
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "evmVersion": "istanbul"
   },
-  "networks": {},
-  "schemaVersion": "3.3.0",
-  "updatedAt": "2020-11-17T04:24:08.679Z",
-  "devdoc": {
-    "methods": {}
-  },
-  "userdoc": {
-    "methods": {}
-  }
+  "networks": {}
 }

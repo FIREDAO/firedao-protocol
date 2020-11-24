@@ -2,7 +2,7 @@ require('module-alias/register');
 require('openzeppelin-test-helpers/configure')({ environment: 'web3', provider: 'http://localhost:8545' });
 
 import { contract, web3 } from '@openzeppelin/test-environment'; 
-import { expectRevert, constants } from '@openzeppelin/test-helpers';
+import { constants } from '@openzeppelin/test-helpers';
 
 import { expect } from 'chai';
 
@@ -77,7 +77,7 @@ describe('Governance', function () {
 
     before(async function() {
         lpToken = await TestToken.new("LP test token", "LPT", 18, {from: deployer});
-        bull = await Bull.new(holder, {from: deployer});
+        bull = await Bull.new(holder, deployer, {from: deployer});
 
         timelock = await Timelock.new(admin, timelockDelay, {from: deployer});
         governorAlpha = await GovernorAlpha.new(timelock.address, bull.address, guardian, {from: deployer});

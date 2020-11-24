@@ -7,6 +7,7 @@ import { EventData, PastEventOptions } from "web3-eth-contract";
 export interface BullContract extends Truffle.Contract<BullInstance> {
   "new"(
     account: string,
+    _minter: string,
     meta?: Truffle.TransactionDetails
   ): Promise<BullInstance>;
 }
@@ -47,6 +48,16 @@ export interface DelegateVotesChanged {
   };
 }
 
+export interface MinterChanged {
+  name: "MinterChanged";
+  args: {
+    minter: string;
+    newMinter: string;
+    0: string;
+    1: string;
+  };
+}
+
 export interface Transfer {
   name: "Transfer";
   args: {
@@ -59,7 +70,12 @@ export interface Transfer {
   };
 }
 
-type AllEvents = Approval | DelegateChanged | DelegateVotesChanged | Transfer;
+type AllEvents =
+  | Approval
+  | DelegateChanged
+  | DelegateVotesChanged
+  | MinterChanged
+  | Transfer;
 
 export interface BullInstance extends Truffle.ContractInstance {
   DELEGATION_TYPEHASH(txDetails?: Truffle.TransactionDetails): Promise<string>;
@@ -99,6 +115,8 @@ export interface BullInstance extends Truffle.ContractInstance {
     account: string,
     txDetails?: Truffle.TransactionDetails
   ): Promise<BN>;
+
+  cap(txDetails?: Truffle.TransactionDetails): Promise<BN>;
 
   checkpoints(
     arg0: string,
@@ -181,6 +199,31 @@ export interface BullInstance extends Truffle.ContractInstance {
     txDetails?: Truffle.TransactionDetails
   ): Promise<BN>;
 
+  mint: {
+    (
+      dst: string,
+      rawAmount: number | BN | string,
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<Truffle.TransactionResponse<AllEvents>>;
+    call(
+      dst: string,
+      rawAmount: number | BN | string,
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<void>;
+    sendTransaction(
+      dst: string,
+      rawAmount: number | BN | string,
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<string>;
+    estimateGas(
+      dst: string,
+      rawAmount: number | BN | string,
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<number>;
+  };
+
+  minter(txDetails?: Truffle.TransactionDetails): Promise<string>;
+
   name(txDetails?: Truffle.TransactionDetails): Promise<string>;
 
   nonces(arg0: string, txDetails?: Truffle.TransactionDetails): Promise<BN>;
@@ -189,6 +232,24 @@ export interface BullInstance extends Truffle.ContractInstance {
     arg0: string,
     txDetails?: Truffle.TransactionDetails
   ): Promise<BN>;
+
+  setMinter: {
+    (_minter: string, txDetails?: Truffle.TransactionDetails): Promise<
+      Truffle.TransactionResponse<AllEvents>
+    >;
+    call(
+      _minter: string,
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<void>;
+    sendTransaction(
+      _minter: string,
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<string>;
+    estimateGas(
+      _minter: string,
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<number>;
+  };
 
   symbol(txDetails?: Truffle.TransactionDetails): Promise<string>;
 
@@ -285,6 +346,8 @@ export interface BullInstance extends Truffle.ContractInstance {
       txDetails?: Truffle.TransactionDetails
     ): Promise<BN>;
 
+    cap(txDetails?: Truffle.TransactionDetails): Promise<BN>;
+
     checkpoints(
       arg0: string,
       arg1: number | BN | string,
@@ -366,6 +429,31 @@ export interface BullInstance extends Truffle.ContractInstance {
       txDetails?: Truffle.TransactionDetails
     ): Promise<BN>;
 
+    mint: {
+      (
+        dst: string,
+        rawAmount: number | BN | string,
+        txDetails?: Truffle.TransactionDetails
+      ): Promise<Truffle.TransactionResponse<AllEvents>>;
+      call(
+        dst: string,
+        rawAmount: number | BN | string,
+        txDetails?: Truffle.TransactionDetails
+      ): Promise<void>;
+      sendTransaction(
+        dst: string,
+        rawAmount: number | BN | string,
+        txDetails?: Truffle.TransactionDetails
+      ): Promise<string>;
+      estimateGas(
+        dst: string,
+        rawAmount: number | BN | string,
+        txDetails?: Truffle.TransactionDetails
+      ): Promise<number>;
+    };
+
+    minter(txDetails?: Truffle.TransactionDetails): Promise<string>;
+
     name(txDetails?: Truffle.TransactionDetails): Promise<string>;
 
     nonces(arg0: string, txDetails?: Truffle.TransactionDetails): Promise<BN>;
@@ -374,6 +462,24 @@ export interface BullInstance extends Truffle.ContractInstance {
       arg0: string,
       txDetails?: Truffle.TransactionDetails
     ): Promise<BN>;
+
+    setMinter: {
+      (_minter: string, txDetails?: Truffle.TransactionDetails): Promise<
+        Truffle.TransactionResponse<AllEvents>
+      >;
+      call(
+        _minter: string,
+        txDetails?: Truffle.TransactionDetails
+      ): Promise<void>;
+      sendTransaction(
+        _minter: string,
+        txDetails?: Truffle.TransactionDetails
+      ): Promise<string>;
+      estimateGas(
+        _minter: string,
+        txDetails?: Truffle.TransactionDetails
+      ): Promise<number>;
+    };
 
     symbol(txDetails?: Truffle.TransactionDetails): Promise<string>;
 

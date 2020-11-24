@@ -26,7 +26,7 @@ import { e9, e18, e27 } from '@testUtils/units';
 import { ZERO, ONE, TWO, THREE, TEN, ONE_HUNDRED, ZERO_ADDRESS } from '@testUtils/constants';
 import { Blockchain } from '@testUtils/blockchain';
 
-import { expectRevert, constants } from '@openzeppelin/test-helpers';
+import { constants } from '@openzeppelin/test-helpers';
 
 const { BN } = require('@openzeppelin/test-helpers');
 const blockchain = new Blockchain(web3.currentProvider);
@@ -81,7 +81,7 @@ describe('Test', function () {
     });
 
     it("testBull", async function() {
-        let tb = await TestBull.new(admin, {from: admin});
+        let tb = await TestBull.new(admin, admin, {from: admin});
 
         console.log(await tb.name());
         console.log(await tb.symbol());
@@ -130,7 +130,6 @@ describe('Test', function () {
             const increased = new BN(500);
             expect(await vault.balance()).to.be.bignumber.gte(amount.mul(increased));
             expect(await vault.getPricePerFullShare()).to.be.bignumber.gte(amount.mul(increased));
-    
     
             await vault.withdraw(e18(1).sub(ONE), {from: user1});
             expect(await vault.totalSupply()).to.be.bignumber.eq(ONE);

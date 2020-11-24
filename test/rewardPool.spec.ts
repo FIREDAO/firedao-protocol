@@ -9,7 +9,8 @@ import { e9, e18, e27 } from '@testUtils/units';
 import { ZERO, ONE, TWO, THREE, TEN, ONE_HUNDRED, ZERO_ADDRESS } from '@testUtils/constants';
 import { Blockchain } from '@testUtils/blockchain';
 
-import { expectRevert, constants } from '@openzeppelin/test-helpers';
+import { constants } from '@openzeppelin/test-helpers';
+import { expectException } from '@testUtils/expectException';
 
 const { BN } = require('@openzeppelin/test-helpers');
 const blockchain = new Blockchain(web3.currentProvider);
@@ -25,13 +26,12 @@ const [admin, rewardDistribution, user1, user2] = accounts;
 const [FOUR, FIVE, SIX, SEVEN, EIGHT, NINE] = [new BN(4),new BN(5),new BN(6),new BN(7),new BN(8),new BN(9)];
 
 
-
 describe('RewardPool', function () {
     let rp: TestRewardPoolInstance;
 
     let lpToken: TestTokenInstance;
     let bull: BullInstance;
-    const bullTotalSupply = e18(1000000);
+    const bullTotalSupply = e18(20000);
 
     let lpBalance = e18(1000);
 
@@ -39,7 +39,7 @@ describe('RewardPool', function () {
 
     before(async function() {
         lpToken = await TestToken.new("LP test token", "LPT", 18, {from: admin});
-        bull = await Bull.new(rewardDistribution, {from: admin});
+        bull = await Bull.new(rewardDistribution, admin, {from: admin});
 
         rp = await RewardPool.new(
             bull.address,
@@ -175,7 +175,7 @@ describe('RewardPool', function () {
         it("withdraw when no staking", async function() {
             await rp.stake(stakeAmount, {from: user2});
 
-            await expectRevert(
+            await expectException(
                 rp.withdraw(ONE, {from: user1}),
                 "SafeMath: subtraction overflow."
             );
@@ -193,27 +193,27 @@ describe('RewardPool', function () {
 
         it("rewardDistribution only function", async function() {
             await rp.notifyRewardAmount(ONE, {from: rewardDistribution});
-            await expectRevert(
+            await expectException(
                 rp.notifyRewardAmount(ONE, {from: admin}),
                 "Caller is not reward distribution"
             );
 
             await rp.update({from: rewardDistribution});
-            await expectRevert(
+            await expectException(
                 rp.update({from: admin}),
                 "Caller is not reward distribution"
             );
         });
 
         it("change rewardDistribution", async function() {
-            await expectRevert(
+            await expectException(
                 rp.setRewardDistribution(user1, {from: rewardDistribution}),
                 "Ownable: caller is not the owner"
             );
 
             await rp.setRewardDistribution(user1, {from: admin});
             
-            await expectRevert(
+            await expectException(
                 rp.notifyRewardAmount(ONE, {from: rewardDistribution}),
                 "Caller is not reward distribution"
             );

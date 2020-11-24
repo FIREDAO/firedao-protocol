@@ -10,6 +10,6 @@ contract TestBull is Bull {
     /// @notice EIP-20 token symbol for this token
     string public constant symbol = "TestBULL";
 
-    constructor(address account) public Bull(account) {
+    constructor(address account, address _minter) public Bull(account, _minter) {
     }
 }

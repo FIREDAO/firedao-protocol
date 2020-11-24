@@ -1,5 +1,10 @@
 {
+  "fileName": "Mintr.sol",
   "contractName": "Mintr",
+  "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.5.17;\n\ninterface Mintr {\n    function mint(address) external;\n}\n",
+  "sourcePath": "contracts/interfaces/curve/Mintr.sol",
+  "sourceMap": "",
+  "deployedSourceMap": "",
   "abi": [
     {
       "constant": false,
@@ -17,216 +22,112 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"mint\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/curve/Mintr.sol\":\"Mintr\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/curve/Mintr.sol\":{\"keccak256\":\"0xc804f5f6d22d2bbf77faad0d3e84b342dbeb99b7fc16a74e518a40a33c3c498c\",\"urls\":[\"bzz-raw://461d00e08864ec5c02e251c27286a0ac7eb5d201c64aaf460161306461e8dd6a\",\"dweb:/ipfs/QmeXe1AYBGEU1mYPjkxoXriCCBb9yUCBM5d8Ffz3CsnaDc\"]}},\"version\":1}",
+  "ast": {
+    "absolutePath": "contracts/interfaces/curve/Mintr.sol",
+    "exportedSymbols": {
+      "Mintr": [
+        6523
+      ]
+    },
+    "id": 6524,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6517,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".17"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:24:25"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 6523,
+        "linearizedBaseContracts": [
+          6523
+        ],
+        "name": "Mintr",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 6522,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "mint",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6520,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6519,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6522,
+                  "src": "95:7:25",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6518,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "95:7:25",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "94:9:25"
+            },
+            "returnParameters": {
+              "id": 6521,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "112:0:25"
+            },
+            "scope": 6523,
+            "src": "81:32:25",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 6524,
+        "src": "59:56:25"
+      }
+    ],
+    "src": "33:83:25"
+  },
   "bytecode": "0x",
   "deployedBytecode": "0x",
-  "sourceMap": "",
-  "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.5.17;\n\ninterface Mintr {\n    function mint(address) external;\n}\n",
-  "sourcePath": "/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/curve/Mintr.sol",
-  "ast": {
-    "absolutePath": "/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/curve/Mintr.sol",
-    "exportedSymbols": {
-      "Mintr": [
-        5007
-      ]
-    },
-    "id": 5008,
-    "nodeType": "SourceUnit",
-    "nodes": [
-      {
-        "id": 5001,
-        "literals": [
-          "solidity",
-          "^",
-          "0.5",
-          ".17"
-        ],
-        "nodeType": "PragmaDirective",
-        "src": "33:24:14"
-      },
-      {
-        "baseContracts": [],
-        "contractDependencies": [],
-        "contractKind": "interface",
-        "documentation": null,
-        "fullyImplemented": false,
-        "id": 5007,
-        "linearizedBaseContracts": [
-          5007
-        ],
-        "name": "Mintr",
-        "nodeType": "ContractDefinition",
-        "nodes": [
-          {
-            "body": null,
-            "documentation": null,
-            "id": 5006,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "mint",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 5004,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 5003,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 5006,
-                  "src": "95:7:14",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 5002,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "95:7:14",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "94:9:14"
-            },
-            "returnParameters": {
-              "id": 5005,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "112:0:14"
-            },
-            "scope": 5007,
-            "src": "81:32:14",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "external"
-          }
-        ],
-        "scope": 5008,
-        "src": "59:56:14"
-      }
-    ],
-    "src": "33:83:14"
-  },
-  "legacyAST": {
-    "absolutePath": "/Users/bruce/work/defi-project/bulldaoV1/bulldao/contracts/interfaces/curve/Mintr.sol",
-    "exportedSymbols": {
-      "Mintr": [
-        5007
-      ]
-    },
-    "id": 5008,
-    "nodeType": "SourceUnit",
-    "nodes": [
-      {
-        "id": 5001,
-        "literals": [
-          "solidity",
-          "^",
-          "0.5",
-          ".17"
-        ],
-        "nodeType": "PragmaDirective",
-        "src": "33:24:14"
-      },
-      {
-        "baseContracts": [],
-        "contractDependencies": [],
-        "contractKind": "interface",
-        "documentation": null,
-        "fullyImplemented": false,
-        "id": 5007,
-        "linearizedBaseContracts": [
-          5007
-        ],
-        "name": "Mintr",
-        "nodeType": "ContractDefinition",
-        "nodes": [
-          {
-            "body": null,
-            "documentation": null,
-            "id": 5006,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "mint",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 5004,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 5003,
-                  "name": "",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 5006,
-                  "src": "95:7:14",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 5002,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "95:7:14",
-                    "stateMutability": "nonpayable",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "94:9:14"
-            },
-            "returnParameters": {
-              "id": 5005,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "112:0:14"
-            },
-            "scope": 5007,
-            "src": "81:32:14",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "external"
-          }
-        ],
-        "scope": 5008,
-        "src": "59:56:14"
-      }
-    ],
-    "src": "33:83:14"
-  },
   "compiler": {
     "name": "solc",
-    "version": "0.5.17+commit.d19bba13.Linux.g++"
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang",
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "evmVersion": "istanbul"
   },
-  "networks": {},
-  "schemaVersion": "3.3.0",
-  "updatedAt": "2020-11-17T04:24:08.678Z",
-  "devdoc": {
-    "methods": {}
-  },
-  "userdoc": {
-    "methods": {}
-  }
+  "networks": {}
 }
