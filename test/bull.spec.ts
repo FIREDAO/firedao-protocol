@@ -455,8 +455,8 @@ describe('Bull', async function () {
                 before(async function() {
                     await bull.setMinter(timelock.address, {from: admin});
                 });
-    
-                async function queueMint(dst: string, amount: BN) {
+
+                async function queueMint(dst: string, amount: BN) : Promise<[string, string, string, string, string, string]> {
                     await timelock.queueTransaction(
                         bull.address, 
                         '0', 

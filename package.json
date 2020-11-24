@@ -22,6 +22,7 @@
     "@truffle/hdwallet-provider": "^1.1.0",
     "@typechain/truffle-v5": "^2.0.2",
     "@types/chai": "^4.2.12",
+    "@types/ethereumjs-util": "^6.1.0",
     "@types/mocha": "^8.0.3",
     "bignumber.js": "^9.0.1",
     "chai": "^4.2.0",
@@ -34,7 +35,7 @@
     "typechain": "^2.0.0",
     "typechain-target-truffle": "^1.0.2",
     "typescript": "^4.0.2",
-    "web3": "^1.2.11"
+    "web3": "1.3.0"
   },
   "_moduleAliases": {
     "@testUtils": "testUtils"

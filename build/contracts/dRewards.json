@@ -80,14 +80,14 @@
     "absolutePath": "contracts/interfaces/dforce/Rewards.sol",
     "exportedSymbols": {
       "dRewards": [
-        6567
+        6615
       ]
     },
-    "id": 6568,
+    "id": 6616,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6543,
+        "id": 6591,
         "literals": [
           "solidity",
           "^",
@@ -103,9 +103,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 6567,
+        "id": 6615,
         "linearizedBaseContracts": [
-          6567
+          6615
         ],
         "name": "dRewards",
         "nodeType": "ContractDefinition",
@@ -113,22 +113,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6548,
+            "id": 6596,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "withdraw",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6546,
+              "id": 6594,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6545,
+                  "id": 6593,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6548,
+                  "scope": 6596,
                   "src": "102:7:27",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -137,7 +137,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6544,
+                    "id": 6592,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "102:7:27",
@@ -153,12 +153,12 @@
               "src": "101:9:27"
             },
             "returnParameters": {
-              "id": 6547,
+              "id": 6595,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "119:0:27"
             },
-            "scope": 6567,
+            "scope": 6615,
             "src": "84:36:27",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -167,25 +167,25 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6551,
+            "id": 6599,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getReward",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6549,
+              "id": 6597,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "144:2:27"
             },
             "returnParameters": {
-              "id": 6550,
+              "id": 6598,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "155:0:27"
             },
-            "scope": 6567,
+            "scope": 6615,
             "src": "126:30:27",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -194,22 +194,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6556,
+            "id": 6604,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "stake",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6554,
+              "id": 6602,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6553,
+                  "id": 6601,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6556,
+                  "scope": 6604,
                   "src": "177:7:27",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -218,7 +218,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6552,
+                    "id": 6600,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "177:7:27",
@@ -234,12 +234,12 @@
               "src": "176:9:27"
             },
             "returnParameters": {
-              "id": 6555,
+              "id": 6603,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "194:0:27"
             },
-            "scope": 6567,
+            "scope": 6615,
             "src": "162:33:27",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -248,22 +248,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6563,
+            "id": 6611,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "balanceOf",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6559,
+              "id": 6607,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6558,
+                  "id": 6606,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6563,
+                  "scope": 6611,
                   "src": "220:7:27",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -272,7 +272,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6557,
+                    "id": 6605,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "220:7:27",
@@ -289,15 +289,15 @@
               "src": "219:9:27"
             },
             "returnParameters": {
-              "id": 6562,
+              "id": 6610,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6561,
+                  "id": 6609,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6563,
+                  "scope": 6611,
                   "src": "252:7:27",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -306,7 +306,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6560,
+                    "id": 6608,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "252:7:27",
@@ -321,7 +321,7 @@
               ],
               "src": "251:9:27"
             },
-            "scope": 6567,
+            "scope": 6615,
             "src": "201:60:27",
             "stateMutability": "view",
             "superFunction": null,
@@ -330,32 +330,32 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6566,
+            "id": 6614,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "exit",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6564,
+              "id": 6612,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "280:2:27"
             },
             "returnParameters": {
-              "id": 6565,
+              "id": 6613,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "291:0:27"
             },
-            "scope": 6567,
+            "scope": 6615,
             "src": "267:25:27",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 6568,
+        "scope": 6616,
         "src": "59:235:27"
       }
     ],

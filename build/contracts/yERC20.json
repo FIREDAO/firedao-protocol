@@ -56,14 +56,14 @@
     "absolutePath": "contracts/interfaces/yearn/Token.sol",
     "exportedSymbols": {
       "yERC20": [
-        7414
+        7462
       ]
     },
-    "id": 7415,
+    "id": 7463,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 7398,
+        "id": 7446,
         "literals": [
           "solidity",
           "^",
@@ -79,9 +79,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 7414,
+        "id": 7462,
         "linearizedBaseContracts": [
-          7414
+          7462
         ],
         "name": "yERC20",
         "nodeType": "ContractDefinition",
@@ -89,22 +89,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 7403,
+            "id": 7451,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "deposit",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7401,
+              "id": 7449,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7400,
+                  "id": 7448,
                   "name": "_amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7403,
+                  "scope": 7451,
                   "src": "138:15:43",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -113,7 +113,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7399,
+                    "id": 7447,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "138:7:43",
@@ -129,12 +129,12 @@
               "src": "137:17:43"
             },
             "returnParameters": {
-              "id": 7402,
+              "id": 7450,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "163:0:43"
             },
-            "scope": 7414,
+            "scope": 7462,
             "src": "121:43:43",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -143,22 +143,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 7408,
+            "id": 7456,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "withdraw",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7406,
+              "id": 7454,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7405,
+                  "id": 7453,
                   "name": "_amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7408,
+                  "scope": 7456,
                   "src": "188:15:43",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -167,7 +167,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7404,
+                    "id": 7452,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "188:7:43",
@@ -183,12 +183,12 @@
               "src": "187:17:43"
             },
             "returnParameters": {
-              "id": 7407,
+              "id": 7455,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "213:0:43"
             },
-            "scope": 7414,
+            "scope": 7462,
             "src": "170:44:43",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -197,28 +197,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 7413,
+            "id": 7461,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getPricePerFullShare",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7409,
+              "id": 7457,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "249:2:43"
             },
             "returnParameters": {
-              "id": 7412,
+              "id": 7460,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7411,
+                  "id": 7459,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7413,
+                  "scope": 7461,
                   "src": "275:7:43",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -227,7 +227,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7410,
+                    "id": 7458,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "275:7:43",
@@ -242,14 +242,14 @@
               ],
               "src": "274:9:43"
             },
-            "scope": 7414,
+            "scope": 7462,
             "src": "220:64:43",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 7415,
+        "scope": 7463,
         "src": "98:188:43"
       }
     ],

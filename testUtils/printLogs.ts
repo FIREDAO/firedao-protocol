@@ -30,7 +30,7 @@ export async function printTxLog(_prefix:string, _tx: Promise<any>) {
     }
 }
 
-export async function getContractLogs(_contract: any, _eventName: string[], _fromBlock: number) {
+export async function getContractLogs(_contract: any, _eventName: string[], _fromBlock: number): Promise<Log> {
     const abi: any[] = _contract.abi;
     const address: string = _contract.address;
 
@@ -41,7 +41,7 @@ export async function getContractLogs(_contract: any, _eventName: string[], _fro
 
     const eventABI = abi.filter(x => x.type == 'event' && _eventName.includes(x.name));
 
-    const decodeLogs = [];
+    const decodeLogs: Log = [];
     for(let i=0; i < eventABI.length; i++) {
         const eAbi = eventABI[i];
         const inputs: any[] = eAbi.inputs;
@@ -53,7 +53,7 @@ export async function getContractLogs(_contract: any, _eventName: string[], _fro
             const l = {};
             
             if (log.topics.length > 0 && log.topics[0] == eventTopic) {
-                const l = {
+                const l: LogData = {
                     logIndex: log.logIndex,
                     event: eAbi.name,
                     args: web3.eth.abi.decodeLog(eAbi.inputs, log.data, log.topics.slice(1) as string[])

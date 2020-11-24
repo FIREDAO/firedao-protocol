@@ -72,14 +72,14 @@
     "absolutePath": "contracts/interfaces/maker/OracleSecurityModule.sol",
     "exportedSymbols": {
       "OracleSecurityModule": [
-        7019
+        7067
       ]
     },
-    "id": 7020,
+    "id": 7068,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6997,
+        "id": 7045,
         "literals": [
           "solidity",
           "^",
@@ -95,9 +95,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 7019,
+        "id": 7067,
         "linearizedBaseContracts": [
-          7019
+          7067
         ],
         "name": "OracleSecurityModule",
         "nodeType": "ContractDefinition",
@@ -105,28 +105,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 7004,
+            "id": 7052,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "peek",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6998,
+              "id": 7046,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "76:2:30"
             },
             "returnParameters": {
-              "id": 7003,
+              "id": 7051,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7000,
+                  "id": 7048,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7004,
+                  "scope": 7052,
                   "src": "102:7:30",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -135,7 +135,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 6999,
+                    "id": 7047,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "102:7:30",
@@ -149,10 +149,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 7002,
+                  "id": 7050,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7004,
+                  "scope": 7052,
                   "src": "111:4:30",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -161,7 +161,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 7001,
+                    "id": 7049,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "111:4:30",
@@ -176,7 +176,7 @@
               ],
               "src": "101:15:30"
             },
-            "scope": 7019,
+            "scope": 7067,
             "src": "63:54:30",
             "stateMutability": "view",
             "superFunction": null,
@@ -185,28 +185,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 7011,
+            "id": 7059,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "peep",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7005,
+              "id": 7053,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "136:2:30"
             },
             "returnParameters": {
-              "id": 7010,
+              "id": 7058,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7007,
+                  "id": 7055,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7011,
+                  "scope": 7059,
                   "src": "162:7:30",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -215,7 +215,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 7006,
+                    "id": 7054,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "162:7:30",
@@ -229,10 +229,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 7009,
+                  "id": 7057,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7011,
+                  "scope": 7059,
                   "src": "171:4:30",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -241,7 +241,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 7008,
+                    "id": 7056,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "171:4:30",
@@ -256,7 +256,7 @@
               ],
               "src": "161:15:30"
             },
-            "scope": 7019,
+            "scope": 7067,
             "src": "123:54:30",
             "stateMutability": "view",
             "superFunction": null,
@@ -265,22 +265,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 7018,
+            "id": 7066,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "bud",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7014,
+              "id": 7062,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7013,
+                  "id": 7061,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7018,
+                  "scope": 7066,
                   "src": "196:7:30",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -289,7 +289,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7012,
+                    "id": 7060,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "196:7:30",
@@ -306,15 +306,15 @@
               "src": "195:9:30"
             },
             "returnParameters": {
-              "id": 7017,
+              "id": 7065,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7016,
+                  "id": 7064,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7018,
+                  "scope": 7066,
                   "src": "228:7:30",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -323,7 +323,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7015,
+                    "id": 7063,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "228:7:30",
@@ -338,14 +338,14 @@
               ],
               "src": "227:9:30"
             },
-            "scope": 7019,
+            "scope": 7067,
             "src": "183:54:30",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 7020,
+        "scope": 7068,
         "src": "26:213:30"
       }
     ],

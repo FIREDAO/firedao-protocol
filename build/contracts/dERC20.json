@@ -87,14 +87,14 @@
     "absolutePath": "contracts/interfaces/dforce/Token.sol",
     "exportedSymbols": {
       "dERC20": [
-        6596
+        6644
       ]
     },
-    "id": 6597,
+    "id": 6645,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6569,
+        "id": 6617,
         "literals": [
           "solidity",
           "^",
@@ -110,9 +110,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 6596,
+        "id": 6644,
         "linearizedBaseContracts": [
-          6596
+          6644
         ],
         "name": "dERC20",
         "nodeType": "ContractDefinition",
@@ -120,22 +120,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6576,
+            "id": 6624,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "mint",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6574,
+              "id": 6622,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6571,
+                  "id": 6619,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6576,
+                  "scope": 6624,
                   "src": "96:7:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -144,7 +144,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6570,
+                    "id": 6618,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "96:7:28",
@@ -159,10 +159,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 6573,
+                  "id": 6621,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6576,
+                  "scope": 6624,
                   "src": "105:7:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -171,7 +171,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6572,
+                    "id": 6620,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "105:7:28",
@@ -187,12 +187,12 @@
               "src": "95:18:28"
             },
             "returnParameters": {
-              "id": 6575,
+              "id": 6623,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "122:0:28"
             },
-            "scope": 6596,
+            "scope": 6644,
             "src": "82:41:28",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -201,22 +201,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6583,
+            "id": 6631,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "redeem",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6581,
+              "id": 6629,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6578,
+                  "id": 6626,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6583,
+                  "scope": 6631,
                   "src": "145:7:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -225,7 +225,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6577,
+                    "id": 6625,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "145:7:28",
@@ -240,10 +240,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 6580,
+                  "id": 6628,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6583,
+                  "scope": 6631,
                   "src": "154:7:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -252,7 +252,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6579,
+                    "id": 6627,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "154:7:28",
@@ -268,12 +268,12 @@
               "src": "144:18:28"
             },
             "returnParameters": {
-              "id": 6582,
+              "id": 6630,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "171:0:28"
             },
-            "scope": 6596,
+            "scope": 6644,
             "src": "129:43:28",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -282,22 +282,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6590,
+            "id": 6638,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getTokenBalance",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6586,
+              "id": 6634,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6585,
+                  "id": 6633,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6590,
+                  "scope": 6638,
                   "src": "203:7:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -306,7 +306,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6584,
+                    "id": 6632,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "203:7:28",
@@ -323,15 +323,15 @@
               "src": "202:9:28"
             },
             "returnParameters": {
-              "id": 6589,
+              "id": 6637,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6588,
+                  "id": 6636,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6590,
+                  "scope": 6638,
                   "src": "235:7:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -340,7 +340,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6587,
+                    "id": 6635,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "235:7:28",
@@ -355,7 +355,7 @@
               ],
               "src": "234:9:28"
             },
-            "scope": 6596,
+            "scope": 6644,
             "src": "178:66:28",
             "stateMutability": "view",
             "superFunction": null,
@@ -364,28 +364,28 @@
           {
             "body": null,
             "documentation": null,
-            "id": 6595,
+            "id": 6643,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getExchangeRate",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6591,
+              "id": 6639,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "274:2:28"
             },
             "returnParameters": {
-              "id": 6594,
+              "id": 6642,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6593,
+                  "id": 6641,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6595,
+                  "scope": 6643,
                   "src": "300:7:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -394,7 +394,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6592,
+                    "id": 6640,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "300:7:28",
@@ -409,14 +409,14 @@
               ],
               "src": "299:9:28"
             },
-            "scope": 6596,
+            "scope": 6644,
             "src": "250:59:28",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 6597,
+        "scope": 6645,
         "src": "59:252:28"
       }
     ],

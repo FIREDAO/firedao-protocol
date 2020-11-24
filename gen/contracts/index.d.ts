@@ -16,6 +16,7 @@ import { DaiJoinLikeContract } from "./DaiJoinLike";
 import { DelegatedVaultContract } from "./DelegatedVault";
 import { DErc20Contract } from "./DErc20";
 import { DRewardsContract } from "./DRewards";
+import { DummyStrategyContract } from "./DummyStrategy";
 import { EndLikeContract } from "./EndLike";
 import { Erc20Contract } from "./Erc20";
 import { Erc20DetailedContract } from "./Erc20Detailed";
@@ -94,6 +95,7 @@ declare global {
       require(name: "DelegatedVault"): DelegatedVaultContract;
       require(name: "dERC20"): DErc20Contract;
       require(name: "dRewards"): DRewardsContract;
+      require(name: "DummyStrategy"): DummyStrategyContract;
       require(name: "EndLike"): EndLikeContract;
       require(name: "ERC20"): Erc20Contract;
       require(name: "ERC20Detailed"): Erc20DetailedContract;
@@ -186,6 +188,7 @@ export {
 } from "./DelegatedVault";
 export { DErc20Contract, DErc20Instance } from "./DErc20";
 export { DRewardsContract, DRewardsInstance } from "./DRewards";
+export { DummyStrategyContract, DummyStrategyInstance } from "./DummyStrategy";
 export { EndLikeContract, EndLikeInstance } from "./EndLike";
 export { Erc20Contract, Erc20Instance } from "./Erc20";
 export { Erc20DetailedContract, Erc20DetailedInstance } from "./Erc20Detailed";

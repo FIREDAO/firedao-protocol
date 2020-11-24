@@ -61,10 +61,12 @@ contract BVault is ERC20, ERC20Detailed {
         return token.balanceOf(address(this)).mul(min).div(max);
     }
 
-    function earn() public {
+    function earn() public returns (uint256) {
+        require(msg.sender == controller, "!controller");
+
         uint256 _bal = available();
         token.safeTransfer(controller, _bal);
-        IController(controller).earn(address(token), _bal);
+        return _bal;
     }
 
     function depositAll() external {

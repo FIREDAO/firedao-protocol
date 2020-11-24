@@ -11,6 +11,8 @@ import "../interfaces/yearn/Converter.sol";
 import "../interfaces/yearn/OneSplitAudit.sol";
 import "../interfaces/yearn/Strategy.sol";
 
+import "../vaults/BVault.sol";
+
 contract Controller {
     using SafeERC20 for IERC20;
     using Address for address;
@@ -98,7 +100,7 @@ contract Controller {
         strategies[_token] = _strategy;
     }
 
-    function earn(address _token, uint256 _amount) public {
+    function earnInternal(address _token, uint256 _amount) internal {
         address _strategy = strategies[_token];
         address _want = Strategy(_strategy).want();
         if (_want != _token) {
@@ -110,6 +112,17 @@ contract Controller {
             IERC20(_token).safeTransfer(_strategy, _amount);
         }
         Strategy(_strategy).deposit();
+    }
+
+    function earn(address _token) public {
+        require(msg.sender == strategist || msg.sender == governance, "!strategist");
+
+        address _vault = vaults[_token];
+        require(_vault != address(0), "no vault");
+
+        uint256 _amount = BVault(_vault).earn();
+
+        earnInternal(_token, _amount);        
     }
 
     function balanceOf(address _token) external view returns (uint256) {
@@ -166,7 +179,7 @@ contract Controller {
             if (_after > _before) {
                 _amount = _after.sub(_before);
                 uint256 _reward = _amount.mul(split).div(max);
-                earn(_want, _amount.sub(_reward));
+                earnInternal(_want, _amount.sub(_reward));
                 IERC20(_want).safeTransfer(rewards, _reward);
             }
         }

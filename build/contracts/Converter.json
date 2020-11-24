@@ -32,14 +32,14 @@
     "absolutePath": "contracts/interfaces/yearn/Converter.sol",
     "exportedSymbols": {
       "Converter": [
-        7069
+        7117
       ]
     },
-    "id": 7070,
+    "id": 7118,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 7061,
+        "id": 7109,
         "literals": [
           "solidity",
           "^",
@@ -55,9 +55,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 7069,
+        "id": 7117,
         "linearizedBaseContracts": [
-          7069
+          7117
         ],
         "name": "Converter",
         "nodeType": "ContractDefinition",
@@ -65,22 +65,22 @@
           {
             "body": null,
             "documentation": null,
-            "id": 7068,
+            "id": 7116,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "convert",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7064,
+              "id": 7112,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7063,
+                  "id": 7111,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7068,
+                  "scope": 7116,
                   "src": "102:7:33",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -89,7 +89,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7062,
+                    "id": 7110,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "102:7:33",
@@ -106,15 +106,15 @@
               "src": "101:9:33"
             },
             "returnParameters": {
-              "id": 7067,
+              "id": 7115,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7066,
+                  "id": 7114,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7068,
+                  "scope": 7116,
                   "src": "129:7:33",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -123,7 +123,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7065,
+                    "id": 7113,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "129:7:33",
@@ -138,14 +138,14 @@
               ],
               "src": "128:9:33"
             },
-            "scope": 7069,
+            "scope": 7117,
             "src": "85:53:33",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 7070,
+        "scope": 7118,
         "src": "59:81:33"
       }
     ],
