@@ -11,7 +11,7 @@ import "../interfaces/yearn/IConverter.sol";
 import "../interfaces/yearn/IOneSplitAudit.sol";
 import "../interfaces/yearn/IStrategy.sol";
 
-import "../vaults/bVault.sol";
+import "../vault/bVault.sol";
 
 contract Controller {
     using SafeERC20 for IERC20;
