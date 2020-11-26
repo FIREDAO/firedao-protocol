@@ -19,12 +19,12 @@ contract StrategyDForceDAI {
     using Address for address;
     using SafeMath for uint256;
 
-    address public constant want = address(0x6B175474E89094C44Da98b954EedeAC495271d0F); // 
+    address public constant want = address(0x6B175474E89094C44Da98b954EedeAC495271d0F);
     address public constant ddai = address(0x02285AcaafEB533e03A7306C55EC031297df9224);
     address public constant pool = address(0xD2fA07cD6Cd4A5A96aa86BacfA6E50bB3aaDBA8B);
     address public constant df = address(0x431ad2ff6a9C365805eBaD47Ee021148d6f7DBe0);
     address public constant uni = address(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
-    address public constant weth = address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2); // used for df <> weth <> dai route
+    address public constant weth = address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);// used for df <> weth <> dai route
 
     uint256 public performanceFee = 500;
     uint256 public constant performanceMax = 10000;
