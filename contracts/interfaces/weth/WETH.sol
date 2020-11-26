@@ -1,3 +1,4 @@
+// COPIED FROM https://github.com/iearn-finance/yearn-protocol/blob/develop/interfaces/weth/WETH.sol
 pragma solidity ^0.5.17;
 
 interface WETH {

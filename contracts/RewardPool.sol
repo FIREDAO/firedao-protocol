@@ -1,4 +1,4 @@
-// https://etherscan.io/address/0xDCB6A51eA3CA5d3Fd898Fd6564757c7aAeC3ca92#code
+// COPIED FROM https://etherscan.io/address/0xDCB6A51eA3CA5d3Fd898Fd6564757c7aAeC3ca92#code
 
 /**
  *Submitted for verification at Etherscan.io on 2020-04-22

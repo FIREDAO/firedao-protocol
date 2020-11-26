@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: MIT
+// COPIED FROM https://github.com/iearn-finance/yearn-protocol/blob/develop/interfaces/yearn/IOneSplitAudit.sol
 
 pragma solidity ^0.5.17;
 
-interface OneSplitAudit {
+interface IOneSplitAudit {
     function swap(
         address fromToken,
         address destToken,

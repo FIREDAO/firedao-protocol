@@ -15,10 +15,9 @@ import {
 } from '@gen/contracts';
 
 import { e18 } from '@testUtils/units';
-import { ZERO, ONE, TWO, THREE, TEN, ONE_HUNDRED, ZERO_ADDRESS } from '@testUtils/constants';
+import { ZERO } from '@testUtils/constants';
 import { Blockchain } from '@testUtils/blockchain';
 
-import { constants } from '@openzeppelin/test-helpers';
 import { expectException } from '@testUtils/expectException';
 
 const { BN } = require('@openzeppelin/test-helpers');
@@ -26,10 +25,10 @@ const blockchain = new Blockchain(web3.currentProvider);
 
 const TestToken : TestTokenContract = contract.fromArtifact("TestToken");
 const DummyStrategy : DummyStrategyContract = contract.fromArtifact("DummyStrategy");
-const BVault: BVaultContract = contract.fromArtifact("BVault");
+const BVault: BVaultContract = contract.fromArtifact("bVault");
 const Controller: ControllerContract = contract.fromArtifact("Controller");
 
-const [admin, user1, user2, rewarder, strategist] = accounts;
+const [admin, user1, rewarder, strategist] = accounts;
 
 describe('Test', function () {
     let token: TestTokenInstance;

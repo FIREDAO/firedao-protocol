@@ -1,3 +1,5 @@
+// COPIED FROM https://github.com/iearn-finance/yearn-protocol/blob/develop/contracts/vaults/yVault.sol
+
 pragma solidity ^0.5.17;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -10,7 +12,7 @@ import "@openzeppelin/contracts/ownership/Ownable.sol";
 
 import "../interfaces/yearn/IController.sol";
 
-contract BVault is ERC20, ERC20Detailed {
+contract bVault is ERC20, ERC20Detailed {
     using SafeERC20 for IERC20;
     using Address for address;
     using SafeMath for uint256;

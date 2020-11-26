@@ -4,18 +4,19 @@
 import BN from "bn.js";
 import { EventData, PastEventOptions } from "web3-eth-contract";
 
-export interface MintrContract extends Truffle.Contract<MintrInstance> {
-  "new"(meta?: Truffle.TransactionDetails): Promise<MintrInstance>;
+export interface IConverterContract
+  extends Truffle.Contract<IConverterInstance> {
+  "new"(meta?: Truffle.TransactionDetails): Promise<IConverterInstance>;
 }
 
 type AllEvents = never;
 
-export interface MintrInstance extends Truffle.ContractInstance {
-  mint: {
+export interface IConverterInstance extends Truffle.ContractInstance {
+  convert: {
     (arg0: string, txDetails?: Truffle.TransactionDetails): Promise<
       Truffle.TransactionResponse<AllEvents>
     >;
-    call(arg0: string, txDetails?: Truffle.TransactionDetails): Promise<void>;
+    call(arg0: string, txDetails?: Truffle.TransactionDetails): Promise<BN>;
     sendTransaction(
       arg0: string,
       txDetails?: Truffle.TransactionDetails
@@ -27,11 +28,11 @@ export interface MintrInstance extends Truffle.ContractInstance {
   };
 
   methods: {
-    mint: {
+    convert: {
       (arg0: string, txDetails?: Truffle.TransactionDetails): Promise<
         Truffle.TransactionResponse<AllEvents>
       >;
-      call(arg0: string, txDetails?: Truffle.TransactionDetails): Promise<void>;
+      call(arg0: string, txDetails?: Truffle.TransactionDetails): Promise<BN>;
       sendTransaction(
         arg0: string,
         txDetails?: Truffle.TransactionDetails

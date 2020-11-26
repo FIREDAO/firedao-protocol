@@ -4,26 +4,18 @@ import { accounts, contract, web3 } from '@openzeppelin/test-environment';
 import { expect } from 'chai';
 
 import { 
-    BullContract, 
-    BullInstance, 
     TestRewardPoolContract, 
     TestRewardPoolInstance, 
     TestTokenContract, 
     TestTokenInstance, 
     TestVaultContract, 
-    TestVaultInstance, 
-    ControllerContract,
-    ControllerInstance,
-    TestStrategyInstance,
-    TestStrategyContract,
-    BVaultInstance,
-    BVaultContract,
+    TestVaultInstance,
     TestBullContract,
     TestBullInstance
 } from '@gen/contracts';
 
-import { e9, e18, e27 } from '@testUtils/units';
-import { ZERO, ONE, TWO, THREE, TEN, ONE_HUNDRED, ZERO_ADDRESS } from '@testUtils/constants';
+import { e18 } from '@testUtils/units';
+import { ZERO, ONE, TWO } from '@testUtils/constants';
 import { Blockchain } from '@testUtils/blockchain';
 
 import { constants } from '@openzeppelin/test-helpers';
@@ -33,14 +25,10 @@ const blockchain = new Blockchain(web3.currentProvider);
 
 const TestToken : TestTokenContract = contract.fromArtifact("TestToken");
 const TestVault : TestVaultContract = contract.fromArtifact("TestVault");
-const BVault: BVaultContract = contract.fromArtifact("BVault");
 const RewardPool: TestRewardPoolContract = contract.fromArtifact("TestRewardPool");
-const TestStrategy: TestStrategyContract = contract.fromArtifact("TestStrategy");
-const Controller: ControllerContract = contract.fromArtifact("Controller");
+const TestBull : TestBullContract = contract.fromArtifact("TestBull");
 
-const TestBull: TestBullContract = contract.fromArtifact("TestBull");
-
-const [admin, rewardDistribution, user1, user2, rewarder] = accounts;
+const [admin, rewardDistribution, user1, user2] = accounts;
 
 describe('Test', function () {
     let rp: TestRewardPoolInstance;
@@ -81,7 +69,7 @@ describe('Test', function () {
     });
 
     it("testBull", async function() {
-        let tb = await TestBull.new(admin, admin, {from: admin});
+        let tb: TestBullInstance = await TestBull.new(admin, admin, {from: admin});
 
         console.log(await tb.name());
         console.log(await tb.symbol());

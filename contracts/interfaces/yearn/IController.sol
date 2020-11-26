@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// COPIED FROM https://github.com/iearn-finance/yearn-protocol/blob/develop/interfaces/yearn/IController.sol
 
 pragma solidity ^0.5.17;
 
@@ -16,4 +17,6 @@ interface IController {
     function vaults(address) external view returns (address);
 
     function strategies(address) external view returns (address);
+
+    function approvedStrategies(address, address) external view returns (bool);
 }

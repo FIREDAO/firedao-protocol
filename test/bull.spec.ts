@@ -6,18 +6,17 @@ import { expect } from 'chai';
 import { 
     BullContract, 
     BullInstance, 
-    GovernanceContract, 
     TestTokenContract, 
     TestTokenInstance, 
     TimelockContract, 
     TimelockInstance
 } from '@gen/contracts';
 
-import { e9, e18, e27 } from '@testUtils/units';
-import { ZERO, ONE, TWO, THREE, TEN, ONE_HUNDRED, ZERO_ADDRESS } from '@testUtils/constants';
+import { e18 } from '@testUtils/units';
+import { ZERO, ONE, TWO, TEN, ONE_HUNDRED, ZERO_ADDRESS } from '@testUtils/constants';
 import { Blockchain } from '@testUtils/blockchain';
 import { expectException } from '@testUtils/expectException';
-import { constants, time } from '@openzeppelin/test-helpers';
+import { constants } from '@openzeppelin/test-helpers';
 
 import {
     getDomainSeparator,
@@ -72,10 +71,6 @@ const abi = new ethers.utils.AbiCoder();
 
 async function getLatestBlockNumber(): Promise<number> {
     return (await web3.eth.getBlock('latest')).number;
-}
-
-async function getLatestBlockTimestamp(): Promise<number> {
-    return Number((await web3.eth.getBlock('latest')).timestamp);
 }
 
 describe('Bull', async function () {
@@ -169,8 +164,6 @@ describe('Bull', async function () {
                 const data = logs[0].args['data'];
                 const eta = logs[0].args['eta'];
 
-                // console.log(logs[0]);
-                
                 return [txHash, target, value, signature, data, eta];
             }
 

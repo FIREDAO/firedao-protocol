@@ -12,6 +12,12 @@ export interface IControllerContract
 type AllEvents = never;
 
 export interface IControllerInstance extends Truffle.ContractInstance {
+  approvedStrategies(
+    arg0: string,
+    arg1: string,
+    txDetails?: Truffle.TransactionDetails
+  ): Promise<boolean>;
+
   balanceOf(arg0: string, txDetails?: Truffle.TransactionDetails): Promise<BN>;
 
   earn: {
@@ -72,6 +78,12 @@ export interface IControllerInstance extends Truffle.ContractInstance {
   };
 
   methods: {
+    approvedStrategies(
+      arg0: string,
+      arg1: string,
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<boolean>;
+
     balanceOf(
       arg0: string,
       txDetails?: Truffle.TransactionDetails

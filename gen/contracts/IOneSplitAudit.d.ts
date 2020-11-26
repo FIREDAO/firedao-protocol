@@ -4,14 +4,14 @@
 import BN from "bn.js";
 import { EventData, PastEventOptions } from "web3-eth-contract";
 
-export interface OneSplitAuditContract
-  extends Truffle.Contract<OneSplitAuditInstance> {
-  "new"(meta?: Truffle.TransactionDetails): Promise<OneSplitAuditInstance>;
+export interface IOneSplitAuditContract
+  extends Truffle.Contract<IOneSplitAuditInstance> {
+  "new"(meta?: Truffle.TransactionDetails): Promise<IOneSplitAuditInstance>;
 }
 
 type AllEvents = never;
 
-export interface OneSplitAuditInstance extends Truffle.ContractInstance {
+export interface IOneSplitAuditInstance extends Truffle.ContractInstance {
   getExpectedReturn(
     fromToken: string,
     destToken: string,

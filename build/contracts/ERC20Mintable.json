@@ -699,6 +699,5 @@
       "runs": 200
     },
     "evmVersion": "istanbul"
-  },
-  "networks": {}
+  }
 }

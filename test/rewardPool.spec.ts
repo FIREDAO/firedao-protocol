@@ -3,10 +3,17 @@ require('module-alias/register');
 import { accounts, contract, web3 } from '@openzeppelin/test-environment'; 
 import { expect } from 'chai';
 
-import { BullContract, BullInstance, BVaultContract, GovernanceContract, RewardPoolContract, RewardPoolInstance, TestRewardPoolContract, TestRewardPoolInstance, TestTokenContract, TestTokenInstance, TimelockContract } from '@gen/contracts';
+import { 
+    BullContract, 
+    BullInstance, 
+    TestRewardPoolContract, 
+    TestRewardPoolInstance, 
+    TestTokenContract, 
+    TestTokenInstance, 
+} from '@gen/contracts';
 
-import { e9, e18, e27 } from '@testUtils/units';
-import { ZERO, ONE, TWO, THREE, TEN, ONE_HUNDRED, ZERO_ADDRESS } from '@testUtils/constants';
+import { e18 } from '@testUtils/units';
+import { ZERO, ONE, TWO, THREE, TEN, ONE_HUNDRED } from '@testUtils/constants';
 import { Blockchain } from '@testUtils/blockchain';
 
 import { constants } from '@openzeppelin/test-helpers';
@@ -16,14 +23,11 @@ const { BN } = require('@openzeppelin/test-helpers');
 const blockchain = new Blockchain(web3.currentProvider);
 
 const TestToken : TestTokenContract = contract.fromArtifact("TestToken");
-const BVault : BVaultContract = contract.fromArtifact("BVault");
 const Bull : BullContract = contract.fromArtifact("Bull");
-const GovernorAlpha: GovernanceContract = contract.fromArtifact("GovernorAlpha");
-const Timelock: TimelockContract = contract.fromArtifact("Timelock");
 const RewardPool: TestRewardPoolContract = contract.fromArtifact("TestRewardPool");
 
 const [admin, rewardDistribution, user1, user2] = accounts;
-const [FOUR, FIVE, SIX, SEVEN, EIGHT, NINE] = [new BN(4),new BN(5),new BN(6),new BN(7),new BN(8),new BN(9)];
+const [FOUR, FIVE, SEVEN, EIGHT, NINE] = [new BN(4),new BN(5),new BN(6),new BN(7),new BN(8),new BN(9)];
 
 
 describe('RewardPool', function () {

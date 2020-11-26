@@ -519,10 +519,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        16391,
-                        16392
+                        10932,
+                        10933
                       ],
-                      "referencedDeclaration": 16392,
+                      "referencedDeclaration": 10933,
                       "src": "387:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -1352,6 +1352,5 @@
       "runs": 200
     },
     "evmVersion": "istanbul"
-  },
-  "networks": {}
+  }
 }

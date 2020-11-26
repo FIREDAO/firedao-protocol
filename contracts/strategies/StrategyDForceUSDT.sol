@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// COPIED FROM https://github.com/iearn-finance/yearn-protocol/blob/develop/contracts/strategies/StrategyDForceUSDT.sol
 
 pragma solidity ^0.5.17;
 
