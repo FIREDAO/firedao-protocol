@@ -26,10 +26,10 @@ contract StrategyDForceUSDC {
     address public constant uni = address(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
     address public constant weth = address(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2); // used for df <> weth <> usdc route
 
-    uint256 public performanceFee = 500;
+    uint256 public performanceFee = 2000; // 20%
     uint256 public constant performanceMax = 10000;
 
-    uint256 public withdrawalFee = 50;
+    uint256 public withdrawalFee = 0; // 0%
     uint256 public constant withdrawalMax = 10000;
 
     address public governance;

@@ -27,7 +27,7 @@ const Bull : BullContract = contract.fromArtifact("Bull");
 const RewardPool: TestRewardPoolContract = contract.fromArtifact("TestRewardPool");
 
 const [admin, rewardDistribution, user1, user2] = accounts;
-const [FOUR, FIVE, SEVEN, EIGHT, NINE] = [new BN(4),new BN(5),new BN(6),new BN(7),new BN(8),new BN(9)];
+const [FOUR, FIVE, SIX, SEVEN, EIGHT, NINE] = [new BN(4),new BN(5),new BN(6),new BN(7),new BN(8),new BN(9)];
 
 
 describe('RewardPool', function () {
@@ -562,8 +562,52 @@ describe('RewardPool', function () {
                 expect(await bull.balanceOf(rp.address)).to.be.bignumber.gte(low).lte(high);
             }
 
+            async function subject2(user1Ratio:BN, user2Ratio:BN) {
+                const stakeAmount1:BN = stakeUnit.mul(user1Ratio);
+                const stakeAmount2:BN = stakeUnit.mul(user2Ratio);
+                
+                await rp.stake(stakeAmount1, {from: user1});
+                await rp.stake(stakeAmount2, {from: user2});
+
+                await bull.transfer(rp.address, rewardAmount, {from: rewardDistribution});
+                await rp.notifyRewardAmount(rewardAmount, {from: rewardDistribution});
+
+                await blockchain.increaseTimeAsync(duration);
+
+                await rp.exit({from: user2});
+                await rp.exit({from: user1});
+            }
+
+            async function subject3(user1Ratio:BN, user2Ratio:BN) {
+                const stakeAmount1:BN = stakeUnit.mul(user1Ratio);
+                const stakeAmount2:BN = stakeUnit.mul(user2Ratio);
+                
+                await rp.stake(stakeAmount1, {from: user1});
+                await rp.stake(stakeAmount2, {from: user2});
+
+                await bull.transfer(rp.address, rewardAmount, {from: rewardDistribution});
+                await rp.notifyRewardAmount(rewardAmount, {from: rewardDistribution});
+
+                await blockchain.increaseTimeAsync(duration);
+
+                await rp.withdraw(await rp.balanceOf(user1), {from: user1});
+                await rp.withdraw(await rp.balanceOf(user2), {from: user2});
+
+                await rp.getReward({from: user1});
+                await rp.getReward({from: user2});
+            }
+
+
             it("user1:user2 = 5:5", async function() {
                 await subject(FIVE, FIVE);
+            });
+
+            it("user1:user2 = 5:5 subject2", async function() {
+                await subject2(FIVE, FIVE);
+            });
+
+            it("user1:user2 = 5:5 subject3", async function() {
+                await subject3(FIVE, FIVE);
             });
 
             it("user1:user2 = 1:9", async function() {

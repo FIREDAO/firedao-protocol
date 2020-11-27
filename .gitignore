@@ -6,3 +6,4 @@ bin/
 flattened/
 log/
 ganache-log
+migrations/
