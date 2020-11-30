@@ -1,7 +1,7 @@
 # bulldao
 BullDAO is an easy-to-use tool that maximizes returns for cryptocurrency assets by automatically deploying them to decentralized finance (DeFi) protocols that generate the highest yield via lending, farming and exchange services.
 
-![logo](https://github.com/bulldax/bulldao/raw/main/logo.svg){: width="180" height="180"}
+![logo](https://github.com/bulldax/bulldao/raw/main/logo_180.png)
 
 ![CI](https://github.com/bulldax/bulldao/workflows/CI/badge.svg)
 - Contract codes for yeild are copied from [Yearn Protocol](https://github.com/iearn-finance/yearn-protocol). 
