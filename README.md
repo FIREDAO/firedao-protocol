@@ -1,9 +1,11 @@
-# bulldao
+# BullDAO Protocol
+
+![logo](https://github.com/bulldax/bulldao-protocol/raw/main/logo_180.png)
+
+![CI](https://github.com/bulldax/bulldao-protocol/workflows/CI/badge.svg)
+
 BullDAO is an easy-to-use tool that maximizes returns for cryptocurrency assets by automatically deploying them to decentralized finance (DeFi) protocols that generate the highest yield via lending, farming and exchange services.
 
-![logo](https://github.com/bulldax/bulldao/raw/main/logo_180.png)
-
-![CI](https://github.com/bulldax/bulldao/workflows/CI/badge.svg)
 - Contract codes for yeild are copied from [Yearn Protocol](https://github.com/iearn-finance/yearn-protocol). 
 - Contract codes for Bull and governance are copied from [Compound Protocol](https://github.com/compound-finance/compound-protocol).
 
