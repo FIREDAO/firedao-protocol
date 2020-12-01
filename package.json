@@ -8,7 +8,7 @@
     "generate": "oz compile --evm-version istanbul && typechain --target 'truffle-v5' './build/**/*.json' --outDir gen/contracts",
     "g": "yarn generate",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' scripts/launch.sh mocha  --exit --timeout 100000000  -r ts-node/register 'test/**/*.spec.ts'",
-    "flat": "truffle-flattener contracts/vaults/BVault.sol > flattened/BVault && truffle-flattener contracts/controllers/Controller.sol > flattened/Controller && truffle-flattener contracts/strategies/StrategyDForceUSDC.sol > flattened/StrategyDForceUSDC && truffle-flattener contracts/strategies/StrategyDForceUSDT.sol > flattened/StrategyDForceUSDT && truffle-flattener contracts/strategies/StrategyTUSDCurve.sol > flattened/StrategyTUSDCurve && truffle-flattener contracts/strategies/StrategyDForceDAI.sol > flattened/StrategyDForceDAI && truffle-flattener contracts/RewardPool.sol > flattened/RewardPool ",
+    "flat": "rm flattened/* && truffle-flattener contracts/vault/bVault.sol > flattened/bVault && truffle-flattener contracts/controllers/Controller.sol > flattened/Controller && truffle-flattener contracts/strategies/StrategyDForceUSDC.sol > flattened/StrategyDForceUSDC && truffle-flattener contracts/strategies/StrategyDForceUSDT.sol > flattened/StrategyDForceUSDT && truffle-flattener contracts/strategies/StrategyDForceDAI.sol > flattened/StrategyDForceDAI && truffle-flattener contracts/RewardPool.sol > flattened/RewardPool  && truffle-flattener contracts/governance/Bull.sol > flattened/Bull && truffle-flattener contracts/governance/Timelock.sol > flattened/Timelock",
     "mainnetMigrate": "truffle migrate --skipDryRun --network mainnet"
   },
   "author": "Park Jongseok",
