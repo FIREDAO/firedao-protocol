@@ -18,9 +18,7 @@ import { e18 } from '@testUtils/units';
 import { ZERO } from '@testUtils/constants';
 import { Blockchain } from '@testUtils/blockchain';
 
-import { expectException } from '@testUtils/expectException';
-
-const { BN } = require('@openzeppelin/test-helpers');
+const { BN, expectRevert } = require('@openzeppelin/test-helpers');
 const blockchain = new Blockchain(web3.currentProvider);
 
 const TestToken : TestTokenContract = contract.fromArtifact("TestToken");
@@ -70,16 +68,16 @@ describe('Test', function () {
 
         describe("earn", async function() {
             it("vault's earn: unauthorized user can NOT call", async function() {
-                await expectException(vault.earn({from: admin}), "!controller");
-                await expectException(vault.earn({from: user1}), "!controller");
+                await expectRevert(vault.earn({from: admin}), "!controller");
+                await expectRevert(vault.earn({from: user1}), "!controller");
             });
 
             it("controller's earn: unauthorized user can NOT call", async function() {
-                await expectException(controller.earn(token.address, {from: user1}), "!strategist");
+                await expectRevert(controller.earn(token.address, {from: user1}), "!strategist");
             });
 
             it("controller's earn: wrong vault address", async function() {
-                await expectException(controller.earn(user1, {from: admin}), "no vault");
+                await expectRevert(controller.earn(user1, {from: admin}), "no vault");
             });
 
             it("controller's earn: admin can call", async function() {

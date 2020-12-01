@@ -15,8 +15,7 @@ import {
 import { e18 } from '@testUtils/units';
 import { ZERO, ONE, TWO, TEN, ONE_HUNDRED, ZERO_ADDRESS } from '@testUtils/constants';
 import { Blockchain } from '@testUtils/blockchain';
-import { expectException } from '@testUtils/expectException';
-import { constants } from '@openzeppelin/test-helpers';
+import { constants, expectRevert } from '@openzeppelin/test-helpers';
 
 import {
     getDomainSeparator,
@@ -80,6 +79,7 @@ describe('Bull', async function () {
 
     let bull: BullInstance;
     const totalSupply = e18(20000);
+    const cap = e18(1000000);
 
     let adminBalance: BN;
     let holderBalance: BN;
@@ -128,6 +128,40 @@ describe('Bull', async function () {
             await blockchain.increaseTimeAsync(d);
             elasedTime = elasedTime.add(d);
         }
+
+        describe("exceeding limit", async function() {
+            const bits96 = TWO.pow(new BN(96));
+
+            beforeEach(async function() {
+                await blockchain.saveSnapshotAsync();
+            });
+    
+            afterEach(async function() {
+                await blockchain.revertAsync();
+            });
+    
+            it("successfully mint", async function() {
+                const amount = cap.sub(totalSupply);
+                await bull.mint(user1, amount, {from: admin});
+                expect(await bull.balanceOf(user1)).to.be.bignumber.eq(user1Balance.add(amount));
+            });
+
+            it("fail: exceeding 96 bits", async function() {
+                const amount = bits96;
+                await expectRevert(
+                    bull.mint(user1, amount, {from: admin}),
+                    "Bull::mint: amount exceeds 96 bits"
+                );
+            });
+
+            it("fail: exceeding cap", async function() {
+                const amount = cap.sub(totalSupply).add(ONE);
+                await expectRevert(
+                    bull.mint(user1, amount, {from: admin}),
+                    "Bull: cap exceeded"
+                );
+            });
+        });
 
         describe("timelock", async function(){
             let testToken: TestTokenInstance;
@@ -193,7 +227,7 @@ describe('Bull', async function () {
                 it("fail: noAuth when queueTransaction", async function() {
                     const noAuthUser = user2;
                     const amount = e18(1);
-                    await expectException(
+                    await expectRevert(
                         timelock.queueTransaction(
                             testToken.address, 
                             '0', 
@@ -215,7 +249,7 @@ describe('Bull', async function () {
                     expect(await testToken.balanceOf(user1)).to.be.bignumber.eq(ZERO);
     
                     await increaseTime(activeDelay);
-                    await expectException(
+                    await expectRevert(
                         timelock.executeTransaction(target, value, signature, data, eta, {from: noAuthUser}),
                         "Timelock::executeTransaction: Call must come from admin."
                     );
@@ -229,7 +263,7 @@ describe('Bull', async function () {
                     expect(await testToken.balanceOf(user1)).to.be.bignumber.eq(ZERO);
     
                     await increaseTime(activeDelay.sub(TEN));
-                    await expectException(
+                    await expectRevert(
                         timelock.executeTransaction(target, value, signature, data, eta, {from: admin}),
                         "Timelock::executeTransaction: Transaction hasn't surpassed time lock."
                     );
@@ -259,7 +293,7 @@ describe('Bull', async function () {
                     expect(await testToken.balanceOf(user1)).to.be.bignumber.eq(ZERO);
     
                     await increaseTime(activeDelay);
-                    await expectException(
+                    await expectRevert(
                         timelock.executeTransaction(
                             (_target == null) ? target : _target,
                             (_value == null) ? value : _value,
@@ -339,7 +373,7 @@ describe('Bull', async function () {
                 });
 
                 it("fail: noAuth when cancelTransaction", async function() {
-                    await expectException(
+                    await expectRevert(
                         subject(activeDelay, user1), 
                         "Timelock::cancelTransaction: Call must come from admin."
                     );
@@ -392,13 +426,13 @@ describe('Bull', async function () {
                 it("change admin", async function() {
                     await setPendingAdmin(user1, admin);
 
-                    await expectException(
+                    await expectRevert(
                         timelock.acceptAdmin({from: user2}),
                         "Timelock::acceptAdmin: Call must come from pendingAdmin."
                     );
                     await timelock.acceptAdmin({from: user1});
 
-                    await expectException(
+                    await expectRevert(
                         setPendingAdmin(admin, admin),
                         "Timelock::queueTransaction: Call must come from admin."
                     );
@@ -433,12 +467,12 @@ describe('Bull', async function () {
 
                 expect(await bull.minter()).to.be.eq(timelock.address);
 
-                await expectException(
+                await expectRevert(
                     bull.mint(user1, mintAmount, {from: admin}),
                     "Bull::mint: only the minter can mint"
                 );
 
-                await expectException(
+                await expectRevert(
                     bull.setMinter(user1, {from: admin}),
                     "Bull::setMinter: only the minter can change the minter address"
                 );
@@ -586,7 +620,7 @@ describe('Bull', async function () {
                 nonce = "100";
 
                 expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
-                expectException(delegateBySig(), "Bull::delegateBySig: invalid nonce");
+                expectRevert(delegateBySig(), "Bull::delegateBySig: invalid nonce");
                 expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
             });
 
@@ -610,7 +644,7 @@ describe('Bull', async function () {
                 expiry = nowInSeconds(-10).toString();
 
                 expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
-                expectException(delegateBySig(), "Bull::delegateBySig: signature expired");
+                expectRevert(delegateBySig(), "Bull::delegateBySig: signature expired");
                 expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
             });
 
@@ -980,19 +1014,19 @@ describe('Bull', async function () {
             });
 
             it('should NOT transfer to ZERO address', async function() {
-                await expectException(
+                await expectRevert(
                     bull.transfer(ZERO_ADDRESS, ONE, {from: user1}),
                     "Bull::_transferTokens: cannot transfer to the zero address"
                 );
             });
 
             it ('should NOT transfer token more than balance', async function() {
-                await expectException(
+                await expectRevert(
                     bull.transfer(user2, user1InitialBull.add(ONE), {from: user1}),
                     "Bull::_transferTokens: transfer amount exceeds balance"
                 );
 
-                await expectException(
+                await expectRevert(
                     bull.transfer(user2, constants.MAX_UINT256, {from: user1}),
                     "Bull::transfer: amount exceeds 96 bits"
                 );
@@ -1014,12 +1048,12 @@ describe('Bull', async function () {
                 await bull.approve(admin, ONE, {from: user1});
                 expect(await bull.allowance(user1, admin)).to.be.bignumber.equal(ONE);
 
-                await expectException(
+                await expectRevert(
                     bull.transferFrom(user1, user2, TWO, {from: admin}),
                     "Bull::transferFrom: transfer amount exceeds spender allowance"
                 );
 
-                await expectException(
+                await expectRevert(
                     bull.transferFrom(user1, user2, constants.MAX_UINT256, {from: admin}),
                     "Bull::approve: amount exceeds 96 bits"
                 );
@@ -1038,7 +1072,7 @@ describe('Bull', async function () {
             });
 
             it('should NOT allow MAX_UINT256 - 1 approve', async function() {
-                await expectException(
+                await expectRevert(
                     bull.approve(admin, constants.MAX_UINT256.sub(ONE), {from: user1}),
                     "Bull::approve: amount exceeds 96 bits"
                 );

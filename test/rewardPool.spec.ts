@@ -17,9 +17,8 @@ import { ZERO, ONE, TWO, THREE, TEN, ONE_HUNDRED } from '@testUtils/constants';
 import { Blockchain } from '@testUtils/blockchain';
 
 import { constants } from '@openzeppelin/test-helpers';
-import { expectException } from '@testUtils/expectException';
 
-const { BN } = require('@openzeppelin/test-helpers');
+const { BN, expectRevert } = require('@openzeppelin/test-helpers');
 const blockchain = new Blockchain(web3.currentProvider);
 
 const TestToken : TestTokenContract = contract.fromArtifact("TestToken");
@@ -179,7 +178,7 @@ describe('RewardPool', function () {
         it("withdraw when no staking", async function() {
             await rp.stake(stakeAmount, {from: user2});
 
-            await expectException(
+            await expectRevert(
                 rp.withdraw(ONE, {from: user1}),
                 "SafeMath: subtraction overflow."
             );
@@ -197,27 +196,27 @@ describe('RewardPool', function () {
 
         it("rewardDistribution only function", async function() {
             await rp.notifyRewardAmount(ONE, {from: rewardDistribution});
-            await expectException(
+            await expectRevert(
                 rp.notifyRewardAmount(ONE, {from: admin}),
                 "Caller is not reward distribution"
             );
 
             await rp.update({from: rewardDistribution});
-            await expectException(
+            await expectRevert(
                 rp.update({from: admin}),
                 "Caller is not reward distribution"
             );
         });
 
         it("change rewardDistribution", async function() {
-            await expectException(
+            await expectRevert(
                 rp.setRewardDistribution(user1, {from: rewardDistribution}),
                 "Ownable: caller is not the owner"
             );
 
             await rp.setRewardDistribution(user1, {from: admin});
             
-            await expectException(
+            await expectRevert(
                 rp.notifyRewardAmount(ONE, {from: rewardDistribution}),
                 "Caller is not reward distribution"
             );
