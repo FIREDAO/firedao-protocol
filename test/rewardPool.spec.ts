@@ -4,8 +4,8 @@ import { accounts, contract, web3 } from '@openzeppelin/test-environment';
 import { expect } from 'chai';
 
 import { 
-    BullContract, 
-    BullInstance, 
+    FireContract, 
+    FireInstance, 
     TestRewardPoolContract, 
     TestRewardPoolInstance, 
     TestTokenContract, 
@@ -22,7 +22,7 @@ const { BN, expectRevert } = require('@openzeppelin/test-helpers');
 const blockchain = new Blockchain(web3.currentProvider);
 
 const TestToken : TestTokenContract = contract.fromArtifact("TestToken");
-const Bull : BullContract = contract.fromArtifact("Bull");
+const Fire : FireContract = contract.fromArtifact("Fire");
 const RewardPool: TestRewardPoolContract = contract.fromArtifact("TestRewardPool");
 
 const [admin, rewardDistribution, user1, user2] = accounts;
@@ -33,8 +33,8 @@ describe('RewardPool', function () {
     let rp: TestRewardPoolInstance;
 
     let lpToken: TestTokenInstance;
-    let bull: BullInstance;
-    const bullTotalSupply = e18(20000);
+    let fire: FireInstance;
+    const fireTotalSupply = e18(20000);
 
     let lpBalance = e18(1000);
 
@@ -42,10 +42,10 @@ describe('RewardPool', function () {
 
     before(async function() {
         lpToken = await TestToken.new("LP test token", "LPT", 18, {from: admin});
-        bull = await Bull.new(rewardDistribution, admin, {from: admin});
+        fire = await Fire.new(rewardDistribution, admin, {from: admin});
 
         rp = await RewardPool.new(
-            bull.address,
+            fire.address,
             lpToken.address,
             duration,
             rewardDistribution,
@@ -53,9 +53,9 @@ describe('RewardPool', function () {
         );
 
         await lpToken.approve(rp.address, constants.MAX_UINT256, {from: admin});
-        await bull.approve(rp.address, constants.MAX_UINT256, {from: admin});
+        await fire.approve(rp.address, constants.MAX_UINT256, {from: admin});
         await lpToken.approve(rp.address, constants.MAX_UINT256, {from: rewardDistribution});
-        await bull.approve(rp.address, constants.MAX_UINT256, {from: rewardDistribution});
+        await fire.approve(rp.address, constants.MAX_UINT256, {from: rewardDistribution});
         await lpToken.approve(rp.address, constants.MAX_UINT256, {from: user1});
         await lpToken.approve(rp.address, constants.MAX_UINT256, {from: user2});
 
@@ -64,8 +64,8 @@ describe('RewardPool', function () {
         await lpToken.mint(user1, lpBalance, {from: admin});
         await lpToken.mint(user2, lpBalance, {from: admin});
 
-        expect(await bull.totalSupply()).to.be.bignumber.eq(bullTotalSupply);
-        expect(await bull.balanceOf(rewardDistribution)).to.be.bignumber.eq(bullTotalSupply);
+        expect(await fire.totalSupply()).to.be.bignumber.eq(fireTotalSupply);
+        expect(await fire.balanceOf(rewardDistribution)).to.be.bignumber.eq(fireTotalSupply);
         expect(await lpToken.balanceOf(admin)).to.be.bignumber.eq(lpBalance);
         expect(await lpToken.balanceOf(rewardDistribution)).to.be.bignumber.eq(lpBalance);
         expect(await lpToken.balanceOf(user1)).to.be.bignumber.eq(lpBalance);
@@ -91,7 +91,7 @@ describe('RewardPool', function () {
 
         console.log("earned", (await rp.earned(user)).toString());
 
-        console.log("bull balanceOf(rp)", (await bull.balanceOf(rp.address)).toString());
+        console.log("fire balanceOf(rp)", (await fire.balanceOf(rp.address)).toString());
     }
 
     function getErrors(reward: BN, duration: BN, num: BN) {
@@ -236,7 +236,7 @@ describe('RewardPool', function () {
 
         it("initial variables", async function() {
             expect(await rp.lpToken()).to.be.eq(lpToken.address);
-            expect(await rp.rewardToken()).to.be.eq(bull.address);
+            expect(await rp.rewardToken()).to.be.eq(fire.address);
             
             expect(await rp.totalSupply()).to.be.bignumber.eq(ZERO);
             expect(await rp.balanceOf(user1)).to.be.bignumber.eq(ZERO);
@@ -257,7 +257,7 @@ describe('RewardPool', function () {
             let periodFinish:BN;
             before(async function() {
                 await blockchain.saveSnapshotAsync();
-                await bull.transfer(rp.address, rewardAmount, {from: rewardDistribution});
+                await fire.transfer(rp.address, rewardAmount, {from: rewardDistribution});
                 await rp.notifyRewardAmount(rewardAmount, {from: rewardDistribution});
                 periodFinish = await rp.periodFinish();
     
@@ -318,7 +318,7 @@ describe('RewardPool', function () {
                 await blockchain.saveSnapshotAsync();
 
                 await rp.stake(unit.mul(stakeNumber), {from: user1});
-                await bull.transfer(rp.address, rewardAmount, {from: rewardDistribution});
+                await fire.transfer(rp.address, rewardAmount, {from: rewardDistribution});
                 await rp.notifyRewardAmount(rewardAmount, {from: rewardDistribution});
                 periodFinish = await rp.periodFinish();
             });
@@ -388,7 +388,7 @@ describe('RewardPool', function () {
             before(async function() {
                 await blockchain.saveSnapshotAsync();
 
-                await bull.transfer(rp.address, rewardAmount, {from: rewardDistribution});
+                await fire.transfer(rp.address, rewardAmount, {from: rewardDistribution});
                 await rp.notifyRewardAmount(rewardAmount, {from: rewardDistribution});
                 
                 await blockchain.increaseTimeAsync(duration.div(TWO));
@@ -440,7 +440,7 @@ describe('RewardPool', function () {
                 await blockchain.saveSnapshotAsync();
 
                 await rp.stake(stakeAmount, {from: user1});
-                await bull.transfer(rp.address, rewardAmount, {from: rewardDistribution});
+                await fire.transfer(rp.address, rewardAmount, {from: rewardDistribution});
                 await rp.notifyRewardAmount(rewardAmount, {from: rewardDistribution});
                 
                 await blockchain.increaseTimeAsync(duration);
@@ -470,7 +470,7 @@ describe('RewardPool', function () {
                 expect(await rp.balanceOf(user1)).to.be.bignumber.eq(ZERO);
                 expect(await rp.rewards(user1)).to.be.bignumber.eq(ZERO);
                 expect(await rp.earned(user1)).to.be.bignumber.eq(ZERO);
-                expect(await bull.balanceOf(rp.address)).to.be.bignumber.eq(rewardAmount.sub(earned));
+                expect(await fire.balanceOf(rp.address)).to.be.bignumber.eq(rewardAmount.sub(earned));
             });
 
             it("withdraw 1/2", async function() { 
@@ -480,7 +480,7 @@ describe('RewardPool', function () {
                 expect(await rp.balanceOf(user1)).to.be.bignumber.eq(stakeAmount.div(TWO));
                 expect(await rp.rewards(user1)).to.be.bignumber.eq(earned);
                 expect(await rp.earned(user1)).to.be.bignumber.eq(earned);
-                expect(await bull.balanceOf(rp.address)).to.be.bignumber.eq(rewardAmount);
+                expect(await fire.balanceOf(rp.address)).to.be.bignumber.eq(rewardAmount);
             });
 
             it("withdraw all", async function() {
@@ -490,7 +490,7 @@ describe('RewardPool', function () {
                 expect(await rp.balanceOf(user1)).to.be.bignumber.eq(ZERO);
                 expect(await rp.rewards(user1)).to.be.bignumber.eq(earned);
                 expect(await rp.earned(user1)).to.be.bignumber.eq(earned);
-                expect(await bull.balanceOf(rp.address)).to.be.bignumber.eq(rewardAmount);
+                expect(await fire.balanceOf(rp.address)).to.be.bignumber.eq(rewardAmount);
             });
 
             it("getReward", async function() {
@@ -500,7 +500,7 @@ describe('RewardPool', function () {
                 expect(await rp.balanceOf(user1)).to.be.bignumber.eq(stakeAmount);
                 expect(await rp.rewards(user1)).to.be.bignumber.eq(ZERO);
                 expect(await rp.earned(user1)).to.be.bignumber.eq(ZERO);
-                expect(await bull.balanceOf(rp.address)).to.be.bignumber.eq(rewardAmount.sub(earned));
+                expect(await fire.balanceOf(rp.address)).to.be.bignumber.eq(rewardAmount.sub(earned));
             });
         });
     });
@@ -522,12 +522,12 @@ describe('RewardPool', function () {
             await blockchain.revertAsync();
         });
 
-        async function bullBalanceOf() {
-            console.log("----- bull balanceOf -----");
-            console.log("rp   ", (await bull.balanceOf(rp.address)).toString());
-            console.log("user1", (await bull.balanceOf(user1)).toString());
-            console.log("user2", (await bull.balanceOf(user2)).toString());
-            console.log("admin", (await bull.balanceOf(admin)).toString());
+        async function fireBalanceOf() {
+            console.log("----- fire balanceOf -----");
+            console.log("rp   ", (await fire.balanceOf(rp.address)).toString());
+            console.log("user1", (await fire.balanceOf(user1)).toString());
+            console.log("user2", (await fire.balanceOf(user2)).toString());
+            console.log("admin", (await fire.balanceOf(admin)).toString());
         }
 
         describe("StakeAmount ratio, single NotifyReward", async function() {
@@ -544,7 +544,7 @@ describe('RewardPool', function () {
                 await rp.stake(stakeAmount1, {from: user1});
                 await rp.stake(stakeAmount2, {from: user2});
 
-                await bull.transfer(rp.address, rewardAmount, {from: rewardDistribution});
+                await fire.transfer(rp.address, rewardAmount, {from: rewardDistribution});
                 await rp.notifyRewardAmount(rewardAmount, {from: rewardDistribution});
 
                 await blockchain.increaseTimeAsync(duration);
@@ -553,12 +553,12 @@ describe('RewardPool', function () {
                 await rp.exit({from: user2});
 
                 let [low, high] = getErrors(rewardAmount, duration, expectedReward1);
-                expect(await bull.balanceOf(user1)).to.be.bignumber.gte(low).lte(high);
+                expect(await fire.balanceOf(user1)).to.be.bignumber.gte(low).lte(high);
                 [low, high] = getErrors(rewardAmount, duration, expectedReward2);
-                expect(await bull.balanceOf(user2)).to.be.bignumber.gte(low).lte(high);
+                expect(await fire.balanceOf(user2)).to.be.bignumber.gte(low).lte(high);
 
                 [low, high] = getErrors(rewardAmount, duration, ZERO);
-                expect(await bull.balanceOf(rp.address)).to.be.bignumber.gte(low).lte(high);
+                expect(await fire.balanceOf(rp.address)).to.be.bignumber.gte(low).lte(high);
             }
 
             async function subject2(user1Ratio:BN, user2Ratio:BN) {
@@ -568,7 +568,7 @@ describe('RewardPool', function () {
                 await rp.stake(stakeAmount1, {from: user1});
                 await rp.stake(stakeAmount2, {from: user2});
 
-                await bull.transfer(rp.address, rewardAmount, {from: rewardDistribution});
+                await fire.transfer(rp.address, rewardAmount, {from: rewardDistribution});
                 await rp.notifyRewardAmount(rewardAmount, {from: rewardDistribution});
 
                 await blockchain.increaseTimeAsync(duration);
@@ -584,7 +584,7 @@ describe('RewardPool', function () {
                 await rp.stake(stakeAmount1, {from: user1});
                 await rp.stake(stakeAmount2, {from: user2});
 
-                await bull.transfer(rp.address, rewardAmount, {from: rewardDistribution});
+                await fire.transfer(rp.address, rewardAmount, {from: rewardDistribution});
                 await rp.notifyRewardAmount(rewardAmount, {from: rewardDistribution});
 
                 await blockchain.increaseTimeAsync(duration);
@@ -632,11 +632,11 @@ describe('RewardPool', function () {
                 await rp.stake(stakeAmount1, {from: user1});
                 await rp.stake(stakeAmount2, {from: user2});
 
-                await bull.transfer(rp.address, rewardAmount, {from: rewardDistribution});
+                await fire.transfer(rp.address, rewardAmount, {from: rewardDistribution});
                 await rp.notifyRewardAmount(rewardAmount, {from: rewardDistribution});
 
                 await blockchain.increaseTimeAsync(elased);
-                await bull.transfer(rp.address, rewardAmount, {from: rewardDistribution});
+                await fire.transfer(rp.address, rewardAmount, {from: rewardDistribution});
                 await rp.notifyRewardAmount(rewardAmount, {from: rewardDistribution});
 
                 await blockchain.increaseTimeAsync(duration);
@@ -645,12 +645,12 @@ describe('RewardPool', function () {
                 await rp.exit({from: user2});
 
                 let [low, high] = getErrors(rewardAmount.mul(TWO), duration, expectedReward1);
-                expect(await bull.balanceOf(user1)).to.be.bignumber.gte(low).lte(high);
+                expect(await fire.balanceOf(user1)).to.be.bignumber.gte(low).lte(high);
                 [low, high] = getErrors(rewardAmount.mul(TWO), duration, expectedReward2);
-                expect(await bull.balanceOf(user2)).to.be.bignumber.gte(low).lte(high);
+                expect(await fire.balanceOf(user2)).to.be.bignumber.gte(low).lte(high);
 
                 [low, high] = getErrors(rewardAmount.mul(TWO), duration, ZERO);
-                expect(await bull.balanceOf(rp.address)).to.be.bignumber.gte(low).lte(high);
+                expect(await fire.balanceOf(rp.address)).to.be.bignumber.gte(low).lte(high);
             }
 
             it("user1:user2 = 5:5", async function() {
@@ -688,7 +688,7 @@ describe('RewardPool', function () {
             async function subject(elapsed1:BN, elapsed2:BN, expectedReward1:BN, expectedReward2:BN) {
                 await rp.stake(stakeAmount, {from: user1});
 
-                await bull.transfer(rp.address, rewardAmount, {from: rewardDistribution});
+                await fire.transfer(rp.address, rewardAmount, {from: rewardDistribution});
                 await rp.notifyRewardAmount(rewardAmount, {from: rewardDistribution});
 
                 await blockchain.increaseTimeAsync(elapsed1);
@@ -702,12 +702,12 @@ describe('RewardPool', function () {
                 await rp.exit({from: user1});
 
                 let [low, high] = getErrors(rewardAmount, duration, expectedReward1);
-                expect(await bull.balanceOf(user1)).to.be.bignumber.gte(low).lte(high);
+                expect(await fire.balanceOf(user1)).to.be.bignumber.gte(low).lte(high);
                 [low, high] = getErrors(rewardAmount, duration, expectedReward2);
-                expect(await bull.balanceOf(user2)).to.be.bignumber.gte(low).lte(high);
+                expect(await fire.balanceOf(user2)).to.be.bignumber.gte(low).lte(high);
 
                 [low, high] = getErrors(rewardAmount, duration, ZERO);
-                expect(await bull.balanceOf(rp.address)).to.be.bignumber.gte(low).lte(high);
+                expect(await fire.balanceOf(rp.address)).to.be.bignumber.gte(low).lte(high);
             }
 
             it("user2: 0~5", async function() {

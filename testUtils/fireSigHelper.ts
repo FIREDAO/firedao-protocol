@@ -14,7 +14,7 @@ export function getDelegationTypeHash() {
     );
 }
 
-export function getDomainSeparator(bullAddress: string, name: string) {
+export function getDomainSeparator(fireAddress: string, name: string) {
     return keccak256(
         defaultAbiCoder.encode(
             ['bytes32', 'bytes32', 'uint256', 'address'],
@@ -22,7 +22,7 @@ export function getDomainSeparator(bullAddress: string, name: string) {
                 getDomainTypeHash(),
                 keccak256(toUtf8Bytes(name)),
                 1,
-                bullAddress
+                fireAddress
             ]
         )
     );

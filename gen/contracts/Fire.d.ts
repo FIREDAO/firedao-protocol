@@ -4,12 +4,12 @@
 import BN from "bn.js";
 import { EventData, PastEventOptions } from "web3-eth-contract";
 
-export interface TestBullContract extends Truffle.Contract<TestBullInstance> {
+export interface FireContract extends Truffle.Contract<FireInstance> {
   "new"(
     account: string,
     _minter: string,
     meta?: Truffle.TransactionDetails
-  ): Promise<TestBullInstance>;
+  ): Promise<FireInstance>;
 }
 
 export interface Approval {
@@ -77,7 +77,7 @@ type AllEvents =
   | MinterChanged
   | Transfer;
 
-export interface TestBullInstance extends Truffle.ContractInstance {
+export interface FireInstance extends Truffle.ContractInstance {
   DELEGATION_TYPEHASH(txDetails?: Truffle.TransactionDetails): Promise<string>;
 
   DOMAIN_TYPEHASH(txDetails?: Truffle.TransactionDetails): Promise<string>;

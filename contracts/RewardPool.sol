@@ -672,7 +672,6 @@ contract RewardPool is LPTokenWrapper, IRewardDistributionRecipient {
         duration = _duration;
     }
 
-
     function lastTimeRewardApplicable() public view returns (uint256) {
         return Math.min(block.timestamp, periodFinish);
     }

@@ -8,8 +8,8 @@ import {
     TestTokenInstance, 
     ControllerContract,
     ControllerInstance,
-    BVaultInstance,
-    BVaultContract,
+    FVaultInstance,
+    FVaultContract,
     DummyStrategyContract,
     DummyStrategyInstance
 } from '@gen/contracts';
@@ -23,14 +23,14 @@ const blockchain = new Blockchain(web3.currentProvider);
 
 const TestToken : TestTokenContract = contract.fromArtifact("TestToken");
 const DummyStrategy : DummyStrategyContract = contract.fromArtifact("DummyStrategy");
-const BVault: BVaultContract = contract.fromArtifact("bVault");
+const FVault: FVaultContract = contract.fromArtifact("fVault");
 const Controller: ControllerContract = contract.fromArtifact("Controller");
 
 const [admin, user1, rewarder, strategist] = accounts;
 
 describe('Test', function () {
     let token: TestTokenInstance;
-    let vault: BVaultInstance;
+    let vault: FVaultInstance;
     let controller: ControllerInstance;
     let strategy: DummyStrategyInstance;
 
@@ -40,7 +40,7 @@ describe('Test', function () {
         token = await TestToken.new("test token", "Tok", 18, {from: admin});
 
         controller = await Controller.new(rewarder, {from: admin});
-        vault = await BVault.new(token.address, controller.address, {from: admin});
+        vault = await FVault.new(token.address, controller.address, {from: admin});
         strategy = await DummyStrategy.new(controller.address, token.address, {from: admin});
 
         await token.mint(user1, balance, {from: admin});
@@ -57,7 +57,7 @@ describe('Test', function () {
     after(async function() {
     });
 
-    describe('BVault', async function() {
+    describe('FVault', async function() {
         before(async function() {
             await blockchain.saveSnapshotAsync();
         });

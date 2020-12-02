@@ -1,10 +1,10 @@
-# BullDAO Protocol
+# Firedao Protocol
 
-![logo](https://github.com/bulldax/bulldao-protocol/raw/main/logo_180.png)
+![logo](https://github.com/bulldax/firedao-protocol/raw/main/logo_180.png)
 
-![CI](https://github.com/bulldax/bulldao-protocol/workflows/CI/badge.svg)
+![CI](https://github.com/bulldax/firedao-protocol/workflows/CI/badge.svg)
 
-BullDAO is an easy-to-use tool that maximizes returns for cryptocurrency assets by automatically deploying them to decentralized finance (DeFi) protocols that generate the highest yield via lending, farming and exchange services.
+Firedao is an easy-to-use tool that maximizes returns for cryptocurrency assets by automatically deploying them to decentralized finance (DeFi) protocols that generate the highest yield via lending, farming and exchange services.
 
 - Contract codes for yeild are copied from [Yearn Protocol](https://github.com/iearn-finance/yearn-protocol). 
 - Contract codes for Bull and governance are copied from [Compound Protocol](https://github.com/compound-finance/compound-protocol).
@@ -30,7 +30,7 @@ $ yarn test
 
 
 ## audit
-This project is not audited. However, most of the code has been copied from Yearn Protocol and Compound Protocol, which are audited and considered to be safe, and modifications were in a very small part and the modified parts passed heavy tests.
+This project is not audited. However, most of the code has been copied from Yearn Protocol and Compound Protocol, which are audited and considered to be safe, and modifications were in a very small part and the modified parts passed enough tests.
 
 
 

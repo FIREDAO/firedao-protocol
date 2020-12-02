@@ -4,8 +4,8 @@ import { contract, web3 } from '@openzeppelin/test-environment';
 import { expect } from 'chai';
 
 import { 
-    BullContract, 
-    BullInstance, 
+    FireContract, 
+    FireInstance, 
     TestTokenContract, 
     TestTokenInstance, 
     TimelockContract, 
@@ -22,7 +22,7 @@ import {
     getStructHash,
     getDigest,
     nowInSeconds
-} from '@testUtils/bullSigHelper';
+} from '@testUtils/fireSigHelper';
 import { ecsign } from 'ethereumjs-util';
 import { hexlify } from 'ethers/utils';
 const ethers = require('ethers');
@@ -56,7 +56,7 @@ const ganachePasswords = [
 const { BN } = require('@openzeppelin/test-helpers');
 const blockchain = new Blockchain(web3.currentProvider);
 
-const Bull : BullContract = contract.fromArtifact("Bull");
+const Fire : FireContract = contract.fromArtifact("Fire");
 const Timelock: TimelockContract = contract.fromArtifact("Timelock");
 const TestToken: TestTokenContract = contract.fromArtifact("TestToken");
 
@@ -72,14 +72,14 @@ async function getLatestBlockNumber(): Promise<number> {
     return (await web3.eth.getBlock('latest')).number;
 }
 
-describe('Bull', async function () {
-    const name = "Bull";
-    const symbol = "BULL";
+describe('Fire', async function () {
+    const name = "Fire";
+    const symbol = "FIRE";
     const decimals = new BN(18);
 
-    let bull: BullInstance;
+    let fire: FireInstance;
     const totalSupply = e18(20000);
-    const cap = e18(1000000);
+    const cap = e18(100000000);
 
     let adminBalance: BN;
     let holderBalance: BN;
@@ -89,15 +89,15 @@ describe('Bull', async function () {
 
     before(async function() {
         console.log("before");
-        bull = await Bull.new(holder, admin, {from: admin});
+        fire = await Fire.new(holder, admin, {from: admin});
     });
 
     beforeEach(async function() {
-        adminBalance = await bull.balanceOf(admin);
-        holderBalance = await bull.balanceOf(holder);
-        user1Balance = await bull.balanceOf(user1);
-        user2Balance = await bull.balanceOf(user2);
-        user3Balance = await bull.balanceOf(user3);
+        adminBalance = await fire.balanceOf(admin);
+        holderBalance = await fire.balanceOf(holder);
+        user1Balance = await fire.balanceOf(user1);
+        user2Balance = await fire.balanceOf(user2);
+        user3Balance = await fire.balanceOf(user3);
     });
 
 
@@ -142,23 +142,23 @@ describe('Bull', async function () {
     
             it("successfully mint", async function() {
                 const amount = cap.sub(totalSupply);
-                await bull.mint(user1, amount, {from: admin});
-                expect(await bull.balanceOf(user1)).to.be.bignumber.eq(user1Balance.add(amount));
+                await fire.mint(user1, amount, {from: admin});
+                expect(await fire.balanceOf(user1)).to.be.bignumber.eq(user1Balance.add(amount));
             });
 
             it("fail: exceeding 96 bits", async function() {
                 const amount = bits96;
                 await expectRevert(
-                    bull.mint(user1, amount, {from: admin}),
-                    "Bull::mint: amount exceeds 96 bits"
+                    fire.mint(user1, amount, {from: admin}),
+                    "Fire::mint: amount exceeds 96 bits"
                 );
             });
 
             it("fail: exceeding cap", async function() {
                 const amount = cap.sub(totalSupply).add(ONE);
                 await expectRevert(
-                    bull.mint(user1, amount, {from: admin}),
-                    "Bull: cap exceeded"
+                    fire.mint(user1, amount, {from: admin}),
+                    "Fire: cap exceeded"
                 );
             });
         });
@@ -453,39 +453,39 @@ describe('Bull', async function () {
 
             const mintAmount = new BN(10000);
             it("mint", async function() {
-                expect(await bull.minter()).to.be.eq(admin);
-                expect(await bull.balanceOf(user1)).to.be.bignumber.eq(ZERO);
-                await bull.mint(user1, mintAmount, {from: admin});
-                expect(await bull.balanceOf(user1)).to.be.bignumber.eq(mintAmount);
+                expect(await fire.minter()).to.be.eq(admin);
+                expect(await fire.balanceOf(user1)).to.be.bignumber.eq(ZERO);
+                await fire.mint(user1, mintAmount, {from: admin});
+                expect(await fire.balanceOf(user1)).to.be.bignumber.eq(mintAmount);
             });
 
             it("setMinter", async function() {
-                await bull.setMinter(timelock.address, {from: admin});
+                await fire.setMinter(timelock.address, {from: admin});
                 
-                let logs = await getContractLogs(bull, ["MinterChanged"], await getLatestBlockNumber());
+                let logs = await getContractLogs(fire, ["MinterChanged"], await getLatestBlockNumber());
                 expect(logs[0].args['newMinter']).to.be.eq(timelock.address);
 
-                expect(await bull.minter()).to.be.eq(timelock.address);
+                expect(await fire.minter()).to.be.eq(timelock.address);
 
                 await expectRevert(
-                    bull.mint(user1, mintAmount, {from: admin}),
-                    "Bull::mint: only the minter can mint"
+                    fire.mint(user1, mintAmount, {from: admin}),
+                    "Fire::mint: only the minter can mint"
                 );
 
                 await expectRevert(
-                    bull.setMinter(user1, {from: admin}),
-                    "Bull::setMinter: only the minter can change the minter address"
+                    fire.setMinter(user1, {from: admin}),
+                    "Fire::setMinter: only the minter can change the minter address"
                 );
             });
 
             describe("timelocked mint", async function() {
                 before(async function() {
-                    await bull.setMinter(timelock.address, {from: admin});
+                    await fire.setMinter(timelock.address, {from: admin});
                 });
 
                 async function queueMint(dst: string, amount: BN) : Promise<[string, string, string, string, string, string]> {
                     await timelock.queueTransaction(
-                        bull.address, 
+                        fire.address, 
                         '0', 
                         'mint(address,uint256)',
                         abi.encode(['address', 'uint256'], [dst, amount.toString()]),
@@ -518,10 +518,10 @@ describe('Bull', async function () {
                 }
 
                 it("mint by timelock", async function() {
-                    expect(await bull.minter()).to.be.eq(timelock.address);
-                    expect(await bull.balanceOf(user1)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.minter()).to.be.eq(timelock.address);
+                    expect(await fire.balanceOf(user1)).to.be.bignumber.eq(ZERO);
                     await mint(user1, mintAmount);
-                    expect(await bull.balanceOf(user1)).to.be.bignumber.eq(mintAmount);
+                    expect(await fire.balanceOf(user1)).to.be.bignumber.eq(mintAmount);
                 });
             });
         });
@@ -530,32 +530,32 @@ describe('Bull', async function () {
     describe("votes test", async function() {
         async function printCurrentVotes() {
             console.log("-------- printCurrentVotes ---------");
-            console.log('holder', (await bull.getCurrentVotes(holder)).toString(), (await bull.balanceOf(holder)).toString());
-            console.log('user1', (await bull.getCurrentVotes(user1)).toString(), (await bull.balanceOf(user1)).toString());
-            console.log('user2', (await bull.getCurrentVotes(user2)).toString(), (await bull.balanceOf(user2)).toString());
-            console.log('user3', (await bull.getCurrentVotes(user3)).toString(), (await bull.balanceOf(user3)).toString());
+            console.log('holder', (await fire.getCurrentVotes(holder)).toString(), (await fire.balanceOf(holder)).toString());
+            console.log('user1', (await fire.getCurrentVotes(user1)).toString(), (await fire.balanceOf(user1)).toString());
+            console.log('user2', (await fire.getCurrentVotes(user2)).toString(), (await fire.balanceOf(user2)).toString());
+            console.log('user3', (await fire.getCurrentVotes(user3)).toString(), (await fire.balanceOf(user3)).toString());
         }
 
         async function printPriorVotes(blockNumber: BN) {
             console.log("-------- getPriorVotes ---------");
-            console.log('holder', (await bull.getPriorVotes(holder, blockNumber)).toString());
-            console.log('user1', (await bull.getPriorVotes(user1, blockNumber)).toString());
-            console.log('user2', (await bull.getPriorVotes(user2, blockNumber)).toString());
-            console.log('user3', (await bull.getPriorVotes(user3, blockNumber)).toString());
+            console.log('holder', (await fire.getPriorVotes(holder, blockNumber)).toString());
+            console.log('user1', (await fire.getPriorVotes(user1, blockNumber)).toString());
+            console.log('user2', (await fire.getPriorVotes(user2, blockNumber)).toString());
+            console.log('user3', (await fire.getPriorVotes(user3, blockNumber)).toString());
         }
 
         before(async function() {
             await blockchain.saveSnapshotAsync();
-            expect(await bull.getCurrentVotes(holder)).to.be.bignumber.eq(ZERO);
-            expect(await bull.getCurrentVotes(user1)).to.be.bignumber.eq(ZERO);
-            expect(await bull.getCurrentVotes(user2)).to.be.bignumber.eq(ZERO);
-            expect(await bull.getCurrentVotes(user3)).to.be.bignumber.eq(ZERO);
+            expect(await fire.getCurrentVotes(holder)).to.be.bignumber.eq(ZERO);
+            expect(await fire.getCurrentVotes(user1)).to.be.bignumber.eq(ZERO);
+            expect(await fire.getCurrentVotes(user2)).to.be.bignumber.eq(ZERO);
+            expect(await fire.getCurrentVotes(user3)).to.be.bignumber.eq(ZERO);
 
             let blockNum = new BN(await getLatestBlockNumber());
-            expect(await bull.getPriorVotes(holder, blockNum.sub(ONE))).to.be.bignumber.eq(ZERO);
-            expect(await bull.getPriorVotes(user1, blockNum.sub(ONE))).to.be.bignumber.eq(ZERO);
-            expect(await bull.getPriorVotes(user2, blockNum.sub(ONE))).to.be.bignumber.eq(ZERO);
-            expect(await bull.getPriorVotes(user3, blockNum.sub(ONE))).to.be.bignumber.eq(ZERO);
+            expect(await fire.getPriorVotes(holder, blockNum.sub(ONE))).to.be.bignumber.eq(ZERO);
+            expect(await fire.getPriorVotes(user1, blockNum.sub(ONE))).to.be.bignumber.eq(ZERO);
+            expect(await fire.getPriorVotes(user2, blockNum.sub(ONE))).to.be.bignumber.eq(ZERO);
+            expect(await fire.getPriorVotes(user3, blockNum.sub(ONE))).to.be.bignumber.eq(ZERO);
         });
 
         after(async function() {
@@ -572,8 +572,8 @@ describe('Bull', async function () {
             });
 
 
-            let bullAddress: string;
-            let bullName: string;
+            let fireAddress: string;
+            let fireName: string;
             let delegator: string;
             let delegatorPw: string;
             let delegatee: string;
@@ -583,8 +583,8 @@ describe('Bull', async function () {
             beforeEach(async function() {
                 await blockchain.saveSnapshotAsync();
 
-                bullAddress = bull.address;
-                bullName = name;
+                fireAddress = fire.address;
+                fireName = name;
                 delegator = user1;
                 delegatorPw = user1Pw;
                 delegatee = user2;
@@ -597,7 +597,7 @@ describe('Bull', async function () {
             });
 
             async function delegateBySig() {
-                const domainSeparator = getDomainSeparator(bullAddress, bullName);
+                const domainSeparator = getDomainSeparator(fireAddress, fireName);
                 const structHash = getStructHash(delegatee, nonce, expiry);
 
                 const digest = await getDigest(domainSeparator, structHash);
@@ -607,58 +607,58 @@ describe('Bull', async function () {
                     Buffer.from(delegatorPw.slice(2), 'hex')
                 );
 
-                return await bull.delegateBySig(delegatee, nonce, expiry, v, hexlify(r), hexlify(s), {from: delegator});
+                return await fire.delegateBySig(delegatee, nonce, expiry, v, hexlify(r), hexlify(s), {from: delegator});
             }
 
             it("working", async function() {
-                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                expect(await fire.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
                 await delegateBySig();
-                expect(await bull.delegates(delegator)).to.be.eq(delegatee);
+                expect(await fire.delegates(delegator)).to.be.eq(delegatee);
             });
 
             it("NOT working: wrong nonce", async function() {
                 nonce = "100";
 
-                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
-                expectRevert(delegateBySig(), "Bull::delegateBySig: invalid nonce");
-                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                expect(await fire.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                expectRevert(delegateBySig(), "Fire::delegateBySig: invalid nonce");
+                expect(await fire.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
             });
 
             it("NOT working: wrong name", async function() {
-                bullName = "wrongName";
+                fireName = "wrongName";
 
-                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                expect(await fire.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
                 await delegateBySig();
-                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                expect(await fire.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
             });
 
             it("NOT working: wrong address", async function() {
-                bullAddress = admin;
+                fireAddress = admin;
 
-                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                expect(await fire.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
                 await delegateBySig();
-                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                expect(await fire.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
             });
 
             it("NOT working: wrong expiry", async function() {
                 expiry = nowInSeconds(-10).toString();
 
-                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
-                expectRevert(delegateBySig(), "Bull::delegateBySig: signature expired");
-                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                expect(await fire.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                expectRevert(delegateBySig(), "Fire::delegateBySig: signature expired");
+                expect(await fire.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
             });
 
             it("NOT working: wrong password", async function() {
                 delegatorPw = adminPw;
 
-                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                expect(await fire.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
                 await delegateBySig();
-                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                expect(await fire.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
             });
 
             it("NOT working: worng domainSeparator", async function() {
                 const wrongAddress = admin;
-                const domainSeparator = getDomainSeparator(wrongAddress, bullName);
+                const domainSeparator = getDomainSeparator(wrongAddress, fireName);
                 const structHash = getStructHash(delegatee, nonce, expiry);
 
                 const digest = await getDigest(domainSeparator, structHash);
@@ -668,14 +668,14 @@ describe('Bull', async function () {
                     Buffer.from(delegatorPw.slice(2), 'hex')
                 );
 
-                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
-                await bull.delegateBySig(delegatee, nonce, expiry, v, hexlify(r), hexlify(s), {from: delegator});
-                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                expect(await fire.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                await fire.delegateBySig(delegatee, nonce, expiry, v, hexlify(r), hexlify(s), {from: delegator});
+                expect(await fire.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
             });
 
             it("NOT working: worng structHash", async function() {
                 const wrongDelegatee = admin;
-                const domainSeparator = getDomainSeparator(bullAddress, bullName);
+                const domainSeparator = getDomainSeparator(fireAddress, fireName);
                 const structHash = getStructHash(wrongDelegatee, nonce, expiry);
 
                 const digest = await getDigest(domainSeparator, structHash);
@@ -685,15 +685,15 @@ describe('Bull', async function () {
                     Buffer.from(delegatorPw.slice(2), 'hex')
                 );
 
-                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
-                await bull.delegateBySig(delegatee, nonce, expiry, v, hexlify(r), hexlify(s), {from: delegator});
-                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                expect(await fire.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                await fire.delegateBySig(delegatee, nonce, expiry, v, hexlify(r), hexlify(s), {from: delegator});
+                expect(await fire.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
             });
 
             it("NOT working: wrong parameter", async function() {
                 const wrongDelegatee = admin;
 
-                const domainSeparator = getDomainSeparator(bullAddress, bullName);
+                const domainSeparator = getDomainSeparator(fireAddress, fireName);
                 const structHash = getStructHash(delegatee, nonce, expiry);
 
                 const digest = await getDigest(domainSeparator, structHash);
@@ -703,9 +703,9 @@ describe('Bull', async function () {
                     Buffer.from(delegatorPw.slice(2), 'hex')
                 );
 
-                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
-                await bull.delegateBySig(wrongDelegatee, nonce, expiry, v, hexlify(r), hexlify(s), {from: delegator});
-                expect(await bull.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                expect(await fire.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
+                await fire.delegateBySig(wrongDelegatee, nonce, expiry, v, hexlify(r), hexlify(s), {from: delegator});
+                expect(await fire.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
             });
         });
 
@@ -723,16 +723,16 @@ describe('Bull', async function () {
             });
 
             afterEach(async function() {
-                let v1 = await bull.balanceOf(holder);
-                let v2 = await bull.getCurrentVotes(holder);
+                let v1 = await fire.balanceOf(holder);
+                let v2 = await fire.getCurrentVotes(holder);
                 if (!v2.isZero() && !v1.isZero()) expect(v1).to.be.bignumber.eq(v2);
                 
-                v1 = await bull.balanceOf(user1);
-                v2 = await bull.getCurrentVotes(user1);
+                v1 = await fire.balanceOf(user1);
+                v2 = await fire.getCurrentVotes(user1);
                 if (!v2.isZero() && !v1.isZero()) expect(v1).to.be.bignumber.eq(v2);
 
-                v1 = await bull.balanceOf(user2);
-                v2 = await bull.getCurrentVotes(user2);
+                v1 = await fire.balanceOf(user2);
+                v2 = await fire.getCurrentVotes(user2);
                 if (!v2.isZero() && !v1.isZero()) expect(v1).to.be.bignumber.eq(v2);
                 
                 await blockchain.revertAsync();
@@ -741,18 +741,18 @@ describe('Bull', async function () {
             describe("mint", async function() {
                 const amount = e18(10);
                 it("mint to undelegated", async function() {
-                    await bull.mint(holder, amount, {from: admin});
-                    const v = await bull.getCurrentVotes(holder);
+                    await fire.mint(holder, amount, {from: admin});
+                    const v = await fire.getCurrentVotes(holder);
 
                     expect(v).to.be.bignumber.eq(ZERO);
                 });
 
                 it("mint to delegated", async function() {
-                    await bull.delegate(holder, {from: holder});
-                    const v1 = await bull.getCurrentVotes(holder);
+                    await fire.delegate(holder, {from: holder});
+                    const v1 = await fire.getCurrentVotes(holder);
 
-                    await bull.mint(holder, amount, {from: admin});
-                    const v2 = await bull.getCurrentVotes(holder);
+                    await fire.mint(holder, amount, {from: admin});
+                    const v2 = await fire.getCurrentVotes(holder);
 
                     expect(v2.sub(v1)).to.be.bignumber.eq(amount);
                 });
@@ -761,54 +761,54 @@ describe('Bull', async function () {
             describe("self delegate", async function() {
                 const amount = TEN;
                 it("after delegate", async function() {
-                    expect(await bull.delegates(holder)).to.be.eq(ZERO_ADDRESS);
-                    await bull.delegate(holder, {from: holder});
-                    expect(await bull.delegates(holder)).to.be.eq(holder);
+                    expect(await fire.delegates(holder)).to.be.eq(ZERO_ADDRESS);
+                    await fire.delegate(holder, {from: holder});
+                    expect(await fire.delegates(holder)).to.be.eq(holder);
     
                     let blockNum = new BN(await getLatestBlockNumber());
-                    expect(await bull.getCurrentVotes(holder)).to.be.bignumber.eq(holderBalance);
-                    expect(await bull.getPriorVotes(holder, blockNum.sub(ONE))).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getCurrentVotes(holder)).to.be.bignumber.eq(holderBalance);
+                    expect(await fire.getPriorVotes(holder, blockNum.sub(ONE))).to.be.bignumber.eq(ZERO);
     
                     await blockchain.mineBlockAsync();
                     
                     blockNum = new BN(await getLatestBlockNumber());
-                    expect(await bull.getPriorVotes(holder, blockNum.sub(ONE))).to.be.bignumber.eq(holderBalance);
-                    expect(await bull.getPriorVotes(holder, blockNum.sub(TWO))).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getPriorVotes(holder, blockNum.sub(ONE))).to.be.bignumber.eq(holderBalance);
+                    expect(await fire.getPriorVotes(holder, blockNum.sub(TWO))).to.be.bignumber.eq(ZERO);
                 });
     
                 it("transfer: undelegated => undelegated", async function() {
-                    await bull.transfer(user1, amount, {from: holder});
+                    await fire.transfer(user1, amount, {from: holder});
     
-                    expect(await bull.getCurrentVotes(holder)).to.be.bignumber.eq(ZERO);
-                    expect(await bull.getCurrentVotes(user1)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getCurrentVotes(holder)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getCurrentVotes(user1)).to.be.bignumber.eq(ZERO);
                 });
     
                 it("transfer: delegated => undelegated", async function() {
-                    await bull.delegate(holder, {from: holder});
+                    await fire.delegate(holder, {from: holder});
     
-                    await bull.transfer(user1, amount, {from: holder});
+                    await fire.transfer(user1, amount, {from: holder});
     
-                    expect(await bull.getCurrentVotes(holder)).to.be.bignumber.eq(holderBalance.sub(amount));
-                    expect(await bull.getCurrentVotes(user1)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getCurrentVotes(holder)).to.be.bignumber.eq(holderBalance.sub(amount));
+                    expect(await fire.getCurrentVotes(user1)).to.be.bignumber.eq(ZERO);
                 });
     
                 it("transfer: delegated => delegated", async function() {
-                    await bull.delegate(holder, {from: holder});
-                    await bull.delegate(user1, {from: user1});
+                    await fire.delegate(holder, {from: holder});
+                    await fire.delegate(user1, {from: user1});
     
-                    await bull.transfer(user1, amount, {from: holder});
+                    await fire.transfer(user1, amount, {from: holder});
     
-                    expect(await bull.getCurrentVotes(holder)).to.be.bignumber.eq(holderBalance.sub(amount));
-                    expect(await bull.getCurrentVotes(user1)).to.be.bignumber.eq(amount);
+                    expect(await fire.getCurrentVotes(holder)).to.be.bignumber.eq(holderBalance.sub(amount));
+                    expect(await fire.getCurrentVotes(user1)).to.be.bignumber.eq(amount);
                 });
     
                 it("transfer: undelegated => delegated", async function() {
-                    await bull.delegate(user1, {from: user1});
+                    await fire.delegate(user1, {from: user1});
     
-                    await bull.transfer(user1, TEN, {from: holder});
+                    await fire.transfer(user1, TEN, {from: holder});
     
-                    expect(await bull.getCurrentVotes(holder)).to.be.bignumber.eq(ZERO);
-                    expect(await bull.getCurrentVotes(user1)).to.be.bignumber.eq(amount);
+                    expect(await fire.getCurrentVotes(holder)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getCurrentVotes(user1)).to.be.bignumber.eq(amount);
                 });
             });
 
@@ -816,160 +816,160 @@ describe('Bull', async function () {
                 const amount = TEN;
 
                 it("after delegate", async function() {
-                    expect(await bull.delegates(holder)).to.be.bignumber.eq(ZERO_ADDRESS);
-                    await bull.delegate(user3, {from: holder});
-                    expect(await bull.delegates(holder)).to.be.bignumber.eq(user3);
+                    expect(await fire.delegates(holder)).to.be.bignumber.eq(ZERO_ADDRESS);
+                    await fire.delegate(user3, {from: holder});
+                    expect(await fire.delegates(holder)).to.be.bignumber.eq(user3);
     
                     let blockNum = new BN(await getLatestBlockNumber());
-                    expect(await bull.getCurrentVotes(holder)).to.be.bignumber.eq(ZERO);
-                    expect(await bull.getCurrentVotes(user3)).to.be.bignumber.eq(holderBalance);
-                    expect(await bull.getPriorVotes(holder, blockNum.sub(ONE))).to.be.bignumber.eq(ZERO);
-                    expect(await bull.getPriorVotes(user3, blockNum.sub(ONE))).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getCurrentVotes(holder)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getCurrentVotes(user3)).to.be.bignumber.eq(holderBalance);
+                    expect(await fire.getPriorVotes(holder, blockNum.sub(ONE))).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getPriorVotes(user3, blockNum.sub(ONE))).to.be.bignumber.eq(ZERO);
     
                     await blockchain.mineBlockAsync();
                     
                     blockNum = new BN(await getLatestBlockNumber());
-                    expect(await bull.getPriorVotes(holder, blockNum.sub(ONE))).to.be.bignumber.eq(ZERO);
-                    expect(await bull.getPriorVotes(user3, blockNum.sub(ONE))).to.be.bignumber.eq(holderBalance);
+                    expect(await fire.getPriorVotes(holder, blockNum.sub(ONE))).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getPriorVotes(user3, blockNum.sub(ONE))).to.be.bignumber.eq(holderBalance);
 
-                    await bull.delegate(holder, {from: holder});
-                    expect(await bull.getCurrentVotes(holder)).to.be.bignumber.eq(holderBalance);
-                    expect(await bull.getCurrentVotes(user3)).to.be.bignumber.eq(ZERO);
+                    await fire.delegate(holder, {from: holder});
+                    expect(await fire.getCurrentVotes(holder)).to.be.bignumber.eq(holderBalance);
+                    expect(await fire.getCurrentVotes(user3)).to.be.bignumber.eq(ZERO);
                 });
 
                 it("transfer: holder(delegated to user2) => user1(delegated to user3)", async function() {
                     const holderDelegate = user2;
                     const user1Delegate = user3;
-                    await bull.delegate(holderDelegate, {from: holder});
-                    await bull.delegate(user1Delegate, {from: user1});
+                    await fire.delegate(holderDelegate, {from: holder});
+                    await fire.delegate(user1Delegate, {from: user1});
 
-                    await bull.transfer(user1, amount, {from: holder});
+                    await fire.transfer(user1, amount, {from: holder});
     
-                    expect(await bull.getCurrentVotes(holderDelegate)).to.be.bignumber.eq(holderBalance.sub(amount));
-                    expect(await bull.getCurrentVotes(user1Delegate)).to.be.bignumber.eq(amount);
+                    expect(await fire.getCurrentVotes(holderDelegate)).to.be.bignumber.eq(holderBalance.sub(amount));
+                    expect(await fire.getCurrentVotes(user1Delegate)).to.be.bignumber.eq(amount);
                 });
 
                 it("transfer: holder(delegated to user2) => user1(delegated to user2)", async function() {
                     const holderDelegate = user2;
                     const user1Delegate = user2;
-                    await bull.delegate(holderDelegate, {from: holder});
-                    await bull.delegate(user1Delegate, {from: user1});
+                    await fire.delegate(holderDelegate, {from: holder});
+                    await fire.delegate(user1Delegate, {from: user1});
 
-                    await bull.transfer(user1, amount, {from: holder});
+                    await fire.transfer(user1, amount, {from: holder});
     
-                    expect(await bull.getCurrentVotes(user2)).to.be.bignumber.eq(holderBalance);
+                    expect(await fire.getCurrentVotes(user2)).to.be.bignumber.eq(holderBalance);
 
-                    await bull.delegate(holder, {from: holder});
+                    await fire.delegate(holder, {from: holder});
 
-                    expect(await bull.getCurrentVotes(user2)).to.be.bignumber.eq(amount);
+                    expect(await fire.getCurrentVotes(user2)).to.be.bignumber.eq(amount);
 
-                    await bull.delegate(user1, {from: user1});
+                    await fire.delegate(user1, {from: user1});
 
-                    expect(await bull.getCurrentVotes(user2)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getCurrentVotes(user2)).to.be.bignumber.eq(ZERO);
                 });
 
                 it("delegate to ZERO_ADDRESS", async function() {
-                    await bull.delegate(ZERO_ADDRESS, {from: holder});
-                    expect(await bull.getCurrentVotes(holder)).to.be.bignumber.eq(ZERO);
-                    expect(await bull.getCurrentVotes(ZERO_ADDRESS)).to.be.bignumber.eq(ZERO);
+                    await fire.delegate(ZERO_ADDRESS, {from: holder});
+                    expect(await fire.getCurrentVotes(holder)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getCurrentVotes(ZERO_ADDRESS)).to.be.bignumber.eq(ZERO);
 
-                    await bull.delegate(holder, {from: holder});
-                    expect(await bull.getCurrentVotes(holder)).to.be.bignumber.eq(holderBalance);
+                    await fire.delegate(holder, {from: holder});
+                    expect(await fire.getCurrentVotes(holder)).to.be.bignumber.eq(holderBalance);
                 });
 
                 it("user1 delegate user2 (user2 delegate user3): getCurrentVotes", async function() {
-                    await bull.delegate(user2, {from: user1});
-                    await bull.delegate(user3, {from: user2});
+                    await fire.delegate(user2, {from: user1});
+                    await fire.delegate(user3, {from: user2});
 
-                    await bull.transfer(user1, amount, {from: holder});
+                    await fire.transfer(user1, amount, {from: holder});
 
-                    expect(await bull.getCurrentVotes(user1)).to.be.bignumber.eq(ZERO);
-                    expect(await bull.getCurrentVotes(user2)).to.be.bignumber.eq(amount);
-                    expect(await bull.getCurrentVotes(user3)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getCurrentVotes(user1)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getCurrentVotes(user2)).to.be.bignumber.eq(amount);
+                    expect(await fire.getCurrentVotes(user3)).to.be.bignumber.eq(ZERO);
 
-                    await bull.transfer(user2, amount, {from: holder});
+                    await fire.transfer(user2, amount, {from: holder});
 
-                    expect(await bull.getCurrentVotes(user1)).to.be.bignumber.eq(ZERO);
-                    expect(await bull.getCurrentVotes(user2)).to.be.bignumber.eq(amount);
-                    expect(await bull.getCurrentVotes(user3)).to.be.bignumber.eq(amount);
+                    expect(await fire.getCurrentVotes(user1)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getCurrentVotes(user2)).to.be.bignumber.eq(amount);
+                    expect(await fire.getCurrentVotes(user3)).to.be.bignumber.eq(amount);
 
-                    await bull.transfer(user3, amount, {from: holder});
+                    await fire.transfer(user3, amount, {from: holder});
 
-                    expect(await bull.getCurrentVotes(user1)).to.be.bignumber.eq(ZERO);
-                    expect(await bull.getCurrentVotes(user2)).to.be.bignumber.eq(amount);
-                    expect(await bull.getCurrentVotes(user3)).to.be.bignumber.eq(amount);
+                    expect(await fire.getCurrentVotes(user1)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getCurrentVotes(user2)).to.be.bignumber.eq(amount);
+                    expect(await fire.getCurrentVotes(user3)).to.be.bignumber.eq(amount);
 
-                    await bull.delegate(user3, {from: user3});
+                    await fire.delegate(user3, {from: user3});
 
-                    expect(await bull.getCurrentVotes(user1)).to.be.bignumber.eq(ZERO);
-                    expect(await bull.getCurrentVotes(user2)).to.be.bignumber.eq(amount);
-                    expect(await bull.getCurrentVotes(user3)).to.be.bignumber.eq(amount.mul(TWO));
+                    expect(await fire.getCurrentVotes(user1)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getCurrentVotes(user2)).to.be.bignumber.eq(amount);
+                    expect(await fire.getCurrentVotes(user3)).to.be.bignumber.eq(amount.mul(TWO));
 
-                    await bull.delegate(user2, {from: user2});
+                    await fire.delegate(user2, {from: user2});
 
-                    expect(await bull.getCurrentVotes(user1)).to.be.bignumber.eq(ZERO);
-                    expect(await bull.getCurrentVotes(user2)).to.be.bignumber.eq(amount.mul(TWO));
-                    expect(await bull.getCurrentVotes(user3)).to.be.bignumber.eq(amount);
+                    expect(await fire.getCurrentVotes(user1)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getCurrentVotes(user2)).to.be.bignumber.eq(amount.mul(TWO));
+                    expect(await fire.getCurrentVotes(user3)).to.be.bignumber.eq(amount);
 
-                    await bull.delegate(user1, {from: user1});
+                    await fire.delegate(user1, {from: user1});
 
-                    expect(await bull.getCurrentVotes(user1)).to.be.bignumber.eq(amount);
-                    expect(await bull.getCurrentVotes(user2)).to.be.bignumber.eq(amount);
-                    expect(await bull.getCurrentVotes(user3)).to.be.bignumber.eq(amount);
+                    expect(await fire.getCurrentVotes(user1)).to.be.bignumber.eq(amount);
+                    expect(await fire.getCurrentVotes(user2)).to.be.bignumber.eq(amount);
+                    expect(await fire.getCurrentVotes(user3)).to.be.bignumber.eq(amount);
                 });
 
                 it("user1 delegate user2 (user2 delegate user3): getPriorVotes", async function() {
-                    await bull.delegate(user2, {from: user1});
-                    await bull.delegate(user3, {from: user2});
+                    await fire.delegate(user2, {from: user1});
+                    await fire.delegate(user3, {from: user2});
 
                     const b1 = await getLatestBlockNumber();
-                    await bull.transfer(user1, amount, {from: holder});
+                    await fire.transfer(user1, amount, {from: holder});
 
                     const b2 = await getLatestBlockNumber();
-                    await bull.transfer(user2, amount, {from: holder});
+                    await fire.transfer(user2, amount, {from: holder});
 
                     const b3 = await getLatestBlockNumber();
-                    await bull.transfer(user3, amount, {from: holder});
+                    await fire.transfer(user3, amount, {from: holder});
 
                     const b4 = await getLatestBlockNumber();
-                    await bull.delegate(user3, {from: user3});
+                    await fire.delegate(user3, {from: user3});
 
                     const b5 = await getLatestBlockNumber();
-                    await bull.delegate(user2, {from: user2});
+                    await fire.delegate(user2, {from: user2});
 
                     const b6 = await getLatestBlockNumber();
-                    await bull.delegate(user1, {from: user1});
+                    await fire.delegate(user1, {from: user1});
 
                     const b7 = await getLatestBlockNumber();
                     await blockchain.mineBlockAsync();
 
-                    expect(await bull.getPriorVotes(user1, b1)).to.be.bignumber.eq(ZERO);
-                    expect(await bull.getPriorVotes(user2, b1)).to.be.bignumber.eq(ZERO);
-                    expect(await bull.getPriorVotes(user3, b1)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getPriorVotes(user1, b1)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getPriorVotes(user2, b1)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getPriorVotes(user3, b1)).to.be.bignumber.eq(ZERO);
 
-                    expect(await bull.getPriorVotes(user1, b2)).to.be.bignumber.eq(ZERO);
-                    expect(await bull.getPriorVotes(user2, b2)).to.be.bignumber.eq(amount);
-                    expect(await bull.getPriorVotes(user3, b2)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getPriorVotes(user1, b2)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getPriorVotes(user2, b2)).to.be.bignumber.eq(amount);
+                    expect(await fire.getPriorVotes(user3, b2)).to.be.bignumber.eq(ZERO);
 
-                    expect(await bull.getPriorVotes(user1, b3)).to.be.bignumber.eq(ZERO);
-                    expect(await bull.getPriorVotes(user2, b3)).to.be.bignumber.eq(amount);
-                    expect(await bull.getPriorVotes(user3, b3)).to.be.bignumber.eq(amount);
+                    expect(await fire.getPriorVotes(user1, b3)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getPriorVotes(user2, b3)).to.be.bignumber.eq(amount);
+                    expect(await fire.getPriorVotes(user3, b3)).to.be.bignumber.eq(amount);
 
-                    expect(await bull.getPriorVotes(user1, b4)).to.be.bignumber.eq(ZERO);
-                    expect(await bull.getPriorVotes(user2, b4)).to.be.bignumber.eq(amount);
-                    expect(await bull.getPriorVotes(user3, b4)).to.be.bignumber.eq(amount);
+                    expect(await fire.getPriorVotes(user1, b4)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getPriorVotes(user2, b4)).to.be.bignumber.eq(amount);
+                    expect(await fire.getPriorVotes(user3, b4)).to.be.bignumber.eq(amount);
 
-                    expect(await bull.getPriorVotes(user1, b5)).to.be.bignumber.eq(ZERO);
-                    expect(await bull.getPriorVotes(user2, b5)).to.be.bignumber.eq(amount);
-                    expect(await bull.getPriorVotes(user3, b5)).to.be.bignumber.eq(amount.mul(TWO));
+                    expect(await fire.getPriorVotes(user1, b5)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getPriorVotes(user2, b5)).to.be.bignumber.eq(amount);
+                    expect(await fire.getPriorVotes(user3, b5)).to.be.bignumber.eq(amount.mul(TWO));
 
-                    expect(await bull.getPriorVotes(user1, b6)).to.be.bignumber.eq(ZERO);
-                    expect(await bull.getPriorVotes(user2, b6)).to.be.bignumber.eq(amount.mul(TWO));
-                    expect(await bull.getPriorVotes(user3, b6)).to.be.bignumber.eq(amount);
+                    expect(await fire.getPriorVotes(user1, b6)).to.be.bignumber.eq(ZERO);
+                    expect(await fire.getPriorVotes(user2, b6)).to.be.bignumber.eq(amount.mul(TWO));
+                    expect(await fire.getPriorVotes(user3, b6)).to.be.bignumber.eq(amount);
 
-                    expect(await bull.getPriorVotes(user1, b7)).to.be.bignumber.eq(amount);
-                    expect(await bull.getPriorVotes(user2, b7)).to.be.bignumber.eq(amount);
-                    expect(await bull.getPriorVotes(user3, b7)).to.be.bignumber.eq(amount);
+                    expect(await fire.getPriorVotes(user1, b7)).to.be.bignumber.eq(amount);
+                    expect(await fire.getPriorVotes(user2, b7)).to.be.bignumber.eq(amount);
+                    expect(await fire.getPriorVotes(user3, b7)).to.be.bignumber.eq(amount);
                 });
             });
         });
@@ -977,21 +977,21 @@ describe('Bull', async function () {
 
     describe("ERC20 test", async function() {
         it("name, symbol, decimals, totalSupply, balanceOf", async function() {
-            expect(await bull.name()).to.be.eq(name);
-            expect(await bull.symbol()).to.be.eq(symbol);
-            expect(await bull.decimals()).to.be.bignumber.eq(decimals);
+            expect(await fire.name()).to.be.eq(name);
+            expect(await fire.symbol()).to.be.eq(symbol);
+            expect(await fire.decimals()).to.be.bignumber.eq(decimals);
 
-            expect(await bull.totalSupply()).to.be.bignumber.eq(totalSupply);
-            expect(await bull.balanceOf(admin)).to.be.bignumber.eq(ZERO);
-            expect(await bull.balanceOf(holder)).to.be.bignumber.eq(totalSupply);
+            expect(await fire.totalSupply()).to.be.bignumber.eq(totalSupply);
+            expect(await fire.balanceOf(admin)).to.be.bignumber.eq(ZERO);
+            expect(await fire.balanceOf(holder)).to.be.bignumber.eq(totalSupply);
         });
 
         describe('transfer', async function() {
-            let user1InitialBull = e18(100);
+            let user1InitialFire = e18(100);
 
             before(async function() {
                 await blockchain.saveSnapshotAsync();
-                await bull.transfer(user1, user1InitialBull, {from: holder});
+                await fire.transfer(user1, user1InitialFire, {from: holder});
             });
 
             after(async function() {
@@ -1003,78 +1003,78 @@ describe('Bull', async function () {
             });
 
             afterEach(async function() {
-                expect(await bull.totalSupply()).to.be.bignumber.eq(totalSupply);
+                expect(await fire.totalSupply()).to.be.bignumber.eq(totalSupply);
                 await blockchain.revertAsync();
             });
 
             it ('should transfer token correctly', async function() {
-                await bull.transfer(user2, ONE, {from: user1});
-                expect(await bull.balanceOf(user1)).to.be.bignumber.eq(user1Balance.sub(ONE));
-                expect(await bull.balanceOf(user2)).to.be.bignumber.eq(user2Balance.add(ONE));
+                await fire.transfer(user2, ONE, {from: user1});
+                expect(await fire.balanceOf(user1)).to.be.bignumber.eq(user1Balance.sub(ONE));
+                expect(await fire.balanceOf(user2)).to.be.bignumber.eq(user2Balance.add(ONE));
             });
 
             it('should NOT transfer to ZERO address', async function() {
                 await expectRevert(
-                    bull.transfer(ZERO_ADDRESS, ONE, {from: user1}),
-                    "Bull::_transferTokens: cannot transfer to the zero address"
+                    fire.transfer(ZERO_ADDRESS, ONE, {from: user1}),
+                    "Fire::_transferTokens: cannot transfer to the zero address"
                 );
             });
 
             it ('should NOT transfer token more than balance', async function() {
                 await expectRevert(
-                    bull.transfer(user2, user1InitialBull.add(ONE), {from: user1}),
-                    "Bull::_transferTokens: transfer amount exceeds balance"
+                    fire.transfer(user2, user1InitialFire.add(ONE), {from: user1}),
+                    "Fire::_transferTokens: transfer amount exceeds balance"
                 );
 
                 await expectRevert(
-                    bull.transfer(user2, constants.MAX_UINT256, {from: user1}),
-                    "Bull::transfer: amount exceeds 96 bits"
+                    fire.transfer(user2, constants.MAX_UINT256, {from: user1}),
+                    "Fire::transfer: amount exceeds 96 bits"
                 );
             });
 
             it('should transfer from approved user', async function() {
-                await bull.approve(admin, ONE, {from: user1});
-                expect(await bull.allowance(user1, admin)).to.be.bignumber.equal(ONE);
+                await fire.approve(admin, ONE, {from: user1});
+                expect(await fire.allowance(user1, admin)).to.be.bignumber.equal(ONE);
 
-                await bull.transferFrom(user1, user2, ONE, {from: admin});
+                await fire.transferFrom(user1, user2, ONE, {from: admin});
                 
-                expect(await bull.allowance(user1, admin)).to.be.bignumber.equal(ZERO);
+                expect(await fire.allowance(user1, admin)).to.be.bignumber.equal(ZERO);
 
-                expect(await bull.balanceOf(user1)).to.be.bignumber.eq(user1Balance.sub(ONE));
-                expect(await bull.balanceOf(user2)).to.be.bignumber.eq(user2Balance.add(ONE));
+                expect(await fire.balanceOf(user1)).to.be.bignumber.eq(user1Balance.sub(ONE));
+                expect(await fire.balanceOf(user2)).to.be.bignumber.eq(user2Balance.add(ONE));
             });
 
             it('should NOT transfer from approved user more than allowances', async function() {
-                await bull.approve(admin, ONE, {from: user1});
-                expect(await bull.allowance(user1, admin)).to.be.bignumber.equal(ONE);
+                await fire.approve(admin, ONE, {from: user1});
+                expect(await fire.allowance(user1, admin)).to.be.bignumber.equal(ONE);
 
                 await expectRevert(
-                    bull.transferFrom(user1, user2, TWO, {from: admin}),
-                    "Bull::transferFrom: transfer amount exceeds spender allowance"
+                    fire.transferFrom(user1, user2, TWO, {from: admin}),
+                    "Fire::transferFrom: transfer amount exceeds spender allowance"
                 );
 
                 await expectRevert(
-                    bull.transferFrom(user1, user2, constants.MAX_UINT256, {from: admin}),
-                    "Bull::approve: amount exceeds 96 bits"
+                    fire.transferFrom(user1, user2, constants.MAX_UINT256, {from: admin}),
+                    "Fire::approve: amount exceeds 96 bits"
                 );
             });
 
             it('should transfer by MAX_UINT256 approved user', async function() {
-                await bull.approve(admin, constants.MAX_UINT256, {from: user1});
-                expect(await bull.allowance(user1, admin)).to.be.bignumber.equal(MAX_UINT96);
+                await fire.approve(admin, constants.MAX_UINT256, {from: user1});
+                expect(await fire.allowance(user1, admin)).to.be.bignumber.equal(MAX_UINT96);
 
-                await bull.transferFrom(user1, user2, ONE, {from: admin});
+                await fire.transferFrom(user1, user2, ONE, {from: admin});
 
-                expect(await bull.allowance(user1, admin)).to.be.bignumber.equal(MAX_UINT96);
+                expect(await fire.allowance(user1, admin)).to.be.bignumber.equal(MAX_UINT96);
 
-                expect(await bull.balanceOf(user1)).to.be.bignumber.eq(user1Balance.sub(ONE));
-                expect(await bull.balanceOf(user2)).to.be.bignumber.eq(user2Balance.add(ONE));
+                expect(await fire.balanceOf(user1)).to.be.bignumber.eq(user1Balance.sub(ONE));
+                expect(await fire.balanceOf(user2)).to.be.bignumber.eq(user2Balance.add(ONE));
             });
 
             it('should NOT allow MAX_UINT256 - 1 approve', async function() {
                 await expectRevert(
-                    bull.approve(admin, constants.MAX_UINT256.sub(ONE), {from: user1}),
-                    "Bull::approve: amount exceeds 96 bits"
+                    fire.approve(admin, constants.MAX_UINT256.sub(ONE), {from: user1}),
+                    "Fire::approve: amount exceeds 96 bits"
                 );
             });
         });

@@ -4,14 +4,14 @@
 import BN from "bn.js";
 import { EventData, PastEventOptions } from "web3-eth-contract";
 
-export interface BullInterfaceContract
-  extends Truffle.Contract<BullInterfaceInstance> {
-  "new"(meta?: Truffle.TransactionDetails): Promise<BullInterfaceInstance>;
+export interface FireInterfaceContract
+  extends Truffle.Contract<FireInterfaceInstance> {
+  "new"(meta?: Truffle.TransactionDetails): Promise<FireInterfaceInstance>;
 }
 
 type AllEvents = never;
 
-export interface BullInterfaceInstance extends Truffle.ContractInstance {
+export interface FireInterfaceInstance extends Truffle.ContractInstance {
   getPriorVotes(
     account: string,
     blockNumber: number | BN | string,

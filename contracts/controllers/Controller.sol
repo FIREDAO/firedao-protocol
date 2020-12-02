@@ -11,7 +11,7 @@ import "../interfaces/yearn/IConverter.sol";
 import "../interfaces/yearn/IOneSplitAudit.sol";
 import "../interfaces/yearn/IStrategy.sol";
 
-import "../vault/bVault.sol";
+import "../vault/fVault.sol";
 
 contract Controller {
     using SafeERC20 for IERC20;
@@ -120,7 +120,7 @@ contract Controller {
         address _vault = vaults[_token];
         require(_vault != address(0), "no vault");
 
-        uint256 _amount = bVault(_vault).earn();
+        uint256 _amount = fVault(_vault).earn();
 
         earnInternal(_token, _amount);        
     }

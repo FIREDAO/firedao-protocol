@@ -10,8 +10,8 @@ import {
     TestTokenInstance, 
     TestVaultContract, 
     TestVaultInstance,
-    TestBullContract,
-    TestBullInstance
+    TestFireContract,
+    TestFireInstance
 } from '@gen/contracts';
 
 import { e18 } from '@testUtils/units';
@@ -26,7 +26,7 @@ const blockchain = new Blockchain(web3.currentProvider);
 const TestToken : TestTokenContract = contract.fromArtifact("TestToken");
 const TestVault : TestVaultContract = contract.fromArtifact("TestVault");
 const RewardPool: TestRewardPoolContract = contract.fromArtifact("TestRewardPool");
-const TestBull : TestBullContract = contract.fromArtifact("TestBull");
+const TestFire : TestFireContract = contract.fromArtifact("TestFire");
 
 const [admin, rewardDistribution, user1, user2] = accounts;
 
@@ -39,7 +39,6 @@ describe('Test', function () {
     let balance = e18(1000);
 
     let aYear = new BN(365*24*60*60);
-
 
     before(async function() {
         token = await TestToken.new("test token", "Tok", 18, {from: admin});
@@ -68,8 +67,8 @@ describe('Test', function () {
         vault = await TestVault.new(token.address, rp.address, {from: admin});
     });
 
-    it("testBull", async function() {
-        let tb: TestBullInstance = await TestBull.new(admin, admin, {from: admin});
+    it("testFire", async function() {
+        let tb: TestFireInstance = await TestFire.new(admin, admin, {from: admin});
 
         console.log(await tb.name());
         console.log(await tb.symbol());

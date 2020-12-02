@@ -12,17 +12,17 @@ Redistribution and use in source and binary forms, with or without modification,
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-pragma solidity ^0.5.16;
+pragma solidity ^0.5.17;
 pragma experimental ABIEncoderV2;
 
 import "@openzeppelin/contracts/math/SafeMath.sol";
 
-contract Bull {
+contract Fire {
     /// @notice EIP-20 token name for this token
-    string public constant name = "Bull";
+    string public constant name = "Fire";
 
     /// @notice EIP-20 token symbol for this token
-    string public constant symbol = "BULL";
+    string public constant symbol = "FIRE";
 
     /// @notice EIP-20 token decimals for this token
     uint8 public constant decimals = 18;
@@ -31,7 +31,7 @@ contract Bull {
     uint256 public totalSupply = 20_000e18;
 
     /// @notice Maxium mintable number of tokens
-    uint256 public cap = 1_000_000e18;
+    uint256 public cap = 100_000_000e18;
 
     /// @notice Address which may mint new tokens
     address public minter;
@@ -82,7 +82,7 @@ contract Bull {
     event Approval(address indexed owner, address indexed spender, uint256 amount);
 
     /**
-     * @notice Construct a new Bull token
+     * @notice Construct a new Fire token
      * @param account The initial account to grant all the tokens
      * @param _minter The account with minting ability
      */
@@ -98,7 +98,7 @@ contract Bull {
      * @param _minter The address of the new minter
      */
     function setMinter(address _minter) external {
-        require(msg.sender == minter, "Bull::setMinter: only the minter can change the minter address");
+        require(msg.sender == minter, "Fire::setMinter: only the minter can change the minter address");
         emit MinterChanged(minter, _minter);
         minter = _minter;
     }
@@ -109,18 +109,18 @@ contract Bull {
      * @param rawAmount The number of tokens to be minted
      */
     function mint(address dst, uint rawAmount) external {
-        require(msg.sender == minter, "Bull::mint: only the minter can mint");
-        require(dst != address(0), "Bull::mint: cannot transfer to the zero address");
+        require(msg.sender == minter, "Fire::mint: only the minter can mint");
+        require(dst != address(0), "Fire::mint: cannot transfer to the zero address");
 
         // mint the amount
-        uint96 amount = safe96(rawAmount, "Bull::mint: amount exceeds 96 bits");
+        uint96 amount = safe96(rawAmount, "Fire::mint: amount exceeds 96 bits");
         
-        require(SafeMath.add(totalSupply, amount) <= cap, "Bull: cap exceeded");
+        require(SafeMath.add(totalSupply, amount) <= cap, "Fire: cap exceeded");
 
-        totalSupply = safe96(SafeMath.add(totalSupply, amount), "Bull::mint: totalSupply exceeds 96 bits");
+        totalSupply = safe96(SafeMath.add(totalSupply, amount), "Fire::mint: totalSupply exceeds 96 bits");
 
         // transfer the amount to the recipient
-        balances[dst] = add96(balances[dst], amount, "Bull::mint: transfer amount overflows");
+        balances[dst] = add96(balances[dst], amount, "Fire::mint: transfer amount overflows");
         emit Transfer(address(0), dst, amount);
 
         // move delegates
@@ -150,7 +150,7 @@ contract Bull {
         if (rawAmount == uint(-1)) {
             amount = uint96(-1);
         } else {
-            amount = safe96(rawAmount, "Bull::approve: amount exceeds 96 bits");
+            amount = safe96(rawAmount, "Fire::approve: amount exceeds 96 bits");
         }
 
         allowances[msg.sender][spender] = amount;
@@ -175,7 +175,7 @@ contract Bull {
      * @return Whether or not the transfer succeeded
      */
     function transfer(address dst, uint rawAmount) external returns (bool) {
-        uint96 amount = safe96(rawAmount, "Bull::transfer: amount exceeds 96 bits");
+        uint96 amount = safe96(rawAmount, "Fire::transfer: amount exceeds 96 bits");
         _transferTokens(msg.sender, dst, amount);
         return true;
     }
@@ -190,10 +190,10 @@ contract Bull {
     function transferFrom(address src, address dst, uint rawAmount) external returns (bool) {
         address spender = msg.sender;
         uint96 spenderAllowance = allowances[src][spender];
-        uint96 amount = safe96(rawAmount, "Bull::approve: amount exceeds 96 bits");
+        uint96 amount = safe96(rawAmount, "Fire::approve: amount exceeds 96 bits");
 
         if (spender != src && spenderAllowance != uint96(-1)) {
-            uint96 newAllowance = sub96(spenderAllowance, amount, "Bull::transferFrom: transfer amount exceeds spender allowance");
+            uint96 newAllowance = sub96(spenderAllowance, amount, "Fire::transferFrom: transfer amount exceeds spender allowance");
             allowances[src][spender] = newAllowance;
 
             emit Approval(src, spender, newAllowance);
@@ -225,9 +225,9 @@ contract Bull {
         bytes32 structHash = keccak256(abi.encode(DELEGATION_TYPEHASH, delegatee, nonce, expiry));
         bytes32 digest = keccak256(abi.encodePacked("\x19\x01", domainSeparator, structHash));
         address signatory = ecrecover(digest, v, r, s);
-        require(signatory != address(0), "Bull::delegateBySig: invalid signature");
-        require(nonce == nonces[signatory]++, "Bull::delegateBySig: invalid nonce");
-        require(now <= expiry, "Bull::delegateBySig: signature expired");
+        require(signatory != address(0), "Fire::delegateBySig: invalid signature");
+        require(nonce == nonces[signatory]++, "Fire::delegateBySig: invalid nonce");
+        require(now <= expiry, "Fire::delegateBySig: signature expired");
         return _delegate(signatory, delegatee);
     }
 
@@ -249,7 +249,7 @@ contract Bull {
      * @return The number of votes the account had as of the given block
      */
     function getPriorVotes(address account, uint blockNumber) public view returns (uint96) {
-        require(blockNumber < block.number, "Bull::getPriorVotes: not yet determined");
+        require(blockNumber < block.number, "Fire::getPriorVotes: not yet determined");
 
         uint32 nCheckpoints = numCheckpoints[account];
         if (nCheckpoints == 0) {
@@ -293,11 +293,11 @@ contract Bull {
     }
 
     function _transferTokens(address src, address dst, uint96 amount) internal {
-        require(src != address(0), "Bull::_transferTokens: cannot transfer from the zero address");
-        require(dst != address(0), "Bull::_transferTokens: cannot transfer to the zero address");
+        require(src != address(0), "Fire::_transferTokens: cannot transfer from the zero address");
+        require(dst != address(0), "Fire::_transferTokens: cannot transfer to the zero address");
 
-        balances[src] = sub96(balances[src], amount, "Bull::_transferTokens: transfer amount exceeds balance");
-        balances[dst] = add96(balances[dst], amount, "Bull::_transferTokens: transfer amount overflows");
+        balances[src] = sub96(balances[src], amount, "Fire::_transferTokens: transfer amount exceeds balance");
+        balances[dst] = add96(balances[dst], amount, "Fire::_transferTokens: transfer amount overflows");
         emit Transfer(src, dst, amount);
 
         _moveDelegates(delegates[src], delegates[dst], amount);
@@ -308,21 +308,21 @@ contract Bull {
             if (srcRep != address(0)) {
                 uint32 srcRepNum = numCheckpoints[srcRep];
                 uint96 srcRepOld = srcRepNum > 0 ? checkpoints[srcRep][srcRepNum - 1].votes : 0;
-                uint96 srcRepNew = sub96(srcRepOld, amount, "Bull::_moveVotes: vote amount underflows");
+                uint96 srcRepNew = sub96(srcRepOld, amount, "Fire::_moveVotes: vote amount underflows");
                 _writeCheckpoint(srcRep, srcRepNum, srcRepOld, srcRepNew);
             }
 
             if (dstRep != address(0)) {
                 uint32 dstRepNum = numCheckpoints[dstRep];
                 uint96 dstRepOld = dstRepNum > 0 ? checkpoints[dstRep][dstRepNum - 1].votes : 0;
-                uint96 dstRepNew = add96(dstRepOld, amount, "Bull::_moveVotes: vote amount overflows");
+                uint96 dstRepNew = add96(dstRepOld, amount, "Fire::_moveVotes: vote amount overflows");
                 _writeCheckpoint(dstRep, dstRepNum, dstRepOld, dstRepNew);
             }
         }
     }
 
     function _writeCheckpoint(address delegatee, uint32 nCheckpoints, uint96 oldVotes, uint96 newVotes) internal {
-      uint32 blockNumber = safe32(block.number, "Bull::_writeCheckpoint: block number exceeds 32 bits");
+      uint32 blockNumber = safe32(block.number, "Fire::_writeCheckpoint: block number exceeds 32 bits");
 
       if (nCheckpoints > 0 && checkpoints[delegatee][nCheckpoints - 1].fromBlock == blockNumber) {
           checkpoints[delegatee][nCheckpoints - 1].votes = newVotes;

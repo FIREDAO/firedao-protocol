@@ -12,7 +12,7 @@ import "@openzeppelin/contracts/ownership/Ownable.sol";
 
 import "../interfaces/yearn/IController.sol";
 
-contract bVault is ERC20, ERC20Detailed {
+contract fVault is ERC20, ERC20Detailed {
     using SafeERC20 for IERC20;
     using Address for address;
     using SafeMath for uint256;
@@ -28,8 +28,8 @@ contract bVault is ERC20, ERC20Detailed {
     constructor(address _token, address _controller)
         public
         ERC20Detailed(
-            string(abi.encodePacked("bull ", ERC20Detailed(_token).name())),
-            string(abi.encodePacked("b", ERC20Detailed(_token).symbol())),
+            string(abi.encodePacked("fire ", ERC20Detailed(_token).name())),
+            string(abi.encodePacked("f", ERC20Detailed(_token).symbol())),
             ERC20Detailed(_token).decimals()
         )
     {

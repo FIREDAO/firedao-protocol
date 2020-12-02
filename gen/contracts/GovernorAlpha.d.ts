@@ -8,7 +8,7 @@ export interface GovernorAlphaContract
   extends Truffle.Contract<GovernorAlphaInstance> {
   "new"(
     timelock_: string,
-    bull_: string,
+    fire_: string,
     guardian_: string,
     meta?: Truffle.TransactionDetails
   ): Promise<GovernorAlphaInstance>;
@@ -154,8 +154,6 @@ export interface GovernorAlphaInstance extends Truffle.ContractInstance {
     ): Promise<number>;
   };
 
-  bull(txDetails?: Truffle.TransactionDetails): Promise<string>;
-
   cancel: {
     (
       proposalId: number | BN | string,
@@ -251,6 +249,8 @@ export interface GovernorAlphaInstance extends Truffle.ContractInstance {
       txDetails?: Truffle.TransactionDetails
     ): Promise<number>;
   };
+
+  fire(txDetails?: Truffle.TransactionDetails): Promise<string>;
 
   getActions(
     proposalId: number | BN | string,
@@ -419,8 +419,6 @@ export interface GovernorAlphaInstance extends Truffle.ContractInstance {
       ): Promise<number>;
     };
 
-    bull(txDetails?: Truffle.TransactionDetails): Promise<string>;
-
     cancel: {
       (
         proposalId: number | BN | string,
@@ -516,6 +514,8 @@ export interface GovernorAlphaInstance extends Truffle.ContractInstance {
         txDetails?: Truffle.TransactionDetails
       ): Promise<number>;
     };
+
+    fire(txDetails?: Truffle.TransactionDetails): Promise<string>;
 
     getActions(
       proposalId: number | BN | string,
