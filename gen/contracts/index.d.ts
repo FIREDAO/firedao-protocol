@@ -49,8 +49,8 @@ declare global {
       require(name: "ERC20"): Erc20Contract;
       require(name: "ERC20Detailed"): Erc20DetailedContract;
       require(name: "ERC20Mintable"): Erc20MintableContract;
-      require(name: "Fire"): FireContract;
-      require(name: "FireInterface"): FireInterfaceContract;
+      require(name: "FIRE"): FireContract;
+      require(name: "FIREInterface"): FireInterfaceContract;
       require(name: "fVault"): FVaultContract;
       require(name: "GovernorAlpha"): GovernorAlphaContract;
       require(name: "IController"): IControllerContract;
@@ -70,7 +70,7 @@ declare global {
       require(name: "StrategyDForceDAI"): StrategyDForceDaiContract;
       require(name: "StrategyDForceUSDC"): StrategyDForceUsdcContract;
       require(name: "StrategyDForceUSDT"): StrategyDForceUsdtContract;
-      require(name: "TestFire"): TestFireContract;
+      require(name: "TestFIRE"): TestFireContract;
       require(name: "TestRewardPool"): TestRewardPoolContract;
       require(name: "TestStrategy"): TestStrategyContract;
       require(name: "TestToken"): TestTokenContract;

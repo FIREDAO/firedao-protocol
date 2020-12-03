@@ -26,7 +26,7 @@ const blockchain = new Blockchain(web3.currentProvider);
 const TestToken : TestTokenContract = contract.fromArtifact("TestToken");
 const TestVault : TestVaultContract = contract.fromArtifact("TestVault");
 const RewardPool: TestRewardPoolContract = contract.fromArtifact("TestRewardPool");
-const TestFire : TestFireContract = contract.fromArtifact("TestFire");
+const TestFIRE : TestFireContract = contract.fromArtifact("TestFIRE");
 
 const [admin, rewardDistribution, user1, user2] = accounts;
 
@@ -67,8 +67,8 @@ describe('Test', function () {
         vault = await TestVault.new(token.address, rp.address, {from: admin});
     });
 
-    it("testFire", async function() {
-        let tb: TestFireInstance = await TestFire.new(admin, admin, {from: admin});
+    it("TestFIRE", async function() {
+        let tb: TestFireInstance = await TestFIRE.new(admin, admin, {from: admin});
 
         console.log(await tb.name());
         console.log(await tb.symbol());

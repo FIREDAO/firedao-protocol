@@ -22,7 +22,7 @@ const { BN, expectRevert } = require('@openzeppelin/test-helpers');
 const blockchain = new Blockchain(web3.currentProvider);
 
 const TestToken : TestTokenContract = contract.fromArtifact("TestToken");
-const Fire : FireContract = contract.fromArtifact("Fire");
+const FIRE : FireContract = contract.fromArtifact("FIRE");
 const RewardPool: TestRewardPoolContract = contract.fromArtifact("TestRewardPool");
 
 const [admin, rewardDistribution, user1, user2] = accounts;
@@ -42,7 +42,7 @@ describe('RewardPool', function () {
 
     before(async function() {
         lpToken = await TestToken.new("LP test token", "LPT", 18, {from: admin});
-        fire = await Fire.new(rewardDistribution, admin, {from: admin});
+        fire = await FIRE.new(rewardDistribution, admin, {from: admin});
 
         rp = await RewardPool.new(
             fire.address,
@@ -182,6 +182,22 @@ describe('RewardPool', function () {
                 rp.withdraw(ONE, {from: user1}),
                 "SafeMath: subtraction overflow."
             );
+        });
+    });
+
+    describe("Ownerable", async function() {
+        before(async function() {
+            await blockchain.saveSnapshotAsync();
+        });
+
+        after(async function() {
+            await blockchain.revertAsync();
+        });
+
+        it("transferOwnership", async function() {
+            let owner = await rp.owner();
+            await rp.transferOwnership(user1, {from: admin});
+            expect(await rp.owner()).to.be.eq(user1);
         });
     });
 

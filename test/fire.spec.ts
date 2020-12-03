@@ -56,7 +56,7 @@ const ganachePasswords = [
 const { BN } = require('@openzeppelin/test-helpers');
 const blockchain = new Blockchain(web3.currentProvider);
 
-const Fire : FireContract = contract.fromArtifact("Fire");
+const FIRE : FireContract = contract.fromArtifact("FIRE");
 const Timelock: TimelockContract = contract.fromArtifact("Timelock");
 const TestToken: TestTokenContract = contract.fromArtifact("TestToken");
 
@@ -72,8 +72,8 @@ async function getLatestBlockNumber(): Promise<number> {
     return (await web3.eth.getBlock('latest')).number;
 }
 
-describe('Fire', async function () {
-    const name = "Fire";
+describe('FIRE', async function () {
+    const name = "FIRE Governance Token";
     const symbol = "FIRE";
     const decimals = new BN(18);
 
@@ -89,7 +89,7 @@ describe('Fire', async function () {
 
     before(async function() {
         console.log("before");
-        fire = await Fire.new(holder, admin, {from: admin});
+        fire = await FIRE.new(holder, admin, {from: admin});
     });
 
     beforeEach(async function() {
@@ -150,7 +150,7 @@ describe('Fire', async function () {
                 const amount = bits96;
                 await expectRevert(
                     fire.mint(user1, amount, {from: admin}),
-                    "Fire::mint: amount exceeds 96 bits"
+                    "FIRE::mint: amount exceeds 96 bits"
                 );
             });
 
@@ -158,7 +158,7 @@ describe('Fire', async function () {
                 const amount = cap.sub(totalSupply).add(ONE);
                 await expectRevert(
                     fire.mint(user1, amount, {from: admin}),
-                    "Fire: cap exceeded"
+                    "FIRE: cap exceeded"
                 );
             });
         });
@@ -469,12 +469,12 @@ describe('Fire', async function () {
 
                 await expectRevert(
                     fire.mint(user1, mintAmount, {from: admin}),
-                    "Fire::mint: only the minter can mint"
+                    "FIRE::mint: only the minter can mint"
                 );
 
                 await expectRevert(
                     fire.setMinter(user1, {from: admin}),
-                    "Fire::setMinter: only the minter can change the minter address"
+                    "FIRE::setMinter: only the minter can change the minter address"
                 );
             });
 
@@ -620,7 +620,7 @@ describe('Fire', async function () {
                 nonce = "100";
 
                 expect(await fire.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
-                expectRevert(delegateBySig(), "Fire::delegateBySig: invalid nonce");
+                expectRevert(delegateBySig(), "FIRE::delegateBySig: invalid nonce");
                 expect(await fire.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
             });
 
@@ -644,7 +644,7 @@ describe('Fire', async function () {
                 expiry = nowInSeconds(-10).toString();
 
                 expect(await fire.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
-                expectRevert(delegateBySig(), "Fire::delegateBySig: signature expired");
+                expectRevert(delegateBySig(), "FIRE::delegateBySig: signature expired");
                 expect(await fire.delegates(delegator)).to.be.eq(ZERO_ADDRESS);
             });
 
@@ -1016,19 +1016,19 @@ describe('Fire', async function () {
             it('should NOT transfer to ZERO address', async function() {
                 await expectRevert(
                     fire.transfer(ZERO_ADDRESS, ONE, {from: user1}),
-                    "Fire::_transferTokens: cannot transfer to the zero address"
+                    "FIRE::_transferTokens: cannot transfer to the zero address"
                 );
             });
 
             it ('should NOT transfer token more than balance', async function() {
                 await expectRevert(
                     fire.transfer(user2, user1InitialFire.add(ONE), {from: user1}),
-                    "Fire::_transferTokens: transfer amount exceeds balance"
+                    "FIRE::_transferTokens: transfer amount exceeds balance"
                 );
 
                 await expectRevert(
                     fire.transfer(user2, constants.MAX_UINT256, {from: user1}),
-                    "Fire::transfer: amount exceeds 96 bits"
+                    "FIRE::transfer: amount exceeds 96 bits"
                 );
             });
 
@@ -1050,12 +1050,12 @@ describe('Fire', async function () {
 
                 await expectRevert(
                     fire.transferFrom(user1, user2, TWO, {from: admin}),
-                    "Fire::transferFrom: transfer amount exceeds spender allowance"
+                    "FIRE::transferFrom: transfer amount exceeds spender allowance"
                 );
 
                 await expectRevert(
                     fire.transferFrom(user1, user2, constants.MAX_UINT256, {from: admin}),
-                    "Fire::approve: amount exceeds 96 bits"
+                    "FIRE::approve: amount exceeds 96 bits"
                 );
             });
 
@@ -1074,7 +1074,7 @@ describe('Fire', async function () {
             it('should NOT allow MAX_UINT256 - 1 approve', async function() {
                 await expectRevert(
                     fire.approve(admin, constants.MAX_UINT256.sub(ONE), {from: user1}),
-                    "Fire::approve: amount exceeds 96 bits"
+                    "FIRE::approve: amount exceeds 96 bits"
                 );
             });
         });
