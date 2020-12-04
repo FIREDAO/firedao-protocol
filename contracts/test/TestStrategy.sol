@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
 import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
 
-import "../interfaces/yearn/IController.sol";
+import "../interfaces/fire/IController.sol";
 
 import "./IRewardPool.sol";
 import "./TestVault.sol";

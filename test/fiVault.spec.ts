@@ -8,8 +8,8 @@ import {
     TestTokenInstance, 
     ControllerContract,
     ControllerInstance,
-    FVaultInstance,
-    FVaultContract,
+    FiVaultInstance,
+    FiVaultContract,
     DummyStrategyContract,
     DummyStrategyInstance
 } from '@gen/contracts';
@@ -23,24 +23,24 @@ const blockchain = new Blockchain(web3.currentProvider);
 
 const TestToken : TestTokenContract = contract.fromArtifact("TestToken");
 const DummyStrategy : DummyStrategyContract = contract.fromArtifact("DummyStrategy");
-const FVault: FVaultContract = contract.fromArtifact("fVault");
+const fiVault: FiVaultContract = contract.fromArtifact("fiVault");
 const Controller: ControllerContract = contract.fromArtifact("Controller");
 
 const [admin, user1, rewarder, strategist] = accounts;
 
 describe('Test', function () {
     let token: TestTokenInstance;
-    let vault: FVaultInstance;
+    let vault: FiVaultInstance;
     let controller: ControllerInstance;
     let strategy: DummyStrategyInstance;
 
     let balance = e18(1000);
 
     before(async function() {
-        token = await TestToken.new("test token", "Tok", 18, {from: admin});
+        token = await TestToken.new("test token", "Tok", 6, {from: admin});
 
         controller = await Controller.new(rewarder, {from: admin});
-        vault = await FVault.new(token.address, controller.address, {from: admin});
+        vault = await fiVault.new(token.address, controller.address, {from: admin});
         strategy = await DummyStrategy.new(controller.address, token.address, {from: admin});
 
         await token.mint(user1, balance, {from: admin});
@@ -57,7 +57,13 @@ describe('Test', function () {
     after(async function() {
     });
 
-    describe('FVault', async function() {
+    it('basic', async function() {
+        expect(await vault.name()).to.be.eq("fire test token");
+        expect(await vault.symbol()).to.be.eq("fiTok");
+        expect(await vault.decimals()).to.be.bignumber.eq(new BN(6));
+    });
+
+    describe('fiVault', async function() {
         before(async function() {
             await blockchain.saveSnapshotAsync();
         });

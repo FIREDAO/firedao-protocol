@@ -12,7 +12,7 @@ import "../interfaces/dforce/Rewards.sol";
 import "../interfaces/dforce/Token.sol";
 import "../interfaces/uniswap/Uni.sol";
 
-import "../interfaces/yearn/IController.sol";
+import "../interfaces/fire/IController.sol";
 
 contract StrategyDForceUSDT {
     using SafeERC20 for IERC20;

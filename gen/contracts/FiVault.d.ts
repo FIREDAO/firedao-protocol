@@ -4,12 +4,12 @@
 import BN from "bn.js";
 import { EventData, PastEventOptions } from "web3-eth-contract";
 
-export interface FVaultContract extends Truffle.Contract<FVaultInstance> {
+export interface FiVaultContract extends Truffle.Contract<FiVaultInstance> {
   "new"(
     _token: string,
     _controller: string,
     meta?: Truffle.TransactionDetails
-  ): Promise<FVaultInstance>;
+  ): Promise<FiVaultInstance>;
 }
 
 export interface Approval {
@@ -38,7 +38,7 @@ export interface Transfer {
 
 type AllEvents = Approval | Transfer;
 
-export interface FVaultInstance extends Truffle.ContractInstance {
+export interface FiVaultInstance extends Truffle.ContractInstance {
   allowance(
     owner: string,
     spender: string,

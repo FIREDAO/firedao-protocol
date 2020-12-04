@@ -7,11 +7,11 @@ import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
 import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
 
-import "../interfaces/yearn/IConverter.sol";
-import "../interfaces/yearn/IOneSplitAudit.sol";
-import "../interfaces/yearn/IStrategy.sol";
+import "../interfaces/fire/IConverter.sol";
+import "../interfaces/fire/IOneSplitAudit.sol";
+import "../interfaces/fire/IStrategy.sol";
 
-import "../vault/fVault.sol";
+import "../vault/fiVault.sol";
 
 contract Controller {
     using SafeERC20 for IERC20;
@@ -120,7 +120,7 @@ contract Controller {
         address _vault = vaults[_token];
         require(_vault != address(0), "no vault");
 
-        uint256 _amount = fVault(_vault).earn();
+        uint256 _amount = fiVault(_vault).earn();
 
         earnInternal(_token, _amount);        
     }
