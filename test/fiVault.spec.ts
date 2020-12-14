@@ -58,7 +58,7 @@ describe('Test', function () {
     });
 
     it('basic', async function() {
-        expect(await vault.name()).to.be.eq("fire test token");
+        expect(await vault.name()).to.be.eq("FIRE test token");
         expect(await vault.symbol()).to.be.eq("fiTok");
         expect(await vault.decimals()).to.be.bignumber.eq(new BN(6));
     });

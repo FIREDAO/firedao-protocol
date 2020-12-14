@@ -28,7 +28,7 @@ contract fiVault is ERC20, ERC20Detailed {
     constructor(address _token, address _controller)
         public
         ERC20Detailed(
-            string(abi.encodePacked("fire ", ERC20Detailed(_token).name())),
+            string(abi.encodePacked("FIRE ", ERC20Detailed(_token).name())),
             string(abi.encodePacked("fi", ERC20Detailed(_token).symbol())),
             ERC20Detailed(_token).decimals()
         )

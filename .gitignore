@@ -1,5 +1,4 @@
 node_modules/
-secrets.json
 secrets-mainnet.json
 temp/
 bin/
