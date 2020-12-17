@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
 
 import "../interfaces/fire/IController.sol";
 
-import "./IRewardPool.sol";
+import "../interfaces/fire/IRewardPool.sol";
 import "./TestVault.sol";
 
 contract TestStrategy {

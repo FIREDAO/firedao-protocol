@@ -24,6 +24,7 @@ import { LpTokenWrapperContract } from "./LpTokenWrapper";
 import { MigrationsContract } from "./Migrations";
 import { MinterRoleContract } from "./MinterRole";
 import { OwnableContract } from "./Ownable";
+import { RewarderContract } from "./Rewarder";
 import { RewardPoolContract } from "./RewardPool";
 import { StrategyDForceDaiContract } from "./StrategyDForceDai";
 import { StrategyDForceUsdcContract } from "./StrategyDForceUsdc";
@@ -66,6 +67,7 @@ declare global {
       require(name: "Migrations"): MigrationsContract;
       require(name: "MinterRole"): MinterRoleContract;
       require(name: "Ownable"): OwnableContract;
+      require(name: "Rewarder"): RewarderContract;
       require(name: "RewardPool"): RewardPoolContract;
       require(name: "StrategyDForceDAI"): StrategyDForceDaiContract;
       require(name: "StrategyDForceUSDC"): StrategyDForceUsdcContract;
@@ -115,6 +117,7 @@ export {
 export { MigrationsContract, MigrationsInstance } from "./Migrations";
 export { MinterRoleContract, MinterRoleInstance } from "./MinterRole";
 export { OwnableContract, OwnableInstance } from "./Ownable";
+export { RewarderContract, RewarderInstance } from "./Rewarder";
 export { RewardPoolContract, RewardPoolInstance } from "./RewardPool";
 export {
   StrategyDForceDaiContract,
