@@ -8,6 +8,8 @@ export interface FiVaultContract extends Truffle.Contract<FiVaultInstance> {
   "new"(
     _token: string,
     _controller: string,
+    suffix: string,
+    _cap: number | BN | string,
     meta?: Truffle.TransactionDetails
   ): Promise<FiVaultInstance>;
 }
@@ -76,6 +78,8 @@ export interface FiVaultInstance extends Truffle.ContractInstance {
     account: string,
     txDetails?: Truffle.TransactionDetails
   ): Promise<BN>;
+
+  cap(txDetails?: Truffle.TransactionDetails): Promise<BN>;
 
   controller(txDetails?: Truffle.TransactionDetails): Promise<string>;
 
@@ -196,6 +200,25 @@ export interface FiVaultInstance extends Truffle.ContractInstance {
   min(txDetails?: Truffle.TransactionDetails): Promise<BN>;
 
   name(txDetails?: Truffle.TransactionDetails): Promise<string>;
+
+  setCap: {
+    (
+      _cap: number | BN | string,
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<Truffle.TransactionResponse<AllEvents>>;
+    call(
+      _cap: number | BN | string,
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<void>;
+    sendTransaction(
+      _cap: number | BN | string,
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<string>;
+    estimateGas(
+      _cap: number | BN | string,
+      txDetails?: Truffle.TransactionDetails
+    ): Promise<number>;
+  };
 
   setController: {
     (_controller: string, txDetails?: Truffle.TransactionDetails): Promise<
@@ -375,6 +398,8 @@ export interface FiVaultInstance extends Truffle.ContractInstance {
       txDetails?: Truffle.TransactionDetails
     ): Promise<BN>;
 
+    cap(txDetails?: Truffle.TransactionDetails): Promise<BN>;
+
     controller(txDetails?: Truffle.TransactionDetails): Promise<string>;
 
     decimals(txDetails?: Truffle.TransactionDetails): Promise<BN>;
@@ -494,6 +519,25 @@ export interface FiVaultInstance extends Truffle.ContractInstance {
     min(txDetails?: Truffle.TransactionDetails): Promise<BN>;
 
     name(txDetails?: Truffle.TransactionDetails): Promise<string>;
+
+    setCap: {
+      (
+        _cap: number | BN | string,
+        txDetails?: Truffle.TransactionDetails
+      ): Promise<Truffle.TransactionResponse<AllEvents>>;
+      call(
+        _cap: number | BN | string,
+        txDetails?: Truffle.TransactionDetails
+      ): Promise<void>;
+      sendTransaction(
+        _cap: number | BN | string,
+        txDetails?: Truffle.TransactionDetails
+      ): Promise<string>;
+      estimateGas(
+        _cap: number | BN | string,
+        txDetails?: Truffle.TransactionDetails
+      ): Promise<number>;
+    };
 
     setController: {
       (_controller: string, txDetails?: Truffle.TransactionDetails): Promise<

@@ -22,20 +22,23 @@ contract fiVault is ERC20, ERC20Detailed {
     uint256 public min = 9500;
     uint256 public constant max = 10000;
 
+    uint256 public cap;
+
     address public governance;
     address public controller;
 
-    constructor(address _token, address _controller)
+    constructor(address _token, address _controller, string memory suffix, uint256 _cap)
         public
         ERC20Detailed(
-            string(abi.encodePacked("FIRE ", ERC20Detailed(_token).name())),
-            string(abi.encodePacked("fi", ERC20Detailed(_token).symbol())),
+            string(abi.encodePacked("FIRE ", ERC20Detailed(_token).name(), suffix)),
+            string(abi.encodePacked("fi", ERC20Detailed(_token).symbol(), suffix)),
             ERC20Detailed(_token).decimals()
         )
     {
         token = IERC20(_token);
         governance = msg.sender;
         controller = _controller;
+        cap = _cap;
     }
 
     function balance() public view returns (uint256) {
@@ -45,6 +48,11 @@ contract fiVault is ERC20, ERC20Detailed {
     function setMin(uint256 _min) external {
         require(msg.sender == governance, "!governance");
         min = _min;
+    }
+
+    function setCap(uint256 _cap) external {
+        require(msg.sender == governance, "!governance");
+        cap = _cap;
     }
 
     function setGovernance(address _governance) public {
@@ -77,6 +85,8 @@ contract fiVault is ERC20, ERC20Detailed {
 
     function deposit(uint256 _amount) public {
         uint256 _pool = balance();
+        require(cap >= _pool.add(_amount), "exceeding cap");
+
         uint256 _before = token.balanceOf(address(this));
         token.safeTransferFrom(msg.sender, address(this), _amount);
         uint256 _after = token.balanceOf(address(this));

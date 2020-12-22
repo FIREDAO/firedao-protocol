@@ -1,13 +1,13 @@
 # FIREDAO Protocol
 
-![logo](https://github.com/bulldax/firedao-protocol/raw/main/logo_180.png)
+![logo](https://github.com/FIREDAO/firedao-protocol/raw/main/logo_180.png)
 
-![CI](https://github.com/bulldax/firedao-protocol/workflows/CI/badge.svg)
+![CI](https://github.com/FIREDAO/firedao-protocol/workflows/CI/badge.svg)
 
 FIREDAO is an easy-to-use tool that maximizes returns for cryptocurrency assets by automatically deploying them to decentralized finance (DeFi) protocols that generate the highest yield via lending, farming and exchange services.
 
 - Contract codes for yeild are copied from [Yearn Protocol](https://github.com/iearn-finance/yearn-protocol). 
-- Contract codes for Bull and governance are copied from [Compound Protocol](https://github.com/compound-finance/compound-protocol).
+- Contract codes for FIRE and governance are copied from [Compound Protocol](https://github.com/compound-finance/compound-protocol).
 
 
 ## test environment
