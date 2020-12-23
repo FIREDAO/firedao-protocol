@@ -33,7 +33,7 @@ const Rewarder : RewarderContract = contract.fromArtifact("Rewarder");
 const [admin, rewardDistribution, user1, user2] = accounts;
 
 
-describe('RewardPool', function () {
+describe('Rewarder', function () {
     let rp1: TestRewardPoolInstance;
     let rp2: TestRewardPoolInstance;
 
