@@ -34,7 +34,7 @@ describe('RewardPool', function () {
 
     let lpToken: TestTokenInstance;
     let fire: FireInstance;
-    const fireTotalSupply = e18(20000);
+    const fireTotalSupply = e18(33500001);
 
     let lpBalance = e18(1000);
 

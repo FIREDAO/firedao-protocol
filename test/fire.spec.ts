@@ -78,7 +78,7 @@ describe('FIRE', async function () {
     const decimals = new BN(18);
 
     let fire: FireInstance;
-    const totalSupply = e18(20000);
+    const totalSupply = e18(33500001);
     const cap = e18(100000000);
 
     let adminBalance: BN;

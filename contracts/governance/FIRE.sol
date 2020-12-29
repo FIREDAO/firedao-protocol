@@ -28,7 +28,7 @@ contract FIRE {
     uint8 public constant decimals = 18;
 
     /// @notice Total number of tokens in circulation
-    uint256 public totalSupply = 20_000e18;
+    uint256 public totalSupply = 33_500_001e18;
 
     /// @notice Maxium mintable number of tokens
     uint256 public cap = 100_000_000e18;

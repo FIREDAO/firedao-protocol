@@ -39,7 +39,7 @@ describe('Rewarder', function () {
 
     let lpToken: TestTokenInstance;
     let fire: FireInstance;
-    const fireTotalSupply = e18(20000);
+    const fireTotalSupply = e18(33500001);
 
     let duration = new BN(7*24*60*60); // 7 days
 
