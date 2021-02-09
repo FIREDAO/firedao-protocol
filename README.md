@@ -30,8 +30,7 @@ $ yarn test
 
 
 ## audit
-This project is not audited. However, most of the code has been copied from Yearn Protocol and Compound Protocol, which are audited and considered to be safe, and modifications were in a very small part and the modified parts passed enough tests.
-
+[Audit Report](https://certik.foundation/projects/firedao). 
 
 
 
